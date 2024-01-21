@@ -1,0 +1,160 @@
+{
+  "layer": "top",
+  "height": 30,
+  "modules-left": ["hyprland/workspaces", "group/hardware"],
+  "modules-center": ["clock", "idle_inhibitor"],
+  "modules-right": ["group/connectivity", "group/sysInfo", "group/others"],
+  // group config
+  "group/hardware": {
+    "orientation": "horizontal",
+    "modules": ["cpu", "network#speed"]
+  },
+  "group/connectivity": {
+    "orientation": "horizontal",
+    "modules": ["bluetooth", "network", "custom/vpn"]
+  },
+  "group/sysInfo": {
+    "orientation": "horizontal",
+    "modules": ["wireplumber", "backlight", "battery"]
+  },
+  "group/others": {
+    "orientation": "horizontal",
+    "modules": ["custom/power_btn", "custom/updates", "custom/notifications"]
+  },
+  // individual component config
+  //left
+  "hyprland/workspaces": {
+    "active-only": true
+  },
+  "cpu": {
+    "interval": 100,
+    "format": " ",
+    "format-alt": "{usage}% "
+  },
+  "network#speed": {
+    "interval": 1,
+    "format": "{ifname}",
+    "format-wifi": "  ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "󰣼 ",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "   {essid}\n   {bandwidthDownBytes}\n   {bandwidthDownBytes}",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected"
+  },
+  //center
+  "clock": {
+    "timezone": "Asia/Kolkata",
+    "format": "{:%I:%M %p}",
+    "tooltip-format": "{:%A, %e %b %Y}",
+    "format-alt": "{calender}",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  //right
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰛐 ",
+      "deactivated": "󰛑 "
+    },
+    "tooltip": true
+  },
+  //connectivity
+  "bluetooth": {
+    // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+    "format": "",
+    "format-disabled": "", // an empty format will hide the module
+    "format-connected": " {num_connections} connected",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+  },
+  "network": {
+    "interval": 1,
+    "interface": "wlp2s0",
+    "format": "{ifname}",
+    "format-wifi": " ",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰀝", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰈀 ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  ",
+    "tooltip-format-ethernet": "{ipaddr}/{cidr}\n{ifname}󰈀 ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+  "custom/vpn": {
+    "format": "󰒍",
+    "format-alt": "󰒄"
+  },
+  //sysinfo
+  "wireplumber": {
+    "format": "{icon}",
+    "tooltip-format": "volume: {volume}%",
+    "format-muted": "󰝟 ",
+    "on-click": "helvum",
+    "max-volume": 100,
+    "scroll-step": 0.2,
+    "format-icons": [" ", " ", " "]
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "tooltip-format": "{icon} {percent}%",
+    "format-icons": ["󰃚 ", "󰃛 ", "󰃜 ", "󰃝 ", "󰃞 ", "󰃟 ", "󰃠 "],
+    "on-scroll-up": "brightnessctl set 2%+",
+    "on-scroll-down": "brightnessctl set 2%-"
+  },
+  "battery": {
+    "states": {
+      "good": 80,
+      "warning": 30,
+      "critical": 20
+    },
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-plugged": "󰂄",
+    "format-alt-click": "click-right",
+    "format-alt": "{icon} {capacity}%",
+    "tooltip-format": "{capacity}%",
+    "tooltip-format-charging": "Charging: {capacity}%",
+    "tooltip-format-plugged": "Plugged: {capacity}%",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+  //others
+  "custom/power_btn": {
+    "format": " ",
+    "on-click": "sh -c '(sleep 0.5s; wlogout --protocol layer-shell)' & disown",
+    "tooltip": false
+  },
+  "custom/updates": {
+    "format": "󰏔 ",
+    // "exec": "~/.config/waybar/scripts/update-sys",
+    // "on-click": "~/.config/waybar/scripts/update-sys update",
+    "interval": 300,
+    "tooltip": true
+  },
+  "custom/notifications": {
+    "format-alt": "info",
+    "format": " "
+  }
+}

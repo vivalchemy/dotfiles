@@ -1,0 +1,83 @@
+* {
+  min-height: 0px;
+  font-family: Poppins;
+  /* font-size: 14px; */
+  /* border : 1px solid red; */
+  padding: 0 0.5px;
+  /* width : auto; */
+}
+window#waybar {
+  /* fallback */
+  background: rgba(21, 0.88, 27, 0);
+  color: #cdd6f4;
+}
+
+tooltip {
+  background: #1e1e2e;
+  opacity: 0.9;
+  border-radius: 7px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #fff;
+}
+
+tooltip label {
+  color: #cdd6f4;
+}
+
+.modules-left {
+  /* background-color: transparent; */
+}
+
+.modules-right {
+  /* background-color: transparent; */
+}
+
+#hardware,
+#connectivity,
+#sysInfo,
+#others,
+#workspaces button,
+.modules-center {
+  font-size: 18px;
+  background-color: rgba(0, 0, 0, 0.65);
+  border: 2px;
+  border-radius: 7px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgba(255, 253, 208, 0.65);
+  padding: 0 2px;
+  margin: 0 3px;
+  color: rgba(255, 253, 208, 0.8);
+}
+.modules-center {
+  padding: 0 5px;
+}
+
+#workspaces button {
+  /* color: #fff; */
+  font-size: 16px;
+}
+#cpu,
+#network,
+#custom-vpn {
+  padding-left: 5px;
+}
+#custom-vpn {
+  padding-right: 5px;
+}
+#clock {
+  font-size: 16px;
+  padding: 1px 3px;
+}
+#connectivity,
+#sysInfo,
+#others {
+  font-size: 16px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#clock {
+  /* background-color: transparent; */
+}

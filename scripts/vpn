@@ -1,0 +1,63 @@
+#!/bin/bash
+#
+echo "1"
+pass="$HOME/Projects/vpn/pass.txt";
+nz="$HOME/Projects/vpn/nz-vpn.ovpn";
+jp="$HOME/Projects/vpn/jp-vpn.ovpn";
+us="$HOME/Projects/vpn/us-vpn.ovpn";
+
+echo "2"
+country="default";
+while getopts c: flag
+do
+    case "${flag}" in
+        c) country=${OPTARG};;
+    esac
+done
+
+echo "3"
+case $country in
+    nz) file="$nz";;
+    jp) file="$jp";;
+    us) file="$us";;
+    default)  file="$jp";;
+    *);;
+esac
+
+echo "4"
+isEnabled=$(sysctl -a 2>/dev/null | grep all.disable_ipv6)
+echo $isEnabled
+echo "5"
+if [[ $isEnabled == "net.ipv6.conf.all.disable_ipv6 = 0" ]]
+then
+    sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+echo "6"
+    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+echo "7"
+    echo "ivp6 disabled successfully"
+else
+    sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
+echo "8"
+    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
+echo "9"
+    echo "ivp6 enabled successfully, kindly reconnect to network."
+fi
+
+echo "10"
+sudo openvpn --config $file --auth-user-pass "$pass"
+
+echo "11"
+
+isEnabled=$(sysctl -a 2>/dev/null | grep all.disable_ipv6)
+echo $isEnabled
+if [[ $isEnabled == "net.ipv6.conf.all.disable_ipv6 = 0" ]]
+then
+    sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1
+    echo "ivp6 disabled successfully"
+else
+    sudo sysctl -w net.ipv6.conf.all.disable_ipv6=0
+    sudo sysctl -w net.ipv6.conf.default.disable_ipv6=0
+    echo "ivp6 enabled successfully, kindly reconnect to network."
+fi
+

@@ -1,0 +1,93 @@
+source ${XDG_CONFIG_HOME}/zsh/.zsh_colors
+# env variables for better commands
+# export FZF_DEFAULT_COMMAND='ag -hidden --ignore={.cache,.cargo,.local,.mozilla} -g ""' 
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude .cache --exclude .cargo --exclude .local --exclude .mozilla --strip-cwd-prefix'
+
+checkError(){
+  if [ $? -ne 0 ]; then
+    echo "${CError}Error: $1 ${ColorOff}"
+    return 1
+  fi
+
+}
+
+
+# cli tools better alternatives
+alias find='fd' # replace find with the faster fd command that is written in rust
+alias grep='rg' # replace grep with the faster counter part silver searcher(ag) written in c
+# alias hg="history | awk '{$1=\"\"; print \"$0\"; !a[$0]++ }' | fzf --tac | tr '\n' ' ' | wl-copy"
+
+# Neovim
+alias nv='nvim $(fzf)'
+alias vim='nvim'
+
+#Pacman
+alias pacf='pacman -Q | rg' # [S]earch for [D]ownloaded [p]ac[kg]es via pacman
+# Unfortunately you need sudo for pacman ;-;
+alias paci='sudo pacman -S '
+alias pacd='sudo pacman -Rns '
+alias pacu='sudo pacman -Syyu'
+
+alias yay='paru'
+# Swayimg
+alias img='swayimg'
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv='mv -i'
+# alias rm='rm -i' # way to annoying
+#
+
+# ls modification
+alias ls='ls --group-directories-first --color'
+alias la='ls --group-directories-first -a --color'
+alias ll='ls --group-directories-first -l --color'
+
+# alias some="someFnc"
+# someFnc() {
+# echo "$CProcess Some Function $ColorOff" 2>&1 
+# trap cleanup SIGINT
+# echo "hi"
+# }
+
+#git
+alias gitsync='gitsyncFnc'
+
+gitsyncFnc() {
+  echo "${CProcess}Pulling from main... ${ColorOff}"
+  git pull origin main 2>&1
+  checkError "Unable to pull from main"
+
+  echo "${CProcess}Staging the changed files... ${ColorOff}"
+  git add . 2>&1
+  checkError "Unable to stage the files"
+
+  echo "${CProcess}Committing the files...${ColorOff}"
+  echo -e "${CWarning}The commit msg is:\n${ColorOff}${1}${CWarning}\nYou have 5 seconds to cancel this choice ${ColorOff}"
+  for i in {1..5}; do
+    sleep 1
+    echo $i
+  done
+  git commit -m "$1" 2>&1
+  checkError "Unable to commit the files"
+
+  echo "${CProcess}Pushing to main...${ColorOff}"
+  git push origin main 2>&1
+  checkError "Unable to push the files to main"
+
+  echo "${CSuccess}Sync completed successfully.${ColorOff}"
+}
+
+#battery 
+alias battery="upower -i $(upower -e | rg battery) | rg '(percentage|state|time)' | sort " 
+
+#kill a program
+function killapp(){
+  kill $(ps -a | awk '{printf($1 "\t" $4 "\n")}' | rofi -dmenu | awk '{print $1}') 
+}
+
+# share files over the internet
+alias share='curl -F"file=@$(fd . $HOME -H -E .local -E .cache -E .cargo -E .npm -E .ssh -E .mozilla -t f| rofi -dmenu -i)" -Fexpires=240 0x0.st | wl-copy'
+
+# vscodium
+alias code='codium'

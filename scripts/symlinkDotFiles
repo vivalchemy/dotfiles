@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Folders
+ln -svf ~/dotfiles/nvim ~/.config
+ln -svf ~/dotfiles/neofetch ~/.config
+ln -svf ~/dotfiles/hypr ~/.config
+ln -svf ~/dotfiles/rofi ~/.config
+ln -svf ~/dotfiles/waybar ~/.config
+ln -svf ~/dotfiles/swayimg ~/.config
+ln -svf ~/dotfiles/alacritty ~/.config
+ln -svf ~/dotfiles/mako ~/.config
+
+# Files
+ln -svf ~/dotfiles/zsh/.zshrc ~/
+ln -svf ~/dotfiles/zsh/aliases ~/
