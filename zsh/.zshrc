@@ -27,6 +27,7 @@ sourceFile "${XDG_CONFIG_HOME}/zsh/.aliases" # aliases for zsh
 
 sourceFile "${XDG_CONFIG_HOME}/zsh/Prompt"
 sourceFile "${XDG_CONFIG_HOME}/zsh/plugins/supercharge"
+# sourceFile "${XDG_CONFIG_HOME}/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 addToPath "$HOME/dotfiles/scripts" # custom scripts location
 neofetch

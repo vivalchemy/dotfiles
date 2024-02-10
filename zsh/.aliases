@@ -1,4 +1,3 @@
-source ${XDG_CONFIG_HOME}/zsh/.zsh_colors
 # env variables for better commands
 # export FZF_DEFAULT_COMMAND='ag -hidden --ignore={.cache,.cargo,.local,.mozilla} -g ""' 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude .cache --exclude .cargo --exclude .local --exclude .mozilla --strip-cwd-prefix'
@@ -49,34 +48,6 @@ alias ll='ls --group-directories-first -l --color'
 # trap cleanup SIGINT
 # echo "hi"
 # }
-
-#git
-alias gitsync='gitsyncFnc'
-
-gitsyncFnc() {
-  echo "${CProcess}Pulling from main... ${ColorOff}"
-  git pull origin main 2>&1
-  checkError "Unable to pull from main"
-
-  echo "${CProcess}Staging the changed files... ${ColorOff}"
-  git add . 2>&1
-  checkError "Unable to stage the files"
-
-  echo "${CProcess}Committing the files...${ColorOff}"
-  echo -e "${CWarning}The commit msg is:\n${ColorOff}${1}${CWarning}\nYou have 5 seconds to cancel this choice ${ColorOff}"
-  for i in {1..5}; do
-    sleep 1
-    echo $i
-  done
-  git commit -m "$1" 2>&1
-  checkError "Unable to commit the files"
-
-  echo "${CProcess}Pushing to main...${ColorOff}"
-  git push origin main 2>&1
-  checkError "Unable to push the files to main"
-
-  echo "${CSuccess}Sync completed successfully.${ColorOff}"
-}
 
 #battery 
 alias battery="upower -i $(upower -e | rg battery) | rg '(percentage|state|time)' | sort " 

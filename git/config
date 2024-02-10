@@ -3,3 +3,5 @@
 	email = vivalchemy.social+github@gmail.com
 [init]
 	defaultBranch = main
+[alias]
+  sync = "!sh $HOME/dotfiles/scripts/syncing_git_files"

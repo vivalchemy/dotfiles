@@ -63,12 +63,12 @@ map("n", "#", "#zz", opts)
 map("n", "g*", "g*zz", opts)
 map("n", "g#", "g#zz", opts)
 
--- Line navigation
--- map({ "n", "v", "x", "t" }, "w", "<S-w>", opts) -- navigate by space withing words
-map({ "n", "v", "x", "t" }, "b", "<S-b>", opts) -- navigate by space withing words
-map({ "n", "v", "x", "t" }, "e", "<S-e>", opts) -- navigate by space withing words
-map({ "n", "v", "x", "t" }, "<S-e>", "$", opts) -- navigate by space withing words
-map({ "n", "v", "x", "t" }, "<S-b>", "_", opts) -- navigate by space withing words
+-- -- Line navigation
+-- -- map({ "n", "v", "x", "t" }, "w", "<S-w>", opts) -- navigate by space withing words
+-- map({ "n", "v", "x", "t" }, "b", "<S-b>", opts) -- navigate by space withing words
+-- map({ "n", "v", "x", "t" }, "e", "<S-e>", opts) -- navigate by space withing words
+-- map({ "n", "v", "x", "t" }, "<S-e>", "$", opts) -- navigate by space withing words
+-- map({ "n", "v", "x", "t" }, "<S-b>", "_", opts) -- navigate by space withing words
 
 vim.keymap.set("n", "<leader>x", ExecuteCurrentFile, { desc = "Execute the file in current buffer" })
 -- print("Reached keybindings.lua")

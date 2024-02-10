@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# Colors
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+BLUE="\033[0;34m"
+NC="\033[0m" # No Color
+
+# Check if a commit message is provided as an argument
+if [ $# -eq 0 ]; then
+	# If no commit message provided, prompt the user for the commit message
+	echo -ne "${BLUE}Enter the commit message:\t${NC}"	
+	read commit_message
+else
+	commit_message="$*"
+fi
+
+# Pull from the remote repository to the local repository
+echo -e "${BLUE}Pulling from remote repository...${NC}"
+git pull 2>&1
+
+[[ -z "$commit_message" ]] && echo -e "${BLUE}Since no commit message is provided exiting the program${NC}" && exit 0
+# Stage untracked files
+echo -e "${BLUE}Staging untracked files...${NC}"
+git add . 2>&1
+
+# Commit changes with the provided commit message
+echo -e "${BLUE}Committing changes...${NC}"
+git commit -m "$commit_message" 2>&1
+
+# Push changes to the remote GitHub server
+echo -e "${BLUE}Pushing changes to remote repository...${NC}"
+git push origin main 2>&1
+
+echo -e "${GREEN}Process completed successfully.${NC}"
