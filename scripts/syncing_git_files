@@ -6,18 +6,40 @@ GREEN="\033[0;32m"
 BLUE="\033[0;34m"
 NC="\033[0m" # No Color
 
+branch="main"
+commit_message=""
+
+# Parse command-line arguments
+while getopts ":b:m:" opt; do
+	case ${opt} in
+	b)
+		branch=$OPTARG
+		;;
+	m)
+		commit_message="$OPTARG"
+		;;
+	\?)
+		echo -e "${RED}Invalid option: -$OPTARG${NC}" >&2
+		exit 1
+		;;
+	:)
+		echo -e "${RED}Option -$OPTARG requires an argument.${NC}" >&2
+		exit 1
+		;;
+	esac
+done
+
+git status 2>&1
 # Check if a commit message is provided as an argument
-if [ $# -eq 0 ]; then
+if [[ -z "$commit_message" ]]; then
 	# If no commit message provided, prompt the user for the commit message
-	echo -ne "${BLUE}Enter the commit message:\t${NC}"	
+	echo -ne "${BLUE}Enter the commit message:\t${NC}"
 	read commit_message
-else
-	commit_message="$*"
 fi
 
 # Pull from the remote repository to the local repository
 echo -e "${BLUE}Pulling from remote repository...${NC}"
-git pull 2>&1
+git pull --rebase origin "$branch" 2>&1
 
 [[ -z "$commit_message" ]] && echo -e "${BLUE}Since no commit message is provided exiting the program${NC}" && exit 0
 # Stage untracked files
@@ -30,6 +52,6 @@ git commit -m "$commit_message" 2>&1
 
 # Push changes to the remote GitHub server
 echo -e "${BLUE}Pushing changes to remote repository...${NC}"
-git push origin main 2>&1
+git push origin "$branch" 2>&1
 
 echo -e "${GREEN}Process completed successfully.${NC}"

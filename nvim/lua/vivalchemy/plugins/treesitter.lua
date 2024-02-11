@@ -20,6 +20,7 @@ return {
 				"vimdoc",
 				"vim",
 				"bash",
+				"svelte"
 			},
       modules={},
 			-- Install parsers synchronously (only applied to `ensure_installed`)
