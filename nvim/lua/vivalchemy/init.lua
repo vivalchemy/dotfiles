@@ -21,6 +21,7 @@ spec "vivalchemy.plugins.vim-rhubarb"
 spec "vivalchemy.plugins.vim-sleuth"
 spec "vivalchemy.plugins.comment"
 spec 'vivalchemy.plugins.vim-be-good'
+spec 'vivalchemy.plugins.undotree'
 
 -- Loading the above plugins
 require "vivalchemy.plugins.lazy"

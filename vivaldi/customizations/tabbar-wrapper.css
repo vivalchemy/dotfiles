@@ -1,12 +1,14 @@
 * {
-  font-family: "JetBrains Mono Nerd Font" !important; 
+  font-family: "JetBrains Mono Nerd Font" !important;
 }
-.tabs-left .tabbar-wrapper{
-  flex-direction:column-reverse;
+
+.tabs-left .tabbar-wrapper {
+  flex-direction: column-reverse;
 }
+
 .tab-strip > span {
   display: flex;
-  margin-bottom: 5px !important;
+  margin-bottom: 7px !important;
 }
 
 .tab-position {
@@ -16,14 +18,13 @@
 /* .tab-position .tab .title { */
 .tab-position .tab {
   font-size: 12.3px;
-  padding : 16px 0px !important;
-  display: flex ;
-  justify-content: center ;
-  align-items: left ;
-
+  padding: 16px 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: left;
 }
 
-.tab-position .tab .favicon{
+.tab-position .tab .favicon {
   width: 10px !important;
   width: auto !important;
 }
@@ -33,16 +34,47 @@ span.favicon.jstest-favicon-image {
 }
 
 .button-toolbar.button-menu .button-toolbar-menu-indicator.disabled {
-  rotate : 180deg;
+  rotate: 180deg;
 }
-
 
 .WorkspacePopup .actions {
   justify-content: center;
 }
 
-.button-popup:before{
-  content : normal;
-    /* bottom: -290px !important; */
+.button-popup:before {
+  content: normal;
+  /* bottom: -290px !important; */
 }
-
+/**/
+.tab-group-indicator {
+  /* top: 28px !important; */
+  gap: 5px;
+}
+/**/
+/* dotted.tabs-left .tab.tab-group { */
+/*   border: none !important; */
+/*   border-top: 7px solid transparent; */
+/* } */
+/**/
+/* .tabs-left .tab-group-indicator { */
+/*   top: 24px !important; */
+/* } */
+/* .tab-group-indicator .tab-indicator { */
+/*   background-color: var(--colorBgALpha); */
+/* } */
+/**/
+/* .tab-group-indicator .tab-indicator .active{ */
+/*   background-color: white !important; */
+/* } */
+/* .tab-position .tab.pinned{ */
+/*   flex: 0 1 auto; */
+/* } */
+/**/
+/* .tab.pinned div.tab-header > span.title{ */
+/*   display: none; */
+/* } */
+/**/
+/* .tab-strip { */
+/*   flex-direction: row; */
+/*   flex-wrap: wrap; */
+/* } */
