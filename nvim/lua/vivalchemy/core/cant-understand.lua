@@ -25,6 +25,31 @@ local on_attach = function(_, bufnr)
 	nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
 	nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
 
+	-- telescope diagnostic start
+	vim.api.nvim_set_keymap(
+		"n",
+		"<leader>do",
+		"<cmd>lua vim.diagnostic.open_float()<CR>",
+		{ noremap = true, silent = true }
+	)
+	vim.api.nvim_set_keymap(
+		"n",
+		"<leader>d[",
+		"<cmd>lua vim.diagnostic.goto_prev()<CR>",
+		{ noremap = true, silent = true }
+	)
+	vim.api.nvim_set_keymap(
+		"n",
+		"<leader>d]",
+		"<cmd>lua vim.diagnostic.goto_next()<CR>",
+		{ noremap = true, silent = true }
+	)
+	-- The following command requires plug-ins "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim", and optionally "kyazdani42/nvim-web-devicons" for icon support
+	vim.api.nvim_set_keymap("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>", { noremap = true, silent = true })
+	-- If you don't want to use the telescope plug-in but still want to see all the errors/warnings, comment out the telescope line and uncomment this:
+	-- vim.api.nvim_set_keymap('n', '<leader>dd', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true })
+	-- telescope diagnostic end
+
 	-- See `:help K` for why this keymap
 	nmap("K", vim.lsp.buf.hover, "Hover Documentation")
 	nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
@@ -83,11 +108,11 @@ local servers = {
 	tsserver = {},
 	html = { filetypes = { "html", "twig", "hbs" } },
 	grammarly = {},
-	cssls = { filetypes = { "css", "sass", "scss", "postcss" } },
+	cssls = { filetypes = { "css", "sass", "scss", "postcss", "pcss" } },
 	eslint = {},
 	bashls = {},
 	svelte = {},
-  tailwindcss = {},
+	tailwindcss = { "pcss", "postcss", "css" },
 	marksman = {},
 	lua_ls = {
 		Lua = {

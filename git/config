@@ -5,3 +5,7 @@
 	defaultBranch = main
 [alias]
   sync = "!sh $HOME/dotfiles/scripts/syncing_git_files"
+  lol = "log --oneline"
+[safe]
+	directory = /home/vivalchemy/mnt/Internal shared storage/Android/media/obsidian/brain_of_obsidian
+	directory = /home/vivalchemy/mnt/Internal shared storage/Documents/College
