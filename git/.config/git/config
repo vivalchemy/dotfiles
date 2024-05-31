@@ -1,0 +1,10 @@
+[user]
+	name = vivalchemy
+	email = vivalchemy.social+github@gmail.com
+[init]
+	defaultBranch = main
+[alias]
+  sync = "!git_sync.sh"
+  lol = "log --oneline"
+  setup = "!git_setup.sh"
+  lg = "!lazygit"
