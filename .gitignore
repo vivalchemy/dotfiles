@@ -1,5 +1,5 @@
-*.zsh_history
-*tmp.txt
+zsh/.config/zsh/.zsh_history
 hypr/.config/hypr/hyprpaper.conf
 zsh/.config/zsh/.zcompdump
-zsh/.config/zsh/tmp/build-errors.log
+zsh/.config/zsh/tmp/
+wallpapers/Pictures/wallpapers/tmp.txt
