@@ -39,6 +39,7 @@ eval "$(zoxide init zsh)"
 export BUN_INSTALL="$XDG_DATA_HOME/bun"
 addToPath "$BUN_INSTALL/bin"
 addToPath "$XDG_DATA_HOME/go/bin"
+addToPath "$GOPATH/bin"
 
 #vi mode
 bindkey -v

@@ -78,3 +78,5 @@ vim.opt.showmode = false
 
 -- new
 vim.opt.inccommand = "split" -- Preview substitutions live, as you type!
+
+vim.filetype.add({ extension = { templ = "templ" } })

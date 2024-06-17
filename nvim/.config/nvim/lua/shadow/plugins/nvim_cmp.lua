@@ -38,8 +38,10 @@ return { -- Autocompletion
   },
   config = function()
     -- See `:help cmp`
-    local cmp = require 'cmp'
-    local luasnip = require 'luasnip'
+    local cmp = require('cmp')
+    local luasnip = require('luasnip')
+    luasnip.filetype_set("templ", { "html" })
+
     luasnip.config.setup {}
 
     cmp.setup {
@@ -59,7 +61,7 @@ return { -- Autocompletion
         ['<C-n>'] = cmp.mapping.select_next_item(),
         -- Select the [p]revious item
         ['<C-p>'] = cmp.mapping.select_prev_item(),
-
+        ['<C-x>'] = cmp.mapping.close(),
         -- Scroll the documentation window [b]ack / [f]orward
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
@@ -78,7 +80,7 @@ return { -- Autocompletion
         -- Manually trigger a completion from nvim-cmp.
         --  Generally you don't need this, because nvim-cmp will display
         --  completions whenever it has completion options available.
-        ['<C-Space>'] = cmp.mapping.complete {},
+        ['<C-\\>'] = cmp.mapping.complete {},
 
         -- Think of <c-l> as moving to the right of your snippet expansion.
         --  So if you have a snippet that's like:
@@ -106,10 +108,10 @@ return { -- Autocompletion
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'path' },
-        {
-          name = "dictionary",
-          keyword_length = 2,
-        },
+        -- {
+        --   name = "dictionary",
+        --   keyword_length = 2,
+        -- },
       },
     }
   end,

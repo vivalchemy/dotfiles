@@ -131,9 +131,9 @@ return { -- LSP Configuration & Plugins
         --
         -- This may be unwanted, since they displace some of your code
         if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-          map('<leader>th', function()
+          map('<leader>ht', function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-          end, '[T]oggle Inlay [H]ints')
+          end, 'Inlay [H]ints [T]oggle')
         end
       end,
     })
@@ -175,14 +175,19 @@ return { -- LSP Configuration & Plugins
       pyright = {},
       rust_analyzer = {},
       svelte = {},
-      --
+      templ = {},
+      htmx = {
+        filetypes = { 'html', 'templ' },
+      },
       -- Some languages (like typescript) have entire language plugins that can be useful:
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {},
       --
-      tailwindcss = {},
+      tailwindcss = {
+        init_options = { userLanguages = { templ = "html" } },
+      },
 
     }
 

@@ -1,2 +1,5 @@
 *.zsh_history
 *tmp.txt
+hypr/.config/hypr/hyprpaper.conf
+zsh/.config/zsh/.zcompdump
+zsh/.config/zsh/tmp/build-errors.log
