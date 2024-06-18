@@ -11,18 +11,18 @@
 configuration {
 	modi:                       "drun,run,filebrowser,window,combi";
     show-icons:                 true;
-    display-drun:               " Apps";
-    display-run:                " Run";
-    display-filebrowser:        " Files";
-    display-window:             " Windows";
-    display-combi:              "󰵆 Combi";
+    display-drun:               "  Apps";
+    display-run:                "   Run";
+    display-filebrowser:        "   Files";
+    display-window:             "   Windows";
+    display-combi:              "󰵆  Combi";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
 }
 
 /*****----- Global Properties -----*****/
 @import                          "colors.rasi"
-/*** @import                          "shared/fonts.rasi" ***/
+@import                          "fonts.rasi" 
 
 * {
     border-colour:               var(selected);
