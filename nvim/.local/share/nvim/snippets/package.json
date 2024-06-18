@@ -1,0 +1,27 @@
+{
+  "name": "personal-snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "html",
+          "templ"
+        ],
+        "path": "./html.json"
+      },
+      {
+        "language": [
+          "c"
+        ],
+        "path": "./c.json"
+      },
+      {
+        "language": [
+          "javascript"
+        ],
+        "path": "./javascript.json"
+      }
+    ]
+  }
+}
+

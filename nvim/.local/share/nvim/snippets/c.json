@@ -1,0 +1,10 @@
+{
+  "Testing the snippets": {
+    "prefix": "test",
+    "body": [
+      "The test was successful"
+    ],
+    "description": "Testing the snippets"
+  }
+}
+

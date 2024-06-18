@@ -24,7 +24,7 @@ plug "zsh-users/zsh-syntax-highlighting"
 plug "${XDG_CONFIG_HOME}/zsh/zsh_prompt.zsh" # prompt for zsh
 plug "${XDG_CONFIG_HOME}/zsh/zsh_aliases.zsh" # aliases for zsh
 plug "${XDG_CONFIG_HOME}/zsh/plugins/*" # local plugins for zsh 
-plug "${XDG_DATA_HOME}/bun/_bun" # autocompletions for bun
+plug "${XDG_DATA_HOME}/bun/_bun" # autocompletion for bun
 
 neofetch
 
@@ -35,11 +35,16 @@ compinit
 #zoxide
 eval "$(zoxide init zsh)"
 
-# bun
-export BUN_INSTALL="$XDG_DATA_HOME/bun"
-addToPath "$BUN_INSTALL/bin"
-addToPath "$XDG_DATA_HOME/go/bin"
-addToPath "$GOPATH/bin"
+# add to path
+addToPath "$BUN_INSTALL/bin" #bun
+addToPath "$XDG_DATA_HOME/go/bin" #go
+addToPath "$GOPATH/bin" #go
+addToPath "$XDG_DATA_HOME/tmux/plugins/tmuxifier/bin" #tmuxifier
+
+
+# environment variables
+export BUN_INSTALL="$XDG_DATA_HOME/bun" #bun
+export TMUXIFIER_LAYOUT_PATH="$XDG_DATA_HOME/tmux/sessions" #tmuxifier
 
 #vi mode
 bindkey -v

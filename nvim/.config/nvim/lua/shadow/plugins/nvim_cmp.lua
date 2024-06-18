@@ -25,6 +25,10 @@ return { -- Autocompletion
           end,
         },
       },
+      config = function()
+        require('luasnip.loaders.from_vscode').lazy_load({ paths = vim.fn.stdpath("data") .. "/snippets/" })
+        print(vim.fn.stdpath("data") .. "/snippets/")
+      end,
     },
     'saadparwaiz1/cmp_luasnip',
 
