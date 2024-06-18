@@ -2,3 +2,5 @@ zsh
 zoxide
 init
 tmuxifier
+spec
+cmd

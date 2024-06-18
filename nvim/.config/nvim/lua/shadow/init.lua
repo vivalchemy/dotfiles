@@ -8,6 +8,7 @@ require("shadow.core.keybindings")
 spec("shadow.plugins.codeium")            -- ai completions
 spec("shadow.plugins.comment")            -- comment the selected text
 spec("shadow.plugins.conform")            -- formatter
+spec("shadow.plugins.dressing")           -- improve nvim ui
 spec("shadow.plugins.git_signs")          -- git signs column
 -- spec("shadow.plugins.indent_blankline") -- indent line
 spec("shadow.plugins.mini")               -- mini plugins
