@@ -1,0 +1,31 @@
+[manager]
+ratio = [1, 3, 4] # 1/8 width for parent, 3/8 width for current, 4/8 width for preview
+show_hidden = true # show hidden files
+linemode = "size" # show the size besides filename
+show_symlink = true # show the symlink for the file/directory
+scrolloff = 10 # number of lines to keep above and below the cursor
+mouse_events = [ "click", "scroll", "touch", "move","drag"]
+
+[opener]
+edit = [
+{ run = 'nvim "$@"', block = true },
+]
+play = [
+{ run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+open = [
+{ run = 'xdg-open "$@"', desc = "Open" },
+]
+
+[open]
+rules =[
+{ mime = "text/*", use = "edit" },
+{ mime = "video/*", use = "play" },
+{ mime = "application/javascript", use = "edit"},
+{ mime = "application/json", use = "edit" },
+  # { name = "*.json", use = "edit" },
+# { mime = "image/*", use = "view" },
+
+  # Multiple openers for a single rule
+{ name = "*.html", use = [ "open", "edit" ] }
+]

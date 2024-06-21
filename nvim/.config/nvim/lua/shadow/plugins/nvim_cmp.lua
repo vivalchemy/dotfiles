@@ -40,6 +40,8 @@ return { -- Autocompletion
         require("luasnip").filetype_extend("kotlin", { "kdoc" })
         require("luasnip").filetype_extend("ruby", { "rdoc" })
         require("luasnip").filetype_extend("sh", { "shelldoc" })
+        require("luasnip").filetype_extend("javascriptreact", { "html" })
+        require("luasnip").filetype_extend("typescriptreact", { "html" })
       end,
     },
     'saadparwaiz1/cmp_luasnip',
