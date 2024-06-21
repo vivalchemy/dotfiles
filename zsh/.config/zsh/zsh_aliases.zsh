@@ -72,9 +72,6 @@ alias share='curl -F"file=@$(fd . $HOME -H -E .local -E .cache -E .cargo -E .npm
 # vscodium
 alias code='codium'
 
-# bun
-alias bunx='bun x'
-
 #connect an android device
 alias connect-android='aft-mtp-mount ~/mnt && cd /mnt/Internal\ shared\ storage'
 alias disconnect-android='cd ~ && umount ~/mnt'
