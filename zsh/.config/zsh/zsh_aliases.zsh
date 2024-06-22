@@ -1,6 +1,7 @@
 # env variables for better commands
 # export FZF_DEFAULT_COMMAND='ag -hidden --ignore={.cache,.cargo,.local,.mozilla} -g ""' 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude={.git/,.cache/,.cargo/,.local/,.mozilla/,proc/} --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude={.git/,.cache/,.cargo/,.local/,.mozilla/,node_modules/,proc/} --strip-cwd-prefix'
+export FZF_DEFAULT_OPTS='--border=rounded --info=inline'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
@@ -37,7 +38,7 @@ alias pacu='sudo pacman -Syyu'
 
 alias yay='paru'
 # Swayimg
-alias img='swappy -f'
+alias img='swayimg'
 
 # confirm before overwriting something
 alias cp="cp -i"

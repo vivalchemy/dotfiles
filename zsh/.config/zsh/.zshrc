@@ -30,6 +30,7 @@ addToPath "$XDG_DATA_HOME/tmux/plugins/tmuxifier/bin" #tmuxifier
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "Aloxaf/fzf-tab"
 
 plug "${XDG_CONFIG_HOME}/zsh/zsh_prompt.zsh" # prompt for zsh
 plug "${XDG_CONFIG_HOME}/zsh/zsh_aliases.zsh" # aliases for zsh
@@ -46,6 +47,7 @@ zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME}/zsh"
 
 # zoxide
 eval "$(zoxide init zsh)"
+source <(fzf --zsh)
 
 # vi mode
 bindkey -v
