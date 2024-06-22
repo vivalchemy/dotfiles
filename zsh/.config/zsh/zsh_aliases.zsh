@@ -13,6 +13,11 @@ checkError(){
 
 }
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
 
 # cli tools better alternatives
 # alias find='fd' # replace find with the faster fd command that is written in rust
