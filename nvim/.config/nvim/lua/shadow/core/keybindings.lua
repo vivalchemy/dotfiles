@@ -69,8 +69,8 @@ vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
 
 -- Move text
-vim.keymap.set("v", "<S-k>", ":move +1<CR>")
-vim.keymap.set("v", "<S-j>", ":move -2<CR>")
+vim.keymap.set("v", "<S-k>", ":move +2<CR>gv")
+vim.keymap.set("v", "<S-j>", ":move -2<CR>gv")
 
 -- Execute the current file in the buffer
 vim.keymap.set("n", "<leader>x", ExecuteCurrentFile, { desc = "Execute the file in current buffer" })

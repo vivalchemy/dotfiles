@@ -37,9 +37,9 @@ alias vi='nvim'
 #Pacman
 alias pacf='pkg=$(pacman -Qq | gum filter); if [[ -n "$pkg" ]]; then; pacman -Qi $pkg | rg -v "^(Groups|Architecture|Licenses|Conflicts With|Replaces)" | gum pager; fi;' # Get all the relevant information about the package
 # Unfortunately you need sudo for pacman ;-;
-alias paci='sudo pacman -S $(pacman -Ssq | fzf --preview "pacman -Si {} | bat --color=always --style=numbers --line-range=:500")'
-alias pacd='sudo pacman -Rns $(pacman -Qeq | gum filter)'
-alias pacu='sudo pacman -Syyu'
+alias paci='sudo pacman -S $(pacman -Ssq | fzf -m --preview "pacman -Si {} | bat --color=always --style=numbers --line-range=:500")'
+alias pacd='sudo pacman -Rns $(pacman -Qeq | fzf -m --preview "pacman -Qi {} | bat --color=always --style=numbers --line-range=:500")'
+alias pacu='paru' # Alternative: sudo pacman -Syyu
 
 alias yay='paru'
 # Swayimg
