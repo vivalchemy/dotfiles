@@ -78,9 +78,9 @@ alias share='curl -F"file=@$(fd . $HOME -H -E .local -E .cache -E .cargo -E .npm
 # vscodium
 alias code='codium'
 
-#connect an android device
-alias connect-android='aft-mtp-mount ~/mnt && cd /mnt/Internal\ shared\ storage'
-alias disconnect-android='cd ~ && umount ~/mnt'
+#connect an android device and pc
+alias android='ssh -i $ANDROID_IDENTITY_FILE $ANDROID_IP -p $ANDROID_PORT'
+alias pc='ssh -i $PC_IDENTITY_FILE $PC_USERNAME@$PC_IP'
 
 # cpp
 alias gpp=g++

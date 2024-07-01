@@ -1,6 +1,7 @@
-zsh/.config/zsh/.zsh_history
 hypr/.config/hypr/hyprpaper.conf
-zsh/.config/zsh/.zcompdump
-zsh/.config/zsh/tmp/
-wallpapers/Pictures/wallpapers/tmp.txt
 nvim/.config/nvim/spell/en.utf-8.add.spl
+wallpapers/Pictures/wallpapers/tmp.txt
+zsh/.config/zsh/tmp/
+zsh/.config/zsh/.zcompdump
+zsh/.config/zsh/.zsh_history
+zsh/.config/zsh/env.zsh

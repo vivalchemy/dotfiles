@@ -1,0 +1,2 @@
+theme "catppuccin-mocha"
+default_layout "compact"
