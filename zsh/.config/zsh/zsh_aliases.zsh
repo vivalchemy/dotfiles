@@ -112,3 +112,4 @@ alias tmxew='tmuxifier edit-window $(tmuxifier list-windows | fzf --height=10 --
 alias tmxlw='tmuxifier list-windows' # cause my brain is dumb
 alias tmxdw='rm $TMUXIFIER_LAYOUT_PATH/$(tmuxifier list-windows | fzf --preview "bat --color=always --style=numbers --line-range=:500 $TMUXIFIER_LAYOUT_PATH/{}.window.sh").window.sh'
 
+alias hex='hexyl'
