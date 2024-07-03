@@ -8,3 +8,4 @@
   lol = "log --oneline"
   setup = "!git_setup.sh"
   lg = "!lazygit"
+  l = "-c core.pager='bat' log --no-color"

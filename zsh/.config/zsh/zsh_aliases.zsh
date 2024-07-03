@@ -92,8 +92,9 @@ alias neofetch=fastfetch
 alias fc-info='fc-query $(fc-list | fzf | sed "s/:.*//") | rg "(family|style|fontformat|fullname|file):" | sort'
 alias fc-view='view $(fc-list | fzf | sed "s/:.*//")'
 
+# lazy ui stuff
 alias lg='lazygit'
-alias ld='lazydocker'
+alias ld='sudo lazydocker' # since docker requires root privileges
 
 # tmux
 alias tmf='tmuxifier'
@@ -112,4 +113,6 @@ alias tmxew='tmuxifier edit-window $(tmuxifier list-windows | fzf --height=10 --
 alias tmxlw='tmuxifier list-windows' # cause my brain is dumb
 alias tmxdw='rm $TMUXIFIER_LAYOUT_PATH/$(tmuxifier list-windows | fzf --preview "bat --color=always --style=numbers --line-range=:500 $TMUXIFIER_LAYOUT_PATH/{}.window.sh").window.sh'
 
-alias hex='hexyl'
+alias hex='hexyl' # a hexadecimal file content viewer
+
+alias docker='sudo docker' # since docker requires root privileges
