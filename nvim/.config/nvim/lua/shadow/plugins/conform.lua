@@ -24,17 +24,6 @@ return { -- Autoformat
         lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
       }
     end,
-    formatters_by_ft = {
-      lua = { "stylua" },
-      -- Conform can also run multiple formatters sequentially
-      python = { "isort", "black" },
-      --
-      -- You can use a sub-list to tell conform to run *until* a formatter
-      -- is found.
-      javascript = { { "prettierd", "prettier" } },
-      bash = { "shfmt" },
-      shell = { "shfmt" },
-    },
   },
   config = function()
     local slow_format_filetypes = {}
@@ -58,6 +47,17 @@ return { -- Autoformat
         end
         return { lsp_fallback = true }
       end,
+      formatters_by_ft = {
+        lua = { "stylua" },
+        -- Conform can also run multiple formatters sequentially
+        python = { "isort", "black" },
+        --
+        -- You can use a sub-list to tell conform to run *until* a formatter
+        -- is found.
+        javascript = { { "prettierd", "prettier" } },
+        bash = { "shfmt" },
+        shell = { "shfmt" },
+      },
     })
   end,
 }

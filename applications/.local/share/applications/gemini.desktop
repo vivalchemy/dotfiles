@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Gemini Ai
+Exec=/home/shadow/.local/bin/launch_web_apps.sh https://gemini.google.com/
+Terminal=false
+Type=Application
+Keywords=Ai;Chat;Browser
+Comment=Gemini by Google
+Icon=internet-chat
+Categories=Ai;Chat;
+StartupNotify=false
+
+
