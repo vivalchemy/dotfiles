@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # check if it is a git repo
 if ! git rev-parse --is-inside-work-tree &>/dev/null;then
   $(gum confirm "Do you want to initial a git repository?") &&

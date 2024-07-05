@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+#
 # deps
 # ripgrep gum git
 

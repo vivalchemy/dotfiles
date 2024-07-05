@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ColorOff='\033[0m'       # Text Reset
 CWarning='\033[0;33m' # yellow 

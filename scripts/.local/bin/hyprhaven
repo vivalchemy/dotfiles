@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # constants
 BASE_URL="https://wallhaven.cc/api/v1/search?"
