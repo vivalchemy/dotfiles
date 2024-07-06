@@ -118,14 +118,14 @@ alias hex='hexyl' # a hexadecimal file content viewer
 alias docker='sudo docker' # since docker requires root privileges
 
 #git porcelain aliases
-alias ga='git add'
+alias ga='git add --verbose'
 alias gb='git branch'
 alias gc='git commit'
 alias gco='git checkout'
-alias gl='git log'
-alias glg='git log --graph  --oneline'
+alias gl='git -c core.pager="bat" log --no-color'
+alias glg='git log --graph  --oneline --all'
 alias glo='git log --oneline'
-alias gp='git pull'
+alias gp='git pull --no-edit'
 alias gP='git push'
 alias gr='git remote'
-alias gs='git stash'
+alias gs='git switch'
