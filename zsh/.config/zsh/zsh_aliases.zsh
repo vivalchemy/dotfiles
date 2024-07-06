@@ -116,3 +116,16 @@ alias tmxdw='rm $TMUXIFIER_LAYOUT_PATH/$(tmuxifier list-windows | fzf --preview 
 alias hex='hexyl' # a hexadecimal file content viewer
 
 alias docker='sudo docker' # since docker requires root privileges
+
+#git porcelain aliases
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit'
+alias gco='git checkout'
+alias gl='git log'
+alias glg='git log --graph  --oneline'
+alias glo='git log --oneline'
+alias gp='git pull'
+alias gP='git push'
+alias gr='git remote'
+alias gs='git stash'
