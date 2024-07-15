@@ -5,6 +5,7 @@ local function get_formatted_filename()
 
 	-- Convert _word to Word and capitalize the first letter
 	filename = vim.fn.substitute(filename, "^\\d*_", "", "")
+	filename = vim.fn.substitute(filename, "_test$", "", "")
 	filename = vim.fn.substitute(filename, "_\\(\\w\\)", "\\U\\1", "g") -- Vimscript pattern to uppercase the character after _
 	filename = vim.fn.substitute(filename, "^\\l", "\\U&", "") -- Vimscript pattern to uppercase the first letter
 
