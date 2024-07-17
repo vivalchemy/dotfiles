@@ -13,10 +13,12 @@ Plug("shadow.plugins.git_signs") -- git signs column
 Plug("shadow.plugins.harpoon") -- for better multi file navigation
 Plug("shadow.plugins.lazygit") -- lazygit ui in neovim
 Plug("shadow.plugins.mini") -- mini plugins
+Plug("shadow.plugins.noice") -- better nvim command mode ui
 Plug("shadow.plugins.nvim_cmp") -- completions
 -- Plug("shadow.plugins.nvim_dap") -- debugger
 Plug("shadow.plugins.nvim_lint") -- linter
 Plug("shadow.plugins.nvim_lsp_config") -- lsp
+Plug("shadow.plugins.nvim_notify") -- notification
 Plug("shadow.plugins.onedark") -- color theme
 Plug("shadow.plugins.obsidian") -- obsidian
 Plug("shadow.plugins.telescope") -- fuzzy finder
