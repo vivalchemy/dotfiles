@@ -11,7 +11,7 @@ if initialize_session "next-learn"; then
   run_cmd "bun run dev"
 
   new_window "nvim"
-  run_cmd "nvim ."
+  run_cmd "nvim ./app/page.tsx"
   
   new_window "terminal"
   # Select the default active window on session creation.

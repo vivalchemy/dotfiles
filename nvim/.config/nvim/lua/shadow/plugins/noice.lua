@@ -24,8 +24,16 @@ return {
 			view = "cmdline_popup",
 			format = {
 				cmdline = { pattern = "^:", icon = "", lang = "vim" },
-				search = { kind = "search", pattern = "^[%s?/]", icon = " ", lang = "regex" },
-				terminal = { pattern = "^:%s*!", icon = "$", lang = "bash" },
+				search_down = { kind = "search", pattern = "^/", icon = " ", lang = "regex" },
+				search_up = { kind = "search", pattern = "^%?", icon = " ", lang = "regex" },
+				filter = { kind = "terminal", pattern = "^:%s*!", icon = " ", lang = "bash" },
+				normal_terminal = { kind = "terminal", pattern = "^:%s*!", icon = " ", lang = "bash" },
+				number_terminal = { kind = "terminal", pattern = "^:%s*%d*,%d*%s*!%s*", icon = " ", lang = "bash" },
+				range_terminal = { kind = "terminal", pattern = "^:%s*'<,'>%s*!%s*", icon = " ", lang = "bash" },
+				normal_replace = { kind = "global_Replace", pattern = "^:%s*%%s/", icon = "󰯍 ", lang = "bash" },
+				number_replace = { kind = "replace", pattern = "^:%s*%d*,%d*%s*s/", icon = "󰯍 ", lang = "bash" },
+				range_replace = { kind = "replace", pattern = "^:%s*'<,'>%s*s/", icon = "󰯍 ", lang = "bash" },
+				line_replace = { kind = "replace", pattern = "^:%s*s/", icon = "󰯍 ", lang = "bash" },
 			},
 		},
 		-- @recording in notification box
@@ -33,6 +41,10 @@ return {
 			{
 				view = "notify",
 				filter = { event = "msg_showmode" },
+			},
+			{
+				view = "split",
+				filter = { event = "msg_show", min_height = 5, min_width = 50 },
 			},
 		},
 	},
