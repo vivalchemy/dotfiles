@@ -5,7 +5,7 @@ return { -- Useful plugin to show you pending keybinds.
 		require("which-key").setup()
 		require("which-key").add({
 			{ "<leader>c", group = "[C]ode" }, -- group
-			-- { "<leader>d", group = "[D]ocument" }, -- group
+			{ "<leader>d", group = "[D]ebug" }, -- group
 			{ "<leader>r", group = "[R]ename" }, -- group
 			{ "<leader>f", group = "[F]ind" }, -- group
 			{ "<leader>w", group = "[W]orkspace" }, -- group
