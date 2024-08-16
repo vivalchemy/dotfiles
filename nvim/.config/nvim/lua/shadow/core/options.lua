@@ -44,7 +44,7 @@ local vimOpts = {
 	sidescrolloff = 8,
 
 	-- enable mouse
-	mouse = "a",
+	mouse = "n",
 
 	-- save undo history
 	undofile = true,

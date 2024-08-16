@@ -16,6 +16,7 @@ addToPath ()
 # environment variables
 export BUN_INSTALL="$XDG_DATA_HOME/bun" #bun
 export TMUXIFIER_LAYOUT_PATH="$XDG_DATA_HOME/tmux/sessions" #tmuxifier
+export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 
 # add to path
 addToPath "$BUN_INSTALL/bin" #bun
@@ -37,6 +38,7 @@ plug "${XDG_CONFIG_HOME}/zsh/env.zsh" # aliases for zsh
 plug "${XDG_CONFIG_HOME}/zsh/zsh_aliases.zsh" # aliases for zsh
 plug "${XDG_CONFIG_HOME}/zsh/plugins/*" # local plugins for zsh 
 plug "${XDG_DATA_HOME}/bun/_bun" # autocompletion for bun
+plug "${XDG_DATA_HOME}/sdkman/bin/sdkman-init.sh" # sdkman
 
 # Load and initialise completion system
 autoload -Uz compinit
@@ -54,3 +56,4 @@ source <(fzf --zsh)
 bindkey -v
 
 neofetch
+
