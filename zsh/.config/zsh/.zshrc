@@ -1,9 +1,16 @@
 # constants
 export HISTFILESIZE=10000
 export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
+HISTDUP=erase
 setopt INC_APPEND_HISTORY # command are directly entered in the HISTFILE instead of waiting for the shell to close
 setopt HIST_FIND_NO_DUPS # removes the duplicates while searching
 setopt HIST_IGNORE_ALL_DUPS # ignores all duplicates while writing in the hist file
+setopt APPENDHISTORY
+setopt SHAREHISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPs
+setopt HIST_IGNORE_DUPS
 
 # Add a directory to the PATH variable
 addToPath ()
@@ -47,6 +54,13 @@ compinit
 # caching zsh completions
 zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME}/zsh"
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # zoxide
 eval "$(zoxide init zsh)"
