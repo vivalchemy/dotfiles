@@ -7,6 +7,7 @@ require("shadow.core.keybindings")
 -- Plug("shadow.plugins.catppuccin")      -- color theme
 Plug("shadow.plugins.codeium") -- ai completions
 Plug("shadow.plugins.conform") -- formatter
+Plug("shadow.plugins.database") -- database
 Plug("shadow.plugins.dressing") -- improve nvim ui
 Plug("shadow.plugins.flash") -- improved navigation
 Plug("shadow.plugins.git_signs") -- git signs column
