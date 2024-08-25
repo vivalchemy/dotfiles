@@ -15,7 +15,7 @@ return {
 		modes = { "n", "no", "c" }, -- Change these modes
 		-- to what you need
 
-		hybrid_modes = { "n" }, -- Uses this feature on
+		hybrid_modes = { "i" }, -- Uses this feature on
 		-- normal mode
 
 		-- This is nice to have

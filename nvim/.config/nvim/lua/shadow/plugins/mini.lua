@@ -19,7 +19,17 @@ return { -- Collection of various small independent plugins/modules
 		})
 
 		-- File explorer
-		require("mini.files").setup()
+		require("mini.files").setup({
+			mappings = {
+				go_in = "l",
+				go_in_plus = "l",
+				reset = "<BS>",
+				show_help = "?",
+				synchronize = "s",
+				trim_left = "<",
+				trim_right = ">",
+			},
+		})
 
 		--     local starter = require("mini.starter")
 		--     starter.setup({

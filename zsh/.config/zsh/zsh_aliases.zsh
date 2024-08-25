@@ -32,6 +32,7 @@ alias nv='nvim $(fzfview)'
 alias nvd='nvim'
 alias vim='nvim'
 alias vi='nvim'
+alias db='nvim -c "DBUI"'
 
 
 #Pacman
