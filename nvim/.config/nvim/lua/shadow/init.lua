@@ -13,7 +13,7 @@ Plug("shadow.plugins.flash") -- improved navigation
 Plug("shadow.plugins.git_signs") -- git signs column
 Plug("shadow.plugins.harpoon") -- for better multi file navigation
 Plug("shadow.plugins.lazygit") -- lazygit ui in neovim
-Plug("shadow.plugins.marksview") -- inline markdown renderer
+Plug("shadow.plugins.markdown_support") -- inline markdown renderer
 Plug("shadow.plugins.mini") -- mini plugins
 Plug("shadow.plugins.noice") -- better nvim command mode ui
 Plug("shadow.plugins.nvim_cmp") -- completions
