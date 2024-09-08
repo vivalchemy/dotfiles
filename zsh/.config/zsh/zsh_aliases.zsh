@@ -1,18 +1,13 @@
 # env variables for better commands
 # export FZF_DEFAULT_COMMAND='ag -hidden --ignore={.cache,.cargo,.local,.mozilla} -g ""' 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude={.git/,.cache/,.cargo/,.local/,.mozilla/,node_modules/,proc/} --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude={.git/,.cache/,.cargo/,.local/,.mozilla/,node_modules/,proc/,.venv/} --strip-cwd-prefix'
 export FZF_DEFAULT_OPTS='--border=rounded --info=inline'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-checkError(){
-  if [ $? -ne 0 ]; then
-    echo "${CError}Error: $1 ${ColorOff}"
-    return 1
-  fi
-
-}
-
+# +----+
+# | cd |
+# +----+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -27,18 +22,19 @@ alias fzfview='fzf --preview "bat --color=always --style=numbers --line-range=:5
 alias fzfv='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 # alias fzf='fzf --tmux 70%'
 
-# Neovim
+# +--------+
+# | Neovim |
+# +--------+
 alias nv='nvim $(fzfview)'
-alias nvd='nvim'
+alias n='nvim -c "lua require(\"telescope.builtin\").git_files()"'
 alias vim='nvim'
 alias vi='nvim'
-alias db='nvim -c "DBUI"'
 
 
 #Pacman
-alias pacf='pkg=$(pacman -Qq | gum filter); if [[ -n "$pkg" ]]; then; pacman -Qi $pkg | rg -v "^(Groups|Architecture|Licenses|Conflicts With|Replaces)" | gum pager; fi;' # Get all the relevant information about the package
+alias pacf='pacman -Ssq | fzf -m --preview "pacman -Si {} | rg -v \"^(Groups|Architecture|Licenses|Conflicts With|Replaces)\" | bat --color=always --style=numbers --line-range=:500"'
 # Unfortunately you need sudo for pacman ;-;
-alias paci='sudo pacman -S $(pacman -Ssq | fzf -m --preview "pacman -Si {} | bat --color=always --style=numbers --line-range=:500")'
+alias paci='sudo pacman -S $(pacf)'
 alias pacd='sudo pacman -Rns $(pacman -Qeq | fzf -m --preview "pacman -Qi {} | bat --color=always --style=numbers --line-range=:500")'
 alias pacu='paru' # Alternative: sudo pacman -Syyu
 
@@ -93,11 +89,15 @@ alias neofetch=fastfetch
 alias fc-info='fc-query $(fc-list | fzf | sed "s/:.*//") | rg "(family|style|fontformat|fullname|file):" | sort'
 alias fc-view='view $(fc-list | fzf | sed "s/:.*//")'
 
-# lazy ui stuff
+# lazy tui stuff
 alias lg='lazygit'
-alias ld='sudo lazydocker' # since docker requires root privileges
+alias ld='lazydocker' # since docker requires root privileges
+alias db='nvim -c "DBUI"'
 
-# tmux
+# +------+
+# | TMUX |
+# +------+
+alias t='tmux'
 alias tmf='tmuxifier'
 ## sessions
 alias tmx='tmuxifier load-session $(tmuxifier list-sessions | fzf --height=10 --layout=reverse)' # cause my brain is dumb
@@ -115,10 +115,24 @@ alias tmxlw='tmuxifier list-windows' # cause my brain is dumb
 alias tmxdw='rm $TMUXIFIER_LAYOUT_PATH/$(tmuxifier list-windows | fzf --preview "bat --color=always --style=numbers --line-range=:500 $TMUXIFIER_LAYOUT_PATH/{}.window.sh").window.sh'
 
 alias hex='hexyl' # a hexadecimal file content viewer
+# +--------+
+# | Docker |
+# +--------+
+alias d='docker'
+alias da='docker attach'
+alias dbb='docker buildx build'
+alias dc='docker-compose'
+alias de='docker exec'
+alias di='docker image'
+alias dn='docker network'
+alias ds='docker start'
+alias dv='docker volume'
 
-alias docker='sudo docker' # since docker requires root privileges
-
+# +-----+
+# | git |
+# +-----+
 #git porcelain aliases
+alias g='git'
 alias ga='git add --verbose'
 alias gb='git branch'
 alias gc='git commit'
@@ -130,3 +144,12 @@ alias gp='git pull --no-edit'
 alias gP='git push'
 alias gr='git remote'
 alias gs='git switch'
+
+
+# +-------------------------+
+# | Reserved single letters |
+# +-------------------------+
+# d -> docker
+# g -> git
+# n -> neovim
+# t -> tmux

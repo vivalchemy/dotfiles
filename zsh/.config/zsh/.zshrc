@@ -40,7 +40,8 @@ plug "zap-zsh/supercharge"
 plug "zsh-users/zsh-syntax-highlighting"
 plug "Aloxaf/fzf-tab"
 
-plug "${XDG_CONFIG_HOME}/zsh/zsh_prompt.zsh" # prompt for zsh
+# plug "${XDG_CONFIG_HOME}/zsh/zsh_prompt.zsh" # prompt for zsh
+eval "$(starship init zsh)"
 plug "${XDG_CONFIG_HOME}/zsh/env.zsh" # aliases for zsh
 plug "${XDG_CONFIG_HOME}/zsh/zsh_aliases.zsh" # aliases for zsh
 plug "${XDG_CONFIG_HOME}/zsh/plugins/*" # local plugins for zsh 
