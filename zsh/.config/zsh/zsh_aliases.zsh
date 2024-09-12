@@ -26,7 +26,7 @@ alias fzfv='fzf --preview "bat --color=always --style=numbers --line-range=:500 
 # | Neovim |
 # +--------+
 alias nv='nvim $(fzfview)'
-alias n='nvim -c "lua require(\"telescope.builtin\").git_files()"'
+alias n='nvim -c "lua require(\"telescope.builtin\").find_files()"'
 alias vim='nvim'
 alias vi='nvim'
 
