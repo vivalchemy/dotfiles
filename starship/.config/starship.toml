@@ -70,7 +70,8 @@ crust = "#11111b"
 # | Language specific |
 # +-------------------+
 [bun]
-format = '[$symbol$version](bold )'
+symbol = '🍞'
+format = '[$symbol $version](bold )'
 
 [c]
 format = '[$symbol$version](bold )'

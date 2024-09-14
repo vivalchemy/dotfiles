@@ -49,10 +49,11 @@ alias mv='mv -i'
 #
 
 # ls modification
-alias ls='ls --group-directories-first --color'
+alias ls='ls --group-directories-first --human-readable --color'
 alias la='ls  -a' # the upper group dir and color will get forwarded to these commands too
 alias ll='ls  -l'
 alias lal='ls -al'
+alias lla='ls -al'
 
 # alias some="someFnc"
 # someFnc() {
