@@ -19,13 +19,24 @@ open = [
 
 [open]
 rules =[
-{ mime = "text/*", use = "edit" },
-{ mime = "video/*", use = "play" },
-{ mime = "application/javascript", use = "edit"},
-{ mime = "application/json", use = "edit" },
+  { mime = "text/*", use = "edit" },
+  { mime = "video/*", use = "play" },
+  { mime = "application/javascript", use = "edit"},
+  { mime = "application/json", use = "edit" },
   # { name = "*.json", use = "edit" },
-# { mime = "image/*", use = "view" },
-
+  # { mime = "image/*", use = "view" },
   # Multiple openers for a single rule
-{ name = "*.html", use = [ "open", "edit" ] }
+  { name = "*.html", use = [ "open", "edit" ] }
+]
+
+[plugin]
+prepend_previewers = [
+  # Use glow to preview Markdown files
+  { mime = "text/csv", run = "miller"},
+  { name = "*.md", run = "glow" },
+  { mime = "audio/*",   run = "exifaudio"},
+  { mime = "video/*", run = "video-ffmpeg" }
+]
+prepend_preloaders = [
+  { mime = "video/*", run = "video-ffmpeg" },
 ]
