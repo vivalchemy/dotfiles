@@ -1,0 +1,49 @@
+# Zathura Configuration File
+# See `man zathurarc` for complete documentation
+
+# Display and Layout Settings
+set adjust-open "best-fit"  # Open document in best-fit mode
+set pages-per-row 1  # Display one page per row
+set font "JetBrainsMono NF 13"  # Set UI font (not the PDF text font)
+set recolor-reverse-video true  # Preserve original colors of photos when recoloring
+set render-loading false  # Don't show the "loading" text
+set scroll-page-aware true  # Enable smooth scrolling between pages
+set smooth-scroll true  # Enable smooth scrolling within a page
+set scroll-full-overlap 0.01  # Set a small overlap when scrolling a full page
+set scroll-step 100  # Set the number of lines to scroll with each keystroke/mouse wheel turn
+set guioptions "sv"  # Show statusbar (s) and vertical scrollbar (v)
+
+# User Interface Settings
+set statusbar-home-tilde true  # Display ~ instead of full home directory path
+set statusbar-v-padding 4  # Set vertical padding for the statusbar
+
+# Clipboard Settings
+set selection-clipboard clipboard  # Use the system clipboard for copying text
+
+# Color Settings
+set recolor-keephue true  # Maintain original hue when recoloring
+include catppuccin-mocha  # Include the Catppuccin Mocha color scheme
+
+# Key Mappings
+# Unmapped Keys
+unmap f  # Unmap 'f' from its default 'go to link' function to avoid conflict with fullscreen toggle
+unmap o  # Unmap 'o' from its default 'open' function to avoid conflict with page mode toggle
+
+# Navigation
+map u scroll half-up  # Scroll up half a page
+map d scroll half-down  # Scroll down half a page
+map gg goto top  # Go to the top of the document
+map gf follow  # Follow links in the document
+
+# Misc
+map o toggle_page_mode  # Toggle between one and multiple pages
+map r rotate  # Rotate the document
+map f toggle_fullscreen  # Toggle fullscreen mode
+map [fullscreen] f toggle_fullscreen  # Toggle fullscreen mode when already in fullscreen
+map <C-r> reload  # Reload the document
+map p print  # Open the print dialog
+map i recolor  # Toggle recoloring (invert colors)
+
+
+# Note: The 'Open document in fit-width mode by default' setting is not explicitly 
+# defined here. Zathura's default behavior or the 'adjust-open' setting may cover this.
