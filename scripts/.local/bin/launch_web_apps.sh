@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-vivaldi $1 && hyprctl dispatch workspace 2
+zen-browser $1 && notify-send "Opening $1 in Zen browser" && hyprctl dispatch workspace 2
