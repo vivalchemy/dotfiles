@@ -34,7 +34,7 @@ function ExecuteCurrentFile()
 		cpp = "g++ % && ./a.out",
 		py = "python3 %", -- Use "python3" for Python files
 		go = "go run %",
-		sh = "chmod +x % && %",
+		sh = "chmod +x % && ./%",
 		rs = "cargo run",
 		lua = "lua %",
 		js = "bun %",
