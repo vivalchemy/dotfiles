@@ -64,11 +64,14 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 source <(fzf --zsh)
 
 # vi mode
 bindkey -v
+bindkey '^[^M' autosuggest-accept
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 
 neofetch
 
