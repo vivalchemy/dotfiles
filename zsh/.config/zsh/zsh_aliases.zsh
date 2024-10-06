@@ -95,6 +95,15 @@ alias lg='lazygit'
 alias ld='lazydocker' # since docker requires root privileges
 alias db='nvim -c "DBUI"'
 
+# zoxide
+alias z='cd'
+
+# zed editor
+alias zed='zeditor'
+
+# zen browser
+alias zen='zen-browser'
+
 # +------+
 # | TMUX |
 # +------+
