@@ -2,11 +2,11 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = '''
- [╭──](green)$username$directory$git_branch
+ [╭──](green)$username$directory$git_branch  $bun$c$dart$golang$java$kotlin$lua$python$rust$zig
  $character
 '''
 right_format = '''
-$bun$c$dart$golang$java$kotlin$lua$python$rust$zig $cmd_duration
+$cmd_duration
 '''
 
 continuation_prompt = ' '

@@ -63,7 +63,8 @@ map("n", "g#", "g#zz", opts)
 ------------
 
 -- Selection bindings
--- map("v", "a", "<Esc>:0<CR><S-v><S-g>", opts)
+map("n", "<C-a>", "<Esc>:0<CR><S-v><S-g>", opts)
+map("v", "<C-a>", "<Esc>:0<CR><S-v><S-g>", opts)
 map("n", "<Esc>", "<cmd>nohlsearch<CR>") -- remove highlight on escape
 map("x", "p", [["_dP]], term_opts)
 -- map("v", "p", [["_dP]], term_opts) -- bit buggy
