@@ -13,7 +13,6 @@ battery_status=$(cat /sys/class/power_supply/BAT*/status)
 battery_icon="/usr/share/icons/Papirus-Dark/32x32/panel/battery-010.svg"
 
 # Check if battery capacity is low and not discharging
-# if [[ $battery_capacity -lt 10 ]] && [[ $battery_status == "Discharging" ]]; then
-  # notify-send -i $battery_icon -u critical "Battery Low" "Battery capacity: $battery_capacity%\nDate: $(date)"
-# fi
-notify-send -i $battery_icon "Battery Low" "Battery capacity: $battery_capacity%\nBattery Status:$battery_status"
+if [[ $battery_capacity -lt 30 ]] && [[ $battery_status == "Discharging" ]]; then
+  notify-send -i $battery_icon -u critical "Battery Low" "Battery capacity: $battery_capacity%\nDate: $(date)"
+fi
