@@ -12,6 +12,7 @@ Plug("shadow.plugins.dressing") -- improve nvim ui
 Plug("shadow.plugins.flash") -- improved navigation
 Plug("shadow.plugins.git_signs") -- git signs column
 Plug("shadow.plugins.harpoon") -- for better multi file navigation
+Plug("shadow.plugins.lazydocker") -- lazygit ui in neovim
 Plug("shadow.plugins.lazygit") -- lazygit ui in neovim
 Plug("shadow.plugins.markdown_support") -- inline markdown renderer
 Plug("shadow.plugins.mini") -- mini plugins

@@ -30,9 +30,6 @@ map("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 map("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 map("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- lazy git
--- map("n", "<leader>gl", "<cmd>FloatermNew lazygit<CR>", opts)
-
 ----------------
 -- Navigation --
 ----------------
@@ -63,8 +60,6 @@ map("n", "g#", "g#zz", opts)
 ------------
 
 -- Selection bindings
-map("n", "<C-a>", "<Esc>:0<CR><S-v><S-g>", opts)
-map("v", "<C-a>", "<Esc>:0<CR><S-v><S-g>", opts)
 map("n", "<Esc>", "<cmd>nohlsearch<CR>") -- remove highlight on escape
 map("x", "p", [["_dP]], term_opts)
 -- map("v", "p", [["_dP]], term_opts) -- bit buggy

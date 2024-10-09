@@ -10,7 +10,7 @@ return { -- Useful plugin to show you pending keybinds.
 			{ "<leader>f", group = "[F]ind" }, -- group
 			{ "<leader>w", group = "[W]orkspace" }, -- group
 			{ "<leader>t", group = "[T]oggle" }, -- group
-			{ "<leader>g", group = "[G]it" }, -- group
+			{ "<leader>g", group = "[L]azy" }, -- group
 			-- { "<leader>c_", hidden = true }, -- hide this keymap
 			-- { "<leader>d_", hidden = true }, -- hide this keymap
 			-- { "<leader>r_", hidden = true }, -- hide this keymap
