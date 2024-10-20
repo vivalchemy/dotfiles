@@ -45,6 +45,13 @@ map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 map("n", "gl", "$", { noremap = true, silent = true, desc = "Move to the end of the line" })
 map("n", "gh", "^", { noremap = true, silent = true, desc = "Move to the start of the line" })
 
+-- Resizing the windows
+
+map("n", "<C-W>+", "5<C-W>+", opts)
+map("n", "<C-W>-", "5<C-W>-", opts)
+map("n", "<C-W>>", "5<C-W>>", opts)
+map("n", "<C-W><", "5<C-W><", opts)
+
 map("n", "<leader>e", ":lua MiniFiles.open()<CR>", opts)
 
 -- Center the text when searching

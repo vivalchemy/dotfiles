@@ -32,7 +32,7 @@ local vimOpts = {
 
 	-- display space and enter
 	list = true,
-	listchars = { tab = " ", trail = "·", nbsp = "␣" },
+	listchars = { tab = " ", trail = "·", nbsp = "␣" },
 
 	-- clipboard
 	clipboard = "unnamedplus", -- sync the system and vim clipboard
