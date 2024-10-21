@@ -80,10 +80,3 @@ map("v", "<S-j>", ":move -2<CR>gv")
 
 -- Execute the current file in the buffer
 map("n", "<leader>x", ExecuteCurrentFile, { desc = "Execute the file in current buffer" })
-
--- TODO:Delete this after use --
--- TIP: Disable arrow keys in normal mode
-map("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-map("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-map("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-map("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
