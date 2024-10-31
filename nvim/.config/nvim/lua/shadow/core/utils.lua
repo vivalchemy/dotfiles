@@ -79,3 +79,43 @@ function SetOptions(options, mode)
 		vim[mode][key] = value
 	end
 end
+
+-- Set the project root as the working directory
+local project_root = vim.fn.getcwd() -- Store the initial CWD
+
+-- Global variable to store the server job ID
+_G.server_job_id = nil
+
+-- Command to start the server with a fixed CWD
+vim.api.nvim_create_user_command("StartServer", function()
+	if _G.server_job_id == nil then
+		-- Start the server in the project root directory
+		_G.server_job_id = vim.fn.jobstart("local-hosting", { cwd = project_root, detach = true })
+		if _G.server_job_id > 0 then
+			print("Server started with job ID:", _G.server_job_id)
+		else
+			print("Failed to start server")
+			_G.server_job_id = nil
+		end
+	else
+		print("Server is already running with job ID:", _G.server_job_id)
+	end
+end, {})
+
+-- Command to stop the server
+vim.api.nvim_create_user_command("StopServer", function()
+	if _G.server_job_id then
+		-- Terminate the server process
+		vim.fn.jobstop(_G.server_job_id)
+		print("Server stopped with job ID:", _G.server_job_id)
+		_G.server_job_id = nil
+	else
+		print("Server is not running")
+	end
+end, {})
+
+-- Optional: Command to restart the server
+vim.api.nvim_create_user_command("RestartServer", function()
+	vim.cmd("StopServer")
+	vim.cmd("StartServer")
+end, {})
