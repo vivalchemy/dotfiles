@@ -155,6 +155,10 @@ alias gP='git push'
 alias gr='git remote'
 alias gs='git switch'
 
+# +------------+
+# | PocketBase |
+# +------------+
+alias pb='pocketbase'
 
 # +-------------------------+
 # | Reserved single letters |
