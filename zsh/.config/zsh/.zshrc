@@ -27,8 +27,8 @@ export SDKMAN_DIR="$XDG_DATA_HOME/sdkman"
 
 # add to path
 addToPath "$BUN_INSTALL/bin" #bun
-addToPath "$XDG_DATA_HOME/go/bin" #go
 addToPath "$GOPATH/bin" #go
+addToPath "$CARGO_HOME/bin" #rust
 addToPath "$XDG_DATA_HOME/tmux/plugins/tmuxifier/bin" #tmuxifier
 
 # to initialize zap plugin manager
