@@ -1,3 +1,8 @@
+[general]
+import = [
+  "~/.config/alacritty/themes/catppuccin_mocha.toml"
+]
+
 [font.bold]
 family = "JetBrains Mono Nerd Font"
 
@@ -13,6 +18,9 @@ style = "MediumItalic"
 family = "JetBrains Mono Nerd Font"
 style = "Medium"
 
+[selection]
+save_to_clipboard = true
+
 [scrolling]
 history = 10000
 multiplier = 3
@@ -22,7 +30,3 @@ opacity = 0.83
 padding.x = 0
 padding.y = 0
 
-[general]
-import = [
-  "~/.config/alacritty/themes/catppuccin_mocha.toml"
-]
