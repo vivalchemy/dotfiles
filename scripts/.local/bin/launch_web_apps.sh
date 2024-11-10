@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-
-zen-browser $1 && notify-send "Opening $1 in Zen browser" && hyprctl dispatch workspace 2
+zen-browser --new-window --no-remote -P "FTWA" $1
