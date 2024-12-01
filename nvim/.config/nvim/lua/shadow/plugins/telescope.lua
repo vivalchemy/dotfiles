@@ -64,7 +64,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				},
 			},
 			defaults = {
-				file_ignore_patterns = { "node_modules", ".git" },
+				file_ignore_patterns = {
+					"node_modules",
+					"%.git/", -- % is used to escape .
+				},
+				ripgrep_arguments = {
+					"rg",
+					"--hidden",
+					"--smart-case",
+				},
 			},
 		})
 

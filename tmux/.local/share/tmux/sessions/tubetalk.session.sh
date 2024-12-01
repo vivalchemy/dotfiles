@@ -1,8 +1,10 @@
-session_root "~/Public/tube-talk/web"
+session_root "~/Public/tube-talk"
 if initialize_session "tubetalk"; then
   new_window "server"
+  run_cmd "cd web"
   run_cmd "bun run dev" # nextjs
   split_h 50
+  run_cmd "cd web"
   run_cmd "bun run db" # pocketbase
   new_window "nvim"
   run_cmd "n"

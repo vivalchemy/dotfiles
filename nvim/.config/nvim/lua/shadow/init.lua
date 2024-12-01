@@ -6,6 +6,7 @@ require("shadow.core.keybindings")
 -- plugins
 -- Plug("shadow.plugins.catppuccin")      -- color theme
 -- Plug("shadow.plugins.codeium") -- ai completions
+Plug("shadow.plugins.d2") -- d2 text to diagrams generator
 Plug("shadow.plugins.database") -- database
 Plug("shadow.plugins.dressing") -- improve nvim ui
 Plug("shadow.plugins.flash") -- improved navigation

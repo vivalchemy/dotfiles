@@ -62,6 +62,9 @@ local vimOpts = {
 	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	showmode = false,
 	inccommand = "split", -- Preview substitutions live, as you type!
+
+	-- fold settings
+	foldlevelstart = 99, -- open fold on startup
 }
 
 -- vim.g = vimG
@@ -75,7 +78,7 @@ local vimG = {
 vim.opt.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
--- vim.cmd([[set iskeyword+=-]])
+vim.cmd([[set iskeyword-=_]])
 -- @, 48-57, 192-255,_,
 --
 
@@ -83,3 +86,15 @@ vim.filetype.add({ extension = { templ = "templ", rasi = "rasi" } })
 
 SetOptions(vimOpts, "opt")
 SetOptions(vimG, "g")
+
+-- -- Folding settings
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	callback = function()
+		if require("nvim-treesitter.parsers").has_parser() then
+			vim.opt.foldmethod = "expr"
+			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+		else
+			vim.opt.foldmethod = "syntax"
+		end
+	end,
+})

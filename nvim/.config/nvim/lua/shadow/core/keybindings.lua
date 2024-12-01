@@ -80,3 +80,8 @@ map("v", "<S-j>", ":move -2<CR>gv")
 
 -- Execute the current file in the buffer
 map("n", "<leader>x", ExecuteCurrentFile, { desc = "Execute the file in current buffer" })
+
+--------------------
+-- Better folding --
+--------------------
+map("n", "za", "zaj", opts)
