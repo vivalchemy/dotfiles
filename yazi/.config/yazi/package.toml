@@ -1,5 +1,0 @@
-[plugin]
-deps = [{ use = "Reledia/glow", rev = "388e847" }, { use = "Sonico98/exifaudio", rev = "855ff05" }, { use = "Tyarel8/video-ffmpeg", rev = "fe26a18" }]
-
-[flavor]
-deps = []

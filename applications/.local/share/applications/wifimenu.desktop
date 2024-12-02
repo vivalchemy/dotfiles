@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=Wifi Menu
-Exec=/home/shadow/.local/bin/wifimenu_rofi.sh
-Terminal=false
-Type=Application
-Keywords=Rofi;Wifi;Applet;
-Icon=lock
-Categories=Utility;Network;
-StartupNotify=false

@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=PowerMenu
-Exec=/home/shadow/.local/bin/powermenu_rofi.sh
-Terminal=false
-Type=Application
-Keywords=Rofi;Power;Applet;
-Icon=lock
-Categories=Utility;System;
-StartupNotify=false

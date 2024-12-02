@@ -1,8 +1,0 @@
-[Unit]
-Description=Battery Notification Service
-
-[Service]
-ExecStart=/home/shadow/.local/bin/battery_notify.sh
-
-[Install]
-WantedBy=default.target
