@@ -1,0 +1,11 @@
+- name: "Install on {{ ansible_distribution }}"
+  become: true
+  ansible.builtin.pacman:
+    name:
+      - "rofi-wayland"
+    state: latest
+
+- name: "Setup Config for {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ item }}"
+  loop:
+    - common_tasks/setup_config_dir_linux.yaml

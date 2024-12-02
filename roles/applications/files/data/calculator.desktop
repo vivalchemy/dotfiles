@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Calculator
+Exec=rofi -show calc -modi calc | wl-copy
+Terminal=false
+Type=Application
+Keywords=Calculator;Number;Conversion;Rofi;
+Comment=Calculator
+Icon=org.gnome.Calculator
+Categories=Utility;Math;NumericalAnalysis;Calculator;Applet;
+StartupNotify=false

@@ -1,0 +1,14 @@
+- name: Print the list of found files in task 2 from task 3
+  debug:
+    msg: "{{ files_found.files | map(attribute='path') | join(', ') }}"
+
+- name: Finding new list of files
+  find:
+    paths: "{{ ansible_env.PWD }}"
+    recurse: yes
+    file_type: file
+  register: files_found
+
+- name: New list of found files printing
+  debug:
+    msg: "{{ files_found.files | map(attribute='path') | join(', ') }}"

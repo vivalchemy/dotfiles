@@ -1,0 +1,20 @@
+# - name: "Import Multiple Tasks | Task 1 & 2"
+#   ansible.builtin.include_tasks:
+#     file: "{{ item }}"
+#   loop:
+#     - common_tasks/task1.yaml
+    # - common_tasks/task2.yaml
+    # - common_tasks/task3.yaml
+
+- name: "Check of the files are imported"
+  ansible.builtin.stat:
+    path: test.txt
+  register: test_file
+
+- name: "Print the test file"
+  ansible.builtin.debug:
+    msg: "{{ test_file }}"
+
+- name: "Print the playbook directory"
+  ansible.builtin.debug:
+    msg: "{{ playbook_dir }}"

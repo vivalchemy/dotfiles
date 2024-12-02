@@ -1,0 +1,5 @@
+.color-behind-tabs-off .mainbar{
+  color: var(--colorFg);
+  background: var(--colorBgDark);
+  border-color: transparent;
+}

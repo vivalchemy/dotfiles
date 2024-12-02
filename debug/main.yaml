@@ -1,0 +1,6 @@
+- name: "Debugging the tasks"
+  hosts: localhost
+  connection: local
+  gather_facts: true
+  roles:
+    - test

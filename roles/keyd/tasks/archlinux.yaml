@@ -1,0 +1,33 @@
+- name: "Install on {{ ansible_distribution }}"
+  become: true
+  ansible.builtin.pacman:
+    name:
+      - "{{ role_name }}"
+    state: latest
+
+- name: "Check if default.conf exists"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/files/default.conf"
+  register: default_conf
+
+- name: "Debug | default_conf"
+  ansible.builtin.debug:
+    var: default_conf
+
+- name: "Symlink default.conf to /etc/keyd/default.conf"
+  become: true
+  ansible.builtin.file:
+    src: "{{ role_path }}/files/default.conf"
+    dest: /etc/keyd/default.conf
+    state: link
+    force: false
+  when: default_conf.stat.exists
+
+- name: "Reload the keyd daemon"
+  ansible.builtin.command:
+    cmd: keyd reload
+  changed_when: false
+
+- name: "Clear the default_conf Variable"
+  ansible.builtin.set_fact:
+    default_conf: null

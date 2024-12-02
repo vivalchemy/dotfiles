@@ -1,0 +1,15 @@
+- name: Find all files in the current directory
+  find:
+    paths: "."
+    recurse: yes
+    file_type: file
+  register: files_found
+
+
+- name: Print the list of found files
+  debug:
+    msg: "{{ files_found.files | map(attribute='path') | join(', ') }}"
+
+- name: Clear the list of found files
+  set_fact:
+    files_found: null

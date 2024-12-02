@@ -6,3 +6,6 @@ zsh/.config/zsh/.zcompdump
 zsh/.config/zsh/.zsh_history
 zsh/.config/zsh/env.zsh
 system-configuration/grub.cfg
+roles/hyprland/files/config/hyprpaper.conf
+roles/neovim/files/config/spell
+roles/zsh/files/config/env.zsh

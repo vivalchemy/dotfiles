@@ -1,0 +1,88 @@
+# Copy the bin folder directly to ~/.local/bin
+- name: "Find all shell scripts in bin folder"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/bin"
+    file_type: file
+    hidden: true
+    recurse: true
+  register: shell_scripts
+
+- name: "Create symlinks for shell scripts"
+  ansible.builtin.file:
+    src: "{{ file.path }}"
+    dest: "{{ ansible_user_dir }}/.local/bin/{{ file.path | regex_replace('^' + role_path + '/files/bin/', '') }}"
+    state: link
+    force: true # "true" will break idempotency
+  loop: "{{ shell_scripts.files }}"
+  when: shell_scripts.matched > 0
+  no_log: false
+  loop_control:
+    loop_var: file
+
+- name: "Clear the Config Variable"
+  ansible.builtin.set_fact:
+    shell_scripts: null
+
+
+# Copy the systemd folder directly to ~/.config/systemd/user
+- name: "Find all directories in systemd directory"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/systemd"
+    file_type: directory
+    hidden: true
+    recurse: true
+  register: systemd_directories
+
+- name: "Create data Directories recursively"
+  ansible.builtin.file:
+    mode: "0755"
+    path: "{{ ansible_user_dir }}/.config/systemd/{{ dir.path | regex_replace('^' + role_path + '/files/systemd/', '') }}"
+    state: directory
+  loop: "{{ systemd_directories.files }}"
+  when: systemd_directories.matched > 0
+  no_log: false
+  loop_control:
+    loop_var: dir
+
+- name: "Clear the data Variable"
+  ansible.builtin.set_fact:
+    systemd_directories: null
+
+- name: "Find all files in systemd Directory"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/systemd"
+    file_type: file
+    hidden: true
+    recurse: true
+  register: systemd_files
+
+- name: "Create symlinks for each file in a systemd directory"
+  ansible.builtin.file:
+    src: "{{ file.path }}"
+    dest: "{{ ansible_user_dir }}/.config/systemd/{{ file.path | regex_replace('^' + role_path + '/files/systemd/', '') }}"
+    state: link
+    force: true # "true" will break idempotency
+  loop: "{{ systemd_files.files }}"
+  when: systemd_files.matched > 0
+  no_log: false
+  loop_control:
+    loop_var: file
+
+- name: "Clear the Data Variable"
+  ansible.builtin.set_fact:
+    systemd_files: null
+
+- name: "Reload the systemd daemon"
+  ansible.builtin.systemd:
+    daemon_reload: true
+    scope: user
+  changed_when: false
+
+- name: "Enable the user service"
+  ansible.builtin.systemd:
+    name: "battery_notify.timer"
+    scope: user
+    enabled: true
+    masked: false
+    state: restarted
+  changed_when: false

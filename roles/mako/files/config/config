@@ -1,0 +1,28 @@
+anchor=top-center
+background-color=#1e1e2eaa
+border-color=#cba6f7
+border-radius=12
+border-size=3
+default-timeout=5000
+font=Poppins:style=Regular 12
+height=100
+max-history=50
+max-visible=3
+icons=1
+ignore-timeout=1
+layer=overlay
+markup=1
+max-icon-size=64
+progress-color=over #313244
+sort=-time
+text-color=#cdd6f4
+width=400
+
+[urgency=high]
+background-color=#1e1e2e
+border-color=#f38ba8
+default-timeout=0
+
+[category=mpd]
+default-timeout=2000
+group-by=category

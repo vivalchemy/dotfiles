@@ -1,0 +1,15 @@
+- name: "Common Task | Task 1 | Var | role_name "
+  ansible.builtin.debug:
+    msg: "'{{ role_name }}' is working"
+
+- name: "Common Task | Task 1 | Var | role_config_directory_suffix "
+  ansible.builtin.debug:
+    msg: "'{{ role_config_directory_suffix | default(role_name + '/') }}' is working"
+
+- name: "Common Task | Task 2 | Var | role_path "
+  ansible.builtin.debug:
+    msg: "'{{ role_path }}' is working"
+
+- name: "Common Task | Task 2 | Var | ansible_user_id "
+  ansible.builtin.debug:
+    msg: "'{{ ansible_user_id }}' is working"

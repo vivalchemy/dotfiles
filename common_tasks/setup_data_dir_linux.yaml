@@ -1,0 +1,65 @@
+- name: "Debug | data Directory"
+  ansible.builtin.debug:
+    msg: "role_data_directory_suffix is not defined; using {{ role_name + '/' }} instead"
+  when: role_data_directory_suffix is not defined
+
+- name: "Detect/Create data Directory"
+  ansible.builtin.file:
+    mode: "0755"
+    path: "{{ ansible_user_dir }}/.local/share/{{ role_data_directory_suffix | default(role_name + '/') }}"
+    state: directory
+  when: role_data_directory_suffix is not defined or role_data_directory_suffix != ""
+
+- name: "Find all directories in Data Directory"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/data"
+    file_type: directory
+    hidden: true
+    recurse: true
+  register: data_directories
+
+- name: "Create data Directories recursively"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.local/share/{{ role_data_directory_suffix | default(role_name + '/') }}{{ dir.path | regex_replace('^' + role_path + '/files/data/', '') }}"
+    state: directory
+  loop: "{{ data_directories.files }}"
+  when: data_directories.matched > 0
+  no_log: true
+  loop_control:
+    loop_var: dir
+
+- name: "Clear the data Variable"
+  ansible.builtin.set_fact:
+    data_directories: null
+
+- name: "Find all files in Data Directory"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/data"
+    file_type: file
+    hidden: true
+    recurse: true
+  register: data_files
+
+- name: "Create symlinks for each file in a role-specific directory"
+  ansible.builtin.file:
+    src: "{{ file.path }}"
+    dest: "{{ ansible_user_dir }}/.local/share/{{ role_data_directory_suffix | default(role_name + '/') }}{{ file.path | regex_replace('^' + role_path + '/files/data/', '') }}"
+    state: link
+    force: true # "true" will break idempotency
+  loop: "{{ data_files.files }}"
+  when: data_files.matched > 0
+  no_log: true
+  loop_control:
+    loop_var: file
+
+- name: "Clear the Data Variable"
+  ansible.builtin.set_fact:
+    data_files: null
+
+# - name: Print the list of found files
+#   ansible.builtin.debug: 
+#     msg: "{{ ansible_user_dir }}/.local/share/{{ role_data_directory_suffix | default(role_name + '/') }}{{ file.path | regex_replace('^' + role_path + '/files/data/', '') }} for directory {{ role_data_directory_suffix | default(role_name + '/') }} role path is {{ role_path }}"
+#   loop: "{{ data_files.files }}"
+#   when: data_files.matched > 0
+#   loop_control:
+#     loop_var: file

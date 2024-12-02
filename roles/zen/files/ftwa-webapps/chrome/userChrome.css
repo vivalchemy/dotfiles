@@ -1,0 +1,11 @@
+#zen-sidebar-splitter {
+  display: none !important;
+}
+
+#titlebar {
+  display: none !important;
+}
+
+#zen-appcontent-navbar-container {
+  display: none !important;
+}

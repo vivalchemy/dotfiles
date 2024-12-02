@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Take U Forward
+Exec=/home/shadow/.local/bin/launch_web_apps.sh https://takeuforward.org/strivers-a2z-dsa-course/strivers-a2z-dsa-course-sheet-2/
+Terminal=false
+Type=Application
+Keywords=Video;Docs;DSA;Browser
+Comment=take u forward by striver
+Icon=input-keyboard
+Categories=Video;Docs
+StartupNotify=false

@@ -1,0 +1,66 @@
+- name: "Debug | Config Directory"
+  ansible.builtin.debug:
+    msg: "role_config_directory_suffix is not defined using {{ role_name + '/' }} instead"
+  when: role_config_directory_suffix is not defined
+
+- name: "Detect/Create Config Directory"
+  ansible.builtin.file:
+    mode: "0755"
+    path: "{{ ansible_user_dir }}/.config/{{ role_config_directory_suffix | default(role_name + '/') }}"
+    state: directory
+  when: role_config_directory_suffix is not defined or role_config_directory_suffix != ""
+
+- name: "Find all directories in Config Directory"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/config"
+    file_type: directory
+    hidden: true
+    recurse: true
+  register: config_directories
+
+- name: "Create Config Directories recursively"
+  ansible.builtin.file:
+    path: "{{ ansible_user_dir }}/.config/{{ role_config_directory_suffix | default(role_name + '/') }}{{ dir.path | regex_replace('^' + role_path + '/files/config/', '') }}"
+    state: directory
+  loop: "{{ config_directories.files }}"
+  when: config_directories.matched > 0
+  no_log: true
+  loop_control:
+    loop_var: dir
+
+- name: "Clear the Config Variable"
+  ansible.builtin.set_fact:
+    config_directories: null
+
+- name: "Find all files in Config Directory"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files/config"
+    file_type: file
+    hidden: true
+    recurse: true
+  register: config_files
+
+
+- name: "Create symlinks for config recursively"
+  ansible.builtin.file:
+    src: "{{ file.path }}"
+    dest: "{{ ansible_user_dir }}/.config/{{ role_config_directory_suffix | default(role_name + '/') }}{{ file.path | regex_replace('^' + role_path + '/files/config/', '') }}"
+    state: link
+    force: true # "true" will break idempotency
+  loop: "{{ config_files.files }}"
+  when: config_files.matched > 0
+  no_log: true
+  loop_control:
+    loop_var: file
+
+- name: "Clear the Config Variable"
+  ansible.builtin.set_fact:
+    config_files: null
+
+# - name: Print the list of found files
+#   debug:
+#     msg: "{{ ansible_user_dir }}/.config/{{ role_config_directory_suffix }}{{ file.path | regex_replace('^' + role_path + '/files/config/', '') }}"
+#   loop: "{{ config_files.files }}"
+#   when: config_files.matched > 0
+#   loop_control:
+#     loop_var: file

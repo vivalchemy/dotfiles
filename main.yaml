@@ -1,0 +1,35 @@
+# this is the starting point of the ansible script
+# divide the roles into different tags for easier management of different environments
+- name: Setup Personal Environment
+  hosts: this_pc
+  connection: local
+  roles:
+    - alacritty
+    - applications
+    - bat
+    - fastfetch
+    - git
+    - hyprland
+    - keyd
+    - lazygit
+    - mako
+    - neovim
+    - nodejs
+    - rofi
+    - scripts
+    - starship
+    - tmux
+    - yazi
+    - zathura
+    - zellij
+    - zsh
+  tags:
+    - personal
+
+# TODO: 
+
+# - [ ] zen userChrome.css
+# - [ ] symlink wallpapers
+# - [ ] install fonts
+# - [ ] install remaining packages
+# - [ ] secure the ssh keys using ansible vault and sync them

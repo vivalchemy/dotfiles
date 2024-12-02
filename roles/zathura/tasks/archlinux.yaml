@@ -1,0 +1,12 @@
+- name: "Install on {{ ansible_distribution }}"
+  become: true
+  ansible.builtin.pacman:
+    name:
+      - "{{ role_name }}"
+      - "zathura-pdf-poppler" # pdf support for zathura
+    state: latest
+
+- name: "Setup Config for {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ item }}"
+  loop:
+    - common_tasks/setup_config_dir_linux.yaml
