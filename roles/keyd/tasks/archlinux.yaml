@@ -4,15 +4,21 @@
     name:
       - "{{ role_name }}"
     state: latest
+  tags:
+    - keyd
 
 - name: "Check if default.conf exists"
   ansible.builtin.stat:
     path: "{{ role_path }}/files/default.conf"
   register: default_conf
+  tags:
+    - keyd
 
 - name: "Debug | default_conf"
   ansible.builtin.debug:
     var: default_conf
+  tags:
+    - keyd
 
 - name: "Symlink default.conf to /etc/keyd/default.conf"
   become: true
@@ -22,12 +28,18 @@
     state: link
     force: false
   when: default_conf.stat.exists
+  tags:
+    - keyd
 
 - name: "Reload the keyd daemon"
   ansible.builtin.command:
     cmd: keyd reload
   changed_when: false
+  tags:
+    - keyd
 
 - name: "Clear the default_conf Variable"
   ansible.builtin.set_fact:
     default_conf: null
+  tags:
+    - keyd

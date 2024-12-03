@@ -8,6 +8,6 @@ if initialize_session "tubetalk"; then
   run_cmd "bun run db" # pocketbase
   new_window "nvim"
   run_cmd "n"
-  select_window 1
+  select_window 2
 fi
 finalize_and_go_to_session

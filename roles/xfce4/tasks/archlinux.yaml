@@ -2,3 +2,5 @@
   ansible.builtin.include_tasks: "{{ item }}"
   loop:
     - common_tasks/setup_config_dir_linux.yaml
+  tags:
+    - xfce4

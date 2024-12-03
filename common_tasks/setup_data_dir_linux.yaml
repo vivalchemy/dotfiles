@@ -2,6 +2,7 @@
   ansible.builtin.debug:
     msg: "role_data_directory_suffix is not defined; using {{ role_name + '/' }} instead"
   when: role_data_directory_suffix is not defined
+  tags: always
 
 - name: "Detect/Create data Directory"
   ansible.builtin.file:
@@ -9,6 +10,7 @@
     path: "{{ ansible_user_dir }}/.local/share/{{ role_data_directory_suffix | default(role_name + '/') }}"
     state: directory
   when: role_data_directory_suffix is not defined or role_data_directory_suffix != ""
+  tags: always
 
 - name: "Find all directories in Data Directory"
   ansible.builtin.find:
@@ -17,6 +19,7 @@
     hidden: true
     recurse: true
   register: data_directories
+  tags: always
 
 - name: "Create data Directories recursively"
   ansible.builtin.file:
@@ -27,10 +30,12 @@
   no_log: true
   loop_control:
     loop_var: dir
+  tags: always
 
 - name: "Clear the data Variable"
   ansible.builtin.set_fact:
     data_directories: null
+  tags: always
 
 - name: "Find all files in Data Directory"
   ansible.builtin.find:
@@ -39,6 +44,7 @@
     hidden: true
     recurse: true
   register: data_files
+  tags: always
 
 - name: "Create symlinks for each file in a role-specific directory"
   ansible.builtin.file:
@@ -51,10 +57,12 @@
   no_log: true
   loop_control:
     loop_var: file
+  tags: always
 
 - name: "Clear the Data Variable"
   ansible.builtin.set_fact:
     data_files: null
+  tags: always
 
 # - name: Print the list of found files
 #   ansible.builtin.debug: 
@@ -63,3 +71,4 @@
 #   when: data_files.matched > 0
 #   loop_control:
 #     loop_var: file
+#   tags: always

@@ -1,11 +1,37 @@
-# - name: "Install on {{ ansible_distribution }}"
-#   become: true
-#   ansible.builtin.pacman:
-#     name:
-#       - "{{ role_name }}"
-#     state: latest
-#
-# - name: "Setup Config for {{ ansible_distribution }}"
-#   ansible.builtin.include_tasks: "{{ item }}"
-#   loop:
-#     - common_tasks/setup_config_dir_linux.yaml
+- name: "Detect/Create Wallpapers Directory"
+  ansible.builtin.file:
+    mode: "0755"
+    path: "{{ ansible_user_dir }}/Pictures/wallpapers"
+    state: directory
+  tags:
+    - wallpapers
+
+- name: "Find all Wallpapers"
+  ansible.builtin.find:
+    paths: "{{ role_path }}/files"
+    file_type: file
+    hidden: true
+    recurse: true
+  register: wallpapers
+  tags:
+    - wallpapers
+
+- name: "Create symlinks for wallpapers recursively"
+  ansible.builtin.file:
+    src: "{{ file.path }}"
+    dest: "{{ ansible_user_dir }}/Pictures/wallpapers/{{ file.path | regex_replace('^' + role_path + '/files/', '') }}"
+    state: link
+    force: true # "true" will break idempotency
+  loop: "{{ wallpapers.files }}"
+  when: wallpapers.matched > 0
+  no_log: true
+  loop_control:
+    loop_var: file
+  tags:
+    - wallpapers
+
+- name: "Clear the wallpapers Variable"
+  ansible.builtin.set_fact:
+    wallpapers: null
+  tags:
+    - wallpapers

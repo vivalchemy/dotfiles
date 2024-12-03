@@ -4,6 +4,8 @@
     name:
       - "{{ role_name }}"
     state: latest
+  tags:
+    - neovim
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
@@ -13,3 +15,5 @@
   vars:
     role_config_directory_suffix: "nvim/"
     role_data_directory_suffix: "nvim/"
+  tags:
+    - neovim

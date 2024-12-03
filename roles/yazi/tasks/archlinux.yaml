@@ -4,13 +4,19 @@
     name:
       - "{{ role_name }}"
     state: latest
+  tags:
+    - yazi
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
   loop:
     - common_tasks/setup_config_dir_linux.yaml
+  tags:
+    - yazi
 
 - name: "Install the plugins"
   ansible.builtin.shell:
     cmd: "ya pack -i" # To install all the plugins with locked versions from package.toml on a new system
     creates: "{{ ansible_env.HOME }}/.config/yazi/plugins/"
+  tags:
+    - yazi

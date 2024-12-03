@@ -2,7 +2,11 @@
   ansible.builtin.include_tasks: "{{ item }}"
   loop:
     - common_tasks/setup_data_dir_linux.yaml
+  tags:
+    - applications
 
 - name: "Update the desktop database"
   ansible.builtin.command: "update-desktop-database {{ ansible_user_dir }}/.local/share/{{ role_name }}"
   changed_when: false
+  tags:
+    - applications

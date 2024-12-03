@@ -107,7 +107,7 @@ alias zen='zen-browser'
 # +------+
 # | TMUX |
 # +------+
-alias t='tmux'
+alias t='tmux_sessionizer.sh'
 alias tmf='tmuxifier'
 ## sessions
 alias tmx='tmuxifier load-session $(tmuxifier list-sessions | fzf --height=10 --layout=reverse)' # cause my brain is dumb

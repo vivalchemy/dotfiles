@@ -4,8 +4,12 @@
     name:
       - "rofi-wayland"
     state: latest
+  tags:
+    - rofi
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
   loop:
     - common_tasks/setup_config_dir_linux.yaml
+  tags:
+    - rofi

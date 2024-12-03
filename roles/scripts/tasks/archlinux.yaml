@@ -6,6 +6,8 @@
     hidden: true
     recurse: true
   register: shell_scripts
+  tags:
+    - scripts
 
 - name: "Create symlinks for shell scripts"
   ansible.builtin.file:
@@ -18,11 +20,14 @@
   no_log: false
   loop_control:
     loop_var: file
+  tags:
+    - scripts
 
 - name: "Clear the Config Variable"
   ansible.builtin.set_fact:
     shell_scripts: null
-
+  tags:
+    - scripts
 
 # Copy the systemd folder directly to ~/.config/systemd/user
 - name: "Find all directories in systemd directory"
@@ -32,6 +37,8 @@
     hidden: true
     recurse: true
   register: systemd_directories
+  tags:
+    - scripts
 
 - name: "Create data Directories recursively"
   ansible.builtin.file:
@@ -43,10 +50,14 @@
   no_log: false
   loop_control:
     loop_var: dir
+  tags:
+    - scripts
 
 - name: "Clear the data Variable"
   ansible.builtin.set_fact:
     systemd_directories: null
+  tags:
+    - scripts
 
 - name: "Find all files in systemd Directory"
   ansible.builtin.find:
@@ -55,6 +66,8 @@
     hidden: true
     recurse: true
   register: systemd_files
+  tags:
+    - scritps
 
 - name: "Create symlinks for each file in a systemd directory"
   ansible.builtin.file:
@@ -67,16 +80,22 @@
   no_log: false
   loop_control:
     loop_var: file
+  tags:
+    - scripts
 
 - name: "Clear the Data Variable"
   ansible.builtin.set_fact:
     systemd_files: null
+  tags:
+    - scripts
 
 - name: "Reload the systemd daemon"
   ansible.builtin.systemd:
     daemon_reload: true
     scope: user
   changed_when: false
+  tags:
+    - scripts
 
 - name: "Enable the user service"
   ansible.builtin.systemd:
@@ -86,3 +105,5 @@
     masked: false
     state: restarted
   changed_when: false
+  tags:
+    - scripts

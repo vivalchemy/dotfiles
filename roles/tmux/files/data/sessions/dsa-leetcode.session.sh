@@ -8,7 +8,7 @@ if initialize_session "dsa-leetcode"; then
   split_h 30
   run_cmd "air"
 
-  select_pane 0
+  select_pane 1
 
 fi
 

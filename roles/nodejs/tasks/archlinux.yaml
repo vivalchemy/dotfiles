@@ -5,6 +5,8 @@
       - "{{ role_name }}"
       - "npm" # arch linux doesn't come with npm by default
     state: latest
+  tags:
+    - nodejs
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
@@ -12,3 +14,5 @@
     - common_tasks/setup_config_dir_linux.yaml
   vars:
     role_config_directory_suffix: "npm/"
+  tags:
+    - nodejs

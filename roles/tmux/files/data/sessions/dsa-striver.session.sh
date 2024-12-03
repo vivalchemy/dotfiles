@@ -14,7 +14,7 @@ if initialize_session "dsa-striver"; then
   run_cmd "air"
 
   # Select the default active window on session creation.
-  select_pane 0
+  select_pane 1
 
 fi
 

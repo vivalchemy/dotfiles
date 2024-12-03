@@ -79,4 +79,6 @@ bindkey '^[^M' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
+bindkey -s "^ " "tmux_sessionizer.sh\n"
+
 fastfetch

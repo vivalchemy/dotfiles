@@ -1,11 +1,10 @@
----
-- name: "Reached {{ role_name }}"
-  ansible.builtin.debug:
-    msg: "{{ role_name }} reached"
-
 - name: "{{ role_name }} | Checking Ansible config for {{ ansible_distribution }}"
   ansible.builtin.import_tasks: common_tasks/ansible_distribution_check.yaml
+  tags:
+    - mako
 
 - name: "{{ role_name }} | Run Tasks for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ ansible_distribution | lower }}.yaml"
   when: distribution_config.stat.exists
+  tags:
+    - mako
