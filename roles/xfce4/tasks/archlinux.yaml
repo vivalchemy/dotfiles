@@ -5,3 +5,4 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - xfce4
+    - gui

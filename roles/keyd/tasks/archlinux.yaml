@@ -7,6 +7,7 @@
   when: (update | default(true)) | bool # Default to true if not defined
   tags:
     - keyd
+    - cli
 
 - name: "Check if default.conf exists"
   ansible.builtin.stat:
@@ -15,6 +16,7 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - keyd
+    - cli
 
 - name: "Debug | default_conf"
   ansible.builtin.debug:
@@ -22,6 +24,7 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - keyd
+    - cli
 
 - name: "Symlink default.conf to /etc/keyd/default.conf"
   become: true
@@ -30,9 +33,10 @@
     dest: /etc/keyd/default.conf
     state: link
     force: false
-  when: default_conf.stat.exists and ((configure | default(true)) | bool)
+  when: ((configure | default(true)) | bool) and default_conf.stat.exists
   tags:
     - keyd
+    - cli
 
 - name: "Reload the keyd daemon"
   ansible.builtin.command:
@@ -41,6 +45,7 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - keyd
+    - cli
 
 - name: "Clear the default_conf Variable"
   ansible.builtin.set_fact:
@@ -48,3 +53,4 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - keyd
+    - cli

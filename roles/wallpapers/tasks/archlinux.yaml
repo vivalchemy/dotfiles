@@ -6,6 +6,7 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - wallpapers
+    - gui
 
 - name: "Find all Wallpapers"
   ansible.builtin.find:
@@ -17,6 +18,7 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - wallpapers
+    - gui
 
 - name: "Create symlinks for wallpapers recursively"
   ansible.builtin.file:
@@ -25,12 +27,13 @@
     state: link
     force: true # "true" will break idempotency
   loop: "{{ wallpapers.files }}"
-  when: wallpapers.matched > 0 and ((configure | default(true)) | bool)  # Default to true if not defined
+  when: ((configure | default(true)) | bool) and wallpapers.matched > 0  # Default to true if not defined
   no_log: true
   loop_control:
     loop_var: file
   tags:
     - wallpapers
+    - gui
 
 - name: "Clear the wallpapers Variable"
   ansible.builtin.set_fact:
@@ -38,3 +41,4 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - wallpapers
+    - gui

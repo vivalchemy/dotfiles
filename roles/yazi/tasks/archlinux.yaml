@@ -7,6 +7,7 @@
   when: (update | default(true)) | bool # Default to true if not defined
   tags:
     - yazi
+    - cli
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
@@ -15,6 +16,7 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - yazi
+    - cli
 
 - name: "Install the plugins"
   ansible.builtin.shell:
@@ -23,3 +25,4 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - yazi
+    - cli

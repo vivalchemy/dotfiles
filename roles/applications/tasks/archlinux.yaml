@@ -5,6 +5,7 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - applications
+    - gui
 
 - name: "Update the desktop database"
   ansible.builtin.command: "update-desktop-database {{ ansible_user_dir }}/.local/share/{{ role_name }}"
@@ -12,3 +13,4 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - applications
+    - gui

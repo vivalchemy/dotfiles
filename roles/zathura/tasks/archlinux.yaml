@@ -8,6 +8,7 @@
   when: (update | default(true)) | bool # Default to true if not defined
   tags:
     - zathura
+    - gui
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
@@ -16,3 +17,4 @@
   when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - zathura
+    - gui
