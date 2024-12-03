@@ -5,6 +5,7 @@
       - "{{ role_name }}"
       - "npm" # arch linux doesn't come with npm by default
     state: latest
+  when: (update | default(true)) | bool # Default to true if not defined
   tags:
     - nodejs
 
@@ -14,5 +15,6 @@
     - common_tasks/setup_config_dir_linux.yaml
   vars:
     role_config_directory_suffix: "npm/"
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - nodejs

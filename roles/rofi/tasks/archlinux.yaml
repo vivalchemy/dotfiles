@@ -4,6 +4,7 @@
     name:
       - "rofi-wayland"
     state: latest
+  when: (update | default(true)) | bool # Default to true if not defined
   tags:
     - rofi
 
@@ -11,5 +12,6 @@
   ansible.builtin.include_tasks: "{{ item }}"
   loop:
     - common_tasks/setup_config_dir_linux.yaml
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - rofi

@@ -4,6 +4,7 @@
     name:
       - "{{ role_name }}"
     state: latest
+  when: (update | default(true)) | bool # Default to true if not defined
   tags:
     - neovim
 
@@ -15,5 +16,6 @@
   vars:
     role_config_directory_suffix: "nvim/"
     role_data_directory_suffix: "nvim/"
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - neovim

@@ -6,6 +6,7 @@
     hidden: true
     recurse: true
   register: shell_scripts
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - scripts
 
@@ -16,7 +17,7 @@
     state: link
     force: true # "true" will break idempotency
   loop: "{{ shell_scripts.files }}"
-  when: shell_scripts.matched > 0
+  when: shell_scripts.matched > 0 and ((configure | default(true)) | bool)  # Default to true if not defined
   no_log: false
   loop_control:
     loop_var: file
@@ -26,6 +27,7 @@
 - name: "Clear the Config Variable"
   ansible.builtin.set_fact:
     shell_scripts: null
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - scripts
 
@@ -37,6 +39,7 @@
     hidden: true
     recurse: true
   register: systemd_directories
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - scripts
 
@@ -46,7 +49,7 @@
     path: "{{ ansible_user_dir }}/.config/systemd/{{ dir.path | regex_replace('^' + role_path + '/files/systemd/', '') }}"
     state: directory
   loop: "{{ systemd_directories.files }}"
-  when: systemd_directories.matched > 0
+  when: systemd_directories.matched > 0 and ((configure | default(true)) | bool)  # Default to true if not defined
   no_log: false
   loop_control:
     loop_var: dir
@@ -56,6 +59,7 @@
 - name: "Clear the data Variable"
   ansible.builtin.set_fact:
     systemd_directories: null
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - scripts
 
@@ -66,6 +70,7 @@
     hidden: true
     recurse: true
   register: systemd_files
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - scritps
 
@@ -76,7 +81,7 @@
     state: link
     force: true # "true" will break idempotency
   loop: "{{ systemd_files.files }}"
-  when: systemd_files.matched > 0
+  when: systemd_files.matched > 0 and ((configure | default(true)) | bool)  # Default to true if not defined
   no_log: false
   loop_control:
     loop_var: file
@@ -86,6 +91,7 @@
 - name: "Clear the Data Variable"
   ansible.builtin.set_fact:
     systemd_files: null
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - scripts
 
@@ -94,6 +100,7 @@
     daemon_reload: true
     scope: user
   changed_when: false
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - scripts
 
@@ -105,5 +112,6 @@
     masked: false
     state: restarted
   changed_when: false
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - scripts

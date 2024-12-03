@@ -2,9 +2,11 @@
   ansible.builtin.import_tasks: common_tasks/ansible_distribution_check.yaml
   tags:
     - zathura
+    - gui
 
 - name: "{{ role_name }} | Run Tasks for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ ansible_distribution | lower }}.yaml"
   when: distribution_config.stat.exists
   tags:
     - zathura
+    - gui

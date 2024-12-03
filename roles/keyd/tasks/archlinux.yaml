@@ -4,6 +4,7 @@
     name:
       - "{{ role_name }}"
     state: latest
+  when: (update | default(true)) | bool # Default to true if not defined
   tags:
     - keyd
 
@@ -11,12 +12,14 @@
   ansible.builtin.stat:
     path: "{{ role_path }}/files/default.conf"
   register: default_conf
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - keyd
 
 - name: "Debug | default_conf"
   ansible.builtin.debug:
     var: default_conf
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - keyd
 
@@ -27,7 +30,7 @@
     dest: /etc/keyd/default.conf
     state: link
     force: false
-  when: default_conf.stat.exists
+  when: default_conf.stat.exists and ((configure | default(true)) | bool)
   tags:
     - keyd
 
@@ -35,11 +38,13 @@
   ansible.builtin.command:
     cmd: keyd reload
   changed_when: false
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - keyd
 
 - name: "Clear the default_conf Variable"
   ansible.builtin.set_fact:
     default_conf: null
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - keyd

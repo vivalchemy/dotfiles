@@ -4,6 +4,7 @@
     name:
       - "{{ role_name }}"
     state: latest
+  when: (update | default(true)) | bool # Default to true if not defined
   tags:
     - hyprland
 
@@ -13,5 +14,6 @@
     - common_tasks/setup_config_dir_linux.yaml
   vars:
     role_config_directory_suffix: "hypr/"
+  when: (configure | default(true)) | bool  # Default to true if not defined
   tags:
     - hyprland

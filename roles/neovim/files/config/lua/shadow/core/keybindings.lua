@@ -85,3 +85,10 @@ map("n", "<leader>x", ExecuteCurrentFile, { desc = "Execute the file in current 
 -- Better folding --
 --------------------
 map("n", "za", "zaj", opts)
+
+-------------------
+-- Quickfix list --
+-------------------
+map("n", "<leader>n", ":cnext<CR>", opts)
+map("n", "<leader>p", ":cprev<CR>", opts)
+-------------------
