@@ -24,11 +24,5 @@
     - zathura
     - zellij
     - zsh
-
-# TODO: 
-
-# - [ ] zen userChrome.css
-# - [ ] symlink wallpapers
-# - [ ] install fonts
-# - [ ] install remaining packages
-# - [ ] secure the ssh keys using ansible vault and sync them
+  tags:
+    - always
