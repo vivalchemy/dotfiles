@@ -1,0 +1,3 @@
+[[manager.prepend_keymap]]
+on   = [ "e" ]
+run  = "plugin child-dir"
