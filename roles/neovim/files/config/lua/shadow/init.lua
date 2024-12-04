@@ -26,6 +26,7 @@ Plug("shadow.plugins.todo_comments") -- todo comments
 Plug("shadow.plugins.treesitter") -- syntax highlighting
 Plug("shadow.plugins.undotree") -- undo history
 Plug("shadow.plugins.vim_tmux_navigator") -- tmux
+Plug("shadow.plugins.yazi") -- terminal file manager
 
 Plug("shadow.plugins.tmp") -- temporary plugins
 
