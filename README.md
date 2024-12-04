@@ -79,6 +79,7 @@ The following roles are included in the repository:
 | `rofi`         | `always`, `rofi`, `gui`                 | A window switcher and application launcher that is lightweight and highly customizable. |
 | `scripts`      | `always`, `scripts`, `cli`, `gui`       | A set of personal shell scripts for automating various tasks and processes.     |
 | `starship`     | `always`, `starship`, `cli`             | A fast, customizable, and feature-rich prompt for any shell.                    |
+| `swayimg`         | `always`, `swayimg`, `gui`                 | Lightweight, fully customizable image viewer for Wayland. Supports various image formats, customizable keyboard bindings, gallery mode, and slideshow. |
 | `tmux`         | `always`, `tmux`, `cli`                 | A terminal multiplexer that allows users to manage multiple terminal sessions from a single window. |
 | `vivaldi`      | `always`, `vivaldi`, `gui`              | A highly customizable web browser with advanced features for power users.       |
 | `wallpapers`   | `always`, `wallpapers`, `gui`           | A role to manage and symlink system wallpapers to predefined directories.        |

@@ -1,0 +1,60 @@
+#!/usr/bin/bash
+# Ensure a file path is provided
+if [[ -z "$1" ]]; then
+    echo "Error: No file path provided."
+    exit 1
+fi
+
+# Trash directories (modify if using a custom trash location)
+TRASH_DIR="$HOME/.local/share/Trash/files"
+INFO_DIR="$HOME/.local/share/Trash/info"
+
+# Ensure trash directories exist
+mkdir -p "$TRASH_DIR" "$INFO_DIR"
+
+# Get the full path of the file
+if [[ "$1" == /* ]]; then
+    # If an absolute path is provided
+    FILE_PATH="$1"
+elif [[ "$1" == ~* ]]; then
+    # If path starts with a tilde, expand it to full home directory path
+    FILE_PATH="${1/#\~/$HOME}"
+else
+    # If a relative path or filename is provided
+    FILE_PATH="$(pwd)/$1"
+fi
+
+# Resolve any symbolic links to their real path
+FILE_PATH=$(readlink -f "$FILE_PATH")
+
+# Validate that the file exists
+if [[ ! -e "$FILE_PATH" ]]; then
+    echo "Error: '$FILE_PATH' is not a valid file or symlink."
+    exit 1
+fi
+
+# If the file is a symlink, delete it directly
+if [[ -L "$FILE_PATH" ]]; then
+    rm "$FILE_PATH"
+    echo "Symlink '$FILE_PATH' deleted."
+    exit 0
+fi
+
+# Get the file name
+FILE_NAME=$(basename "$FILE_PATH")
+
+# Generate unique names to avoid overwriting in the trash
+TIMESTAMP=$(date +"%Y-%m-%dT%H:%M:%S")
+# UUID=$(uuidgen)
+TRASH_NAME="$TRASH_NAME"
+
+# Move the file to the trash
+mv "$FILE_PATH" "$TRASH_DIR/$FILE_NAME"
+
+# Create the .trashinfo entry with Thunar-specific format
+INFO_FILE="$INFO_DIR/$FILE_NAME.trashinfo"
+echo "[Trash Info]" > "$INFO_FILE"
+echo "Path=$FILE_PATH" >> "$INFO_FILE"
+echo "DeletionDate=$TIMESTAMP" >> "$INFO_FILE"
+
+echo "File moved to trash: $FILE_PATH"

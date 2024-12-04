@@ -50,10 +50,11 @@ plug "Aloxaf/fzf-tab"
 eval "$(starship init zsh)"
 plug "${XDG_CONFIG_HOME}/zsh/env.zsh" # aliases for zsh
 plug "${XDG_CONFIG_HOME}/zsh/zsh_aliases.zsh" # aliases for zsh
-plug "${XDG_CONFIG_HOME}/zsh/plugins/*" # local plugins for zsh 
+# plug "${XDG_CONFIG_HOME}/zsh/plugins/*" # local plugins for zsh switched to bin folder
 plug "${XDG_DATA_HOME}/bun/_bun" # autocompletion for bun
 plug "${XDG_DATA_HOME}/sdkman/bin/sdkman-init.sh" # sdkman
 
+fpath=($XDG_DATA_HOME/zsh/completions $fpath)
 # Load and initialise completion system
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION # caching zsh completions using XDG base dir

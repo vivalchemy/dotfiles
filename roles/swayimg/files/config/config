@@ -1,0 +1,172 @@
+################################################################################
+# Viewer mode configuration
+################################################################################
+[viewer]
+# Background for transparent images (grid/RGBA)
+transparency = #00000000
+
+################################################################################
+# Gallery mode configuration
+################################################################################
+[gallery]
+# Max size of the thumbnail (pixels)
+size = 300
+# Use anti-aliasing for thumbnails (yes/no)
+antialiasing = yes
+
+################################################################################
+# Font configuration
+################################################################################
+[font]
+# Font name
+name = Poppins
+# Font size (pt)
+size = 14
+# Font color (RGBA)
+# color = #ccccccff
+# Shadow color (RGBA)
+# shadow = #000000d0
+# Background color (RGBA)
+# background = #00000000
+
+################################################################################
+# Image meta info scheme (format, size, EXIF, etc)
+################################################################################
+[info]
+# Show on startup (yes/no)
+show = yes
+# Timeout to hide info (seconds, 0 to always show)
+info_timeout = 3
+# Timeout to hide status message (seconds)
+status_timeout = 3
+
+# Display scheme for viewer mode (position = content)
+[info.viewer]
+top_left = +index,+scale,+frame
+top_right = +name,+filesize,+imagesize,+exif
+# bottom_left = scale, frame
+# bottom_right = status
+
+# Display scheme for gallery mode (position = content)
+[info.gallery]
+top_left = none
+top_right = none
+bottom_left = none
+bottom_right = name,status
+
+################################################################################
+# Viewer mode key binding configuration: key = action [parameters]
+################################################################################
+[keys.viewer]
+/ = help
+
+h = prev_file
+j = last_file
+k = first_file
+l = next_file
+
+a = step_left 10
+d = step_right 10
+w = step_up 10
+s = step_down 10
+
+Equal = zoom +10
+Plus = zoom +10
+Minus = zoom -10
+0 = zoom fit
+
+f = fullscreen
+z = fullscreen
+v = animation
+Shift+v = slideshow
+
+r = rotate_right
+Shift+r = rotate_left
+Ctrl+r = reload
+
+x = exec trash "%"; skip_file
+Ctrl+a = antialiasing
+
+F1 = help
+Home = first_file
+End = last_file
+Prior = prev_file
+Next = next_file
+Space = next_file
+Shift+r = rand_file
+Shift+o = prev_frame
+o = next_frame
+c = skip_file
+Shift+s = slideshow
+Return = mode
+Left = step_left 10
+Right = step_right 10
+Up = step_up 10
+Down = step_down 10
+Equal = zoom +10
+Plus = zoom +10
+Minus = zoom -10
+Shift+w = zoom height
+Shift+z = zoom fill
+BackSpace = zoom optimal
+Alt+s = scale
+bracketleft = rotate_left
+bracketright = rotate_right
+m = flip_vertical
+Shift+m = flip_horizontal
+i = info
+Shift+Delete = exec trash "%"; skip_file
+Escape = exit
+q = exit
+# Mouse related
+ScrollLeft = step_right 5
+ScrollRight = step_left 5
+ScrollUp = step_up 5
+ScrollDown = step_down 5
+Ctrl+ScrollUp = zoom +10
+Ctrl+ScrollDown = zoom -10
+Shift+ScrollUp = prev_file
+Shift+ScrollDown = next_file
+Alt+ScrollUp = prev_frame
+Alt+ScrollDown = next_frame
+
+################################################################################
+# Gallery mode key binding configuration: key = action [parameters]
+################################################################################
+[keys.gallery]
+h = step_left
+j = step_down
+k = step_up
+l = step_ rigth
+Shift+j = last_file
+Shift+k = first_file
+
+w = step_up
+a = step_left
+s = step_down
+d = step_ rigth
+
+f = fullscreen
+z = fullscreen
+
+F1 = help
+Home = first_file
+End = last_file
+Left = step_left
+Right = step_right
+Up = step_up
+Down = step_down
+Prior = page_up
+Next = page_down
+c = skip_file
+Return = mode
+r = reload
+i = info
+Shift+Delete = exec trash "%"; skip_file
+Escape = exit
+q = exit
+# Mouse related
+ScrollLeft = step_right
+ScrollRight = step_left
+ScrollUp = step_up
+ScrollDown = step_down

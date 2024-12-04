@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+# Script for opening files in various applications based on file type
+
+# Set default values with fallback
+: "${TERMINAL:=alacritty}"
+: "${SHELL:=/bin/bash}"
+
+# Default to detached mode
+detach=1
+
+# Check if first argument is "detach"
+if [ "$1" = "detach" ]; then
+    detach=1
+    shift
+fi
+
+# Validate file argument
+if [ $# -eq 0 ] || [ ! -f "$1" ]; then
+    echo "Error: Invalid or missing file" >&2
+    exit 1
+fi
+
+# Helper function to launch GUI applications
+launch_gui() {
+    if [ "$detach" -eq 0 ]; then
+        swallow "$@"
+    else
+        setsid -f "$@" >/dev/null 2>&1
+    fi
+}
+
+# Helper function to launch terminal applications
+launch_term() {
+    if [ "$detach" -eq 1 ]; then
+        # Safely construct command string
+        cmd_string=""
+        for arg in "$@"; do
+            cmd_string="${cmd_string} $(printf '%q' "$arg")"
+        done
+        setsid -f "$TERMINAL" -e "$SHELL" -c "$cmd_string; exit;" >/dev/null 2>&1
+    else
+        clear
+        "$@"
+    fi
+}
+
+# Determine file type and open accordingly
+mime_type=$(file --mime-type -b "$1")
+
+case "$mime_type" in
+    application/javascript|\
+    application/json|\
+    application/pgp-encrypted|\
+    application/x-subrip|\
+    inode/x-empty|\
+    text/*)
+        launch_term nvim "$1"
+        ;;
+    image/*)
+        launch_gui swayimg "$1"
+        ;;
+    video/*)
+        launch_gui mpv -quiet "$1"
+        ;;
+    application/epub*|\
+    application/pdf|\
+    application/postscript|\
+    application/vnd.djvu|\
+    image/vnd.djvu)
+        launch_gui zathura "$1"
+        ;;
+    audio/*|\
+    video/x-ms-asf)
+        if [ -z "$(mediainfo "$1" | grep -E "Cover\s*: Yes")" ]; then
+            launch_term mpv --audio-display=no "$1"
+        else
+            launch_gui mpv "$1"
+        fi
+        ;;
+    inode/symlink)
+        target=$(readlink -f "$1")
+        if [ -f "$target" ]; then
+            "$0" "$target"
+        else
+            echo "Error: Broken symlink or target not found: '$1'" >&2
+            exit 1
+        fi
+        ;;
+    *)
+        echo "Unsupported file type: $mime_type" >&2
+        exit 1
+        ;;
+esac
+
+exit 0

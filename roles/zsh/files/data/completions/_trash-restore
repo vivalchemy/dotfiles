@@ -1,0 +1,40 @@
+#compdef trash-restore
+
+# Advanced Zsh completion script for trash-restore command
+
+_trash_restore_completion() {
+    local trash_dir="$HOME/.local/share/Trash/files"
+    local info_dir="$HOME/.local/share/Trash/info"
+    local -a trashed_files original_paths
+
+    # Function to extract original paths from .trashinfo files
+    _get_original_paths() {
+        local info_file
+        for info_file in "$info_dir"/*.trashinfo; do
+            if [[ -f "$info_file" ]]; then
+                local filename=$(basename "$info_file" .trashinfo)
+                local original_path=$(grep "^Path=" "$info_file" | cut -d'=' -f2-)
+                original_paths+=("$filename:$original_path")
+            fi
+        done
+    }
+
+    # Populate trashed files and their original paths
+    trashed_files=($(ls "$trash_dir"))
+    _get_original_paths
+
+    # Completion options
+    _arguments \
+        '*: :->trashed_files' \
+        && return 0
+
+    case "$state" in
+        (trashed_files)
+            # Provide completion for trashed files with original path details
+            _describe -V 'trashed files' original_paths
+            ;;
+    esac
+}
+
+# Register the completion function
+_trash_restore_completion "$@"

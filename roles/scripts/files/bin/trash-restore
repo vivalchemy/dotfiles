@@ -1,0 +1,46 @@
+#!/usr/bin/bash
+
+# Trash directories
+TRASH_DIR="$HOME/.local/share/Trash/files"
+INFO_DIR="$HOME/.local/share/Trash/info"
+
+# Check if a filename is provided
+if [[ -z "$1" ]]; then
+    echo "Usage: restore-file <filename>"
+    exit 1
+fi
+
+# Find the .trashinfo file
+INFO_FILE=$(find "$INFO_DIR" -name "*$1.trashinfo")
+
+# Check if info file exists
+if [[ -z "$INFO_FILE" ]]; then
+    echo "No trash info found for file: $1"
+    exit 1
+fi
+
+# Extract the original path
+ORIGINAL_PATH=$(grep "^Path=" "$INFO_FILE" | cut -d'=' -f2-)
+
+# Check if the file exists in trash
+TRASH_FILE="$TRASH_DIR/$1"
+if [[ ! -e "$TRASH_FILE" ]]; then
+    echo "File not found in trash: $1"
+    exit 1
+fi
+
+# Determine restore location
+# If original path doesn't exist, restore to current directory
+if [[ ! -d "$(dirname "$ORIGINAL_PATH")" ]]; then
+    RESTORE_PATH="$(pwd)/$1"
+else
+    RESTORE_PATH="$ORIGINAL_PATH"
+fi
+
+# Restore the file
+mv "$TRASH_FILE" "$RESTORE_PATH"
+
+# Remove the .trashinfo file
+rm "$INFO_FILE"
+
+echo "Restored $1 to $RESTORE_PATH"
