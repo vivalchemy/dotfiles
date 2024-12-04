@@ -19,8 +19,11 @@
     - scripts
     - starship
     - tmux
+    # - vivaldi
     - wallpapers
+    # - xfce4 # no configured currently
     - yazi
     - zathura
-    - zellij
+    # - zellij # using tmux so no need currently
+    # - zen-browser # no configured at all
     - zsh
