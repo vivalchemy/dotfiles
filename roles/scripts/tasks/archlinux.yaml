@@ -16,7 +16,7 @@
     force: true # "true" will break idempotency
   loop: "{{ shell_scripts.files }}"
   when: ((configure | default(true)) | bool) and shell_scripts.matched > 0
-  no_log: false
+  no_log: true
   loop_control:
     loop_var: file
 
@@ -32,6 +32,7 @@
     file_type: directory
     hidden: true
     recurse: true
+  no_log: true
   register: systemd_directories
   when: (configure | default(true)) | bool  # Default to true if not defined
 
@@ -42,7 +43,7 @@
     state: directory
   loop: "{{ systemd_directories.files }}"
   when: ((configure | default(true)) | bool) and systemd_directories.matched > 0
-  no_log: false
+  no_log: true
   loop_control:
     loop_var: dir
 
@@ -67,8 +68,8 @@
     state: link
     force: true # "true" will break idempotency
   loop: "{{ systemd_files.files }}"
-  when: ((configure | default(true)) | bool) and systemd_files.matched > 0 
-  no_log: false
+  when: ((configure | default(true)) | bool) and systemd_files.matched > 0
+  no_log: true
   loop_control:
     loop_var: file
 

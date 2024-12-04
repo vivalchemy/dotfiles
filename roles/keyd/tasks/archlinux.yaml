@@ -12,10 +12,10 @@
   register: default_conf
   when: (configure | default(true)) | bool  # Default to true if not defined
 
-- name: "Debug | default_conf"
-  ansible.builtin.debug:
-    var: default_conf
-  when: (configure | default(true)) | bool  # Default to true if not defined
+# - name: "Debug | default_conf"
+#   ansible.builtin.debug:
+#     var: default_conf
+#   when: (configure | default(true)) | bool  # Default to true if not defined
 
 - name: "Symlink default.conf to /etc/keyd/default.conf"
   become: true

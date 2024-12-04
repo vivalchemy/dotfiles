@@ -129,6 +129,7 @@ This command will run the playbook with the `cli` tag, skip symlink creation (by
 
 ## ✅ TODOs  
 - [ ] Add `zen userChrome.css` configuration.  
+- [ ] Add an extra args called debug to turn on debug mode 
 - [ ] Install additional fonts.  
 - [ ] Install remaining aur and non config packages via Ansible.  
 

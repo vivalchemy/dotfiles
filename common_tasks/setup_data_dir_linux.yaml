@@ -1,8 +1,8 @@
-- name: "Debug | data Directory"
-  ansible.builtin.debug:
-    msg: "role_data_directory_suffix is not defined; using {{ role_name + '/' }} instead"
-  when: role_data_directory_suffix is not defined
-  tags: always
+# - name: "Debug | data Directory"
+#   ansible.builtin.debug:
+#     msg: "role_data_directory_suffix is not defined; using {{ role_name + '/' }} instead"
+#   when: role_data_directory_suffix is not defined
+#   tags: always
 
 - name: "Detect/Create data Directory"
   ansible.builtin.file:
