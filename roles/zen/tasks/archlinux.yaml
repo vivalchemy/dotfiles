@@ -4,12 +4,8 @@
 #     name:
 #       - "{{ role_name }}"
 #     state: latest
-#   tags:
-#     - zellij
 #
 # - name: "Setup Config for {{ ansible_distribution }}"
 #   ansible.builtin.include_tasks: "{{ item }}"
 #   loop:
 #     - common_tasks/setup_config_dir_linux.yaml
-#   tags:
-#     - zen

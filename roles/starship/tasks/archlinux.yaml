@@ -5,9 +5,6 @@
       - "{{ role_name }}"
     state: latest
   when: (update | default(true)) | bool # Default to true if not defined
-  tags:
-    - starship
-    - cli
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
@@ -16,6 +13,3 @@
   vars:
     role_config_directory_suffix: "" # uses the config directory directly
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - starship
-    - cli

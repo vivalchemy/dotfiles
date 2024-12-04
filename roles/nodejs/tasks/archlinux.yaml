@@ -6,9 +6,6 @@
       - "npm" # arch linux doesn't come with npm by default
     state: latest
   when: (update | default(true)) | bool # Default to true if not defined
-  tags:
-    - nodejs
-    - cli
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
@@ -17,6 +14,3 @@
   vars:
     role_config_directory_suffix: "npm/"
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - nodejs
-    - cli

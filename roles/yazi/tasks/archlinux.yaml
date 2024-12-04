@@ -5,24 +5,15 @@
       - "{{ role_name }}"
     state: latest
   when: (update | default(true)) | bool # Default to true if not defined
-  tags:
-    - yazi
-    - cli
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
   loop:
     - common_tasks/setup_config_dir_linux.yaml
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - yazi
-    - cli
 
 - name: "Install the plugins"
   ansible.builtin.shell:
     cmd: "ya pack -i" # To install all the plugins with locked versions from package.toml on a new system
     creates: "{{ ansible_env.HOME }}/.config/yazi/plugins/"
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - yazi
-    - cli

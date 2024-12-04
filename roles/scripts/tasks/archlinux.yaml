@@ -7,10 +7,6 @@
     recurse: true
   register: shell_scripts
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Create symlinks for shell scripts"
   ansible.builtin.file:
@@ -23,19 +19,11 @@
   no_log: false
   loop_control:
     loop_var: file
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Clear the Config Variable"
   ansible.builtin.set_fact:
     shell_scripts: null
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - scripts
-    - cli
-    - gui
 
 # Copy the systemd folder directly to ~/.config/systemd/user
 - name: "Find all directories in systemd directory"
@@ -46,10 +34,6 @@
     recurse: true
   register: systemd_directories
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Create data Directories recursively"
   ansible.builtin.file:
@@ -61,19 +45,11 @@
   no_log: false
   loop_control:
     loop_var: dir
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Clear the data Variable"
   ansible.builtin.set_fact:
     systemd_directories: null
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Find all files in systemd Directory"
   ansible.builtin.find:
@@ -83,10 +59,6 @@
     recurse: true
   register: systemd_files
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Create symlinks for each file in a systemd directory"
   ansible.builtin.file:
@@ -99,19 +71,11 @@
   no_log: false
   loop_control:
     loop_var: file
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Clear the Data Variable"
   ansible.builtin.set_fact:
     systemd_files: null
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Reload the systemd daemon"
   ansible.builtin.systemd:
@@ -119,10 +83,6 @@
     scope: user
   changed_when: false
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - scripts
-    - cli
-    - gui
 
 - name: "Enable the user service"
   ansible.builtin.systemd:
@@ -133,7 +93,3 @@
     state: restarted
   changed_when: false
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - scripts
-    - cli
-    - gui

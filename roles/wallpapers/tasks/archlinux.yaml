@@ -4,9 +4,6 @@
     path: "{{ ansible_user_dir }}/Pictures/wallpapers"
     state: directory
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - wallpapers
-    - gui
 
 - name: "Find all Wallpapers"
   ansible.builtin.find:
@@ -16,9 +13,6 @@
     recurse: true
   register: wallpapers
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - wallpapers
-    - gui
 
 - name: "Create symlinks for wallpapers recursively"
   ansible.builtin.file:
@@ -31,14 +25,8 @@
   no_log: true
   loop_control:
     loop_var: file
-  tags:
-    - wallpapers
-    - gui
 
 - name: "Clear the wallpapers Variable"
   ansible.builtin.set_fact:
     wallpapers: null
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - wallpapers
-    - gui

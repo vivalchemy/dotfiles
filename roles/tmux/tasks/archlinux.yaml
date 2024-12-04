@@ -5,9 +5,6 @@
       - "{{ role_name }}"
     state: latest
   when: (update | default(true)) | bool # Default to true if not defined
-  tags:
-    - tmux
-    - cli
 
 - name: "Setup Config for {{ ansible_distribution }}"
   ansible.builtin.include_tasks: "{{ item }}"
@@ -15,6 +12,3 @@
     - common_tasks/setup_config_dir_linux.yaml
     - common_tasks/setup_data_dir_linux.yaml
   when: (configure | default(true)) | bool  # Default to true if not defined
-  tags:
-    - tmux
-    - cli

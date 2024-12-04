@@ -1,11 +1,16 @@
-- name: "{{ role_name }} | Checking Ansible config for {{ ansible_distribution }}"
+- name: "Checking Ansible config for {{ ansible_distribution }}"
   ansible.builtin.import_tasks: common_tasks/ansible_distribution_check.yaml
   tags:
     - alacritty
     - gui
 
-- name: "{{ role_name }} | Run Tasks for {{ ansible_distribution }}"
-  ansible.builtin.include_tasks: "{{ ansible_distribution | lower }}.yaml"
+- name: "Run Tasks for {{ ansible_distribution }}"
+  ansible.builtin.include_tasks:
+    file: "{{ ansible_distribution | lower }}.yaml"
+    apply:
+      tags:
+        - alacritty
+        - gui
   when: distribution_config.stat.exists
   tags:
     - alacritty
