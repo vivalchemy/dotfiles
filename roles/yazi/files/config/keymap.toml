@@ -1,3 +1,8 @@
 [[manager.prepend_keymap]]
 on   = [ "e" ]
 run  = "plugin child-dir"
+
+[[manager.prepend_keymap]]
+on   = [ "/" ]
+run = "plugin easyjump"
+desc = "easyjump"

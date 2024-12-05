@@ -78,7 +78,7 @@ local vimG = {
 vim.opt.shortmess:append("c")
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
-vim.cmd([[set iskeyword-=_]])
+-- vim.cmd([[set iskeyword-=_]])
 -- @, 48-57, 192-255,_,
 --
 
