@@ -40,6 +40,7 @@ addToPath "$XDG_DATA_HOME/tmux/plugins/tmuxifier/bin" #tmuxifier
 # to initialize zap plugin manager
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 
+
 # plug = source
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
@@ -55,13 +56,18 @@ plug "${XDG_DATA_HOME}/bun/_bun" # autocompletion for bun
 plug "${XDG_DATA_HOME}/sdkman/bin/sdkman-init.sh" # sdkman
 
 fpath=($XDG_DATA_HOME/zsh/completions $fpath)
+
+
+fastfetch
+
+
 # Load and initialise completion system
 autoload -Uz compinit
 compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-$ZSH_VERSION # caching zsh completions using XDG base dir
 
 # caching zsh completions
-zstyle ':completion::complete:*' use-cache on
 zstyle ':completion::complete:*' cache-path "${XDG_CACHE_HOME}/zsh"
+zstyle ':completion::complete:*' use-cache on
 
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
@@ -69,10 +75,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# zoxide
-eval "$(zoxide init --cmd cd zsh)"
-source <(fzf --zsh)
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # vi mode
 bindkey -v
@@ -82,4 +85,5 @@ bindkey '^n' history-search-forward
 
 bindkey -s "^ " "tmux_sessionizer.sh\n"
 
-fastfetch
+eval "$(zoxide init zsh)"
+source <(fzf --zsh)

@@ -95,9 +95,6 @@ alias lg='lazygit'
 alias ld='lazydocker' # since docker requires root privileges
 alias db='nvim -c "DBUI"'
 
-# zoxide
-alias z='cd'
-
 # zed editor
 alias zed='zeditor'
 
@@ -179,3 +176,5 @@ function y() {
 # g -> git
 # n -> neovim
 # t -> tmux
+# y -> yazi
+# z -> zoxide
