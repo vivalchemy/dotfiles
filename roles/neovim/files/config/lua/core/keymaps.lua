@@ -52,8 +52,6 @@ map("n", "<C-W>-", "5<C-W>-", opts)
 map("n", "<C-W>>", "5<C-W>>", opts)
 map("n", "<C-W><", "5<C-W><", opts)
 
-map("n", "<leader>e", ":lua MiniFiles.open()<CR>", opts)
-
 -- Center the text when searching
 map("n", "n", "nzz", opts)
 map("n", "N", "Nzz", opts)
@@ -79,7 +77,7 @@ map("v", "<S-k>", ":move +2<CR>gv")
 map("v", "<S-j>", ":move -2<CR>gv")
 
 -- Execute the current file in the buffer
-map("n", "<leader>x", ExecuteCurrentFile, { desc = "Execute the file in current buffer" })
+-- map("n", "<leader>x", ExecuteCurrentFile, { desc = "Execute the file in current buffer" })
 
 --------------------
 -- Better folding --

@@ -51,7 +51,7 @@ local vimOpts = {
 
 	-- Decrease update time
 	updatetime = 250,
-	timeoutlen = 300,
+	timeoutlen = 1000,
 
 	-- set completeopt to have a better completion experience
 	completeopt = "menuone,noselect",
@@ -86,15 +86,3 @@ vim.filetype.add({ extension = { templ = "templ", rasi = "rasi" } })
 
 SetOptions(vimOpts, "opt")
 SetOptions(vimG, "g")
-
--- -- Folding settings
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	callback = function()
-		if require("nvim-treesitter.parsers").has_parser() then
-			vim.opt.foldmethod = "expr"
-			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-		else
-			vim.opt.foldmethod = "syntax"
-		end
-	end,
-})
