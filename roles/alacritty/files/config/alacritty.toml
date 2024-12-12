@@ -26,7 +26,6 @@ history = 10000
 multiplier = 3
 
 [window]
-opacity = 0.83
+opacity = 0.8
 padding.x = 0
 padding.y = 0
-
