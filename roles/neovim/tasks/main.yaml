@@ -5,7 +5,7 @@
     - cli
 
 - name: "Run Tasks for {{ ansible_distribution }}"
-  ansible.builtin.include_tasks: 
+  ansible.builtin.include_tasks:
     file: "{{ ansible_distribution | lower }}.yaml"
     apply:
       tags:

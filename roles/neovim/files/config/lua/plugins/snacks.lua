@@ -112,6 +112,20 @@ return {
 			end,
 			desc = "Select Scratch Buffer",
 		},
+		{
+			"<leader>lg",
+			function()
+				Snacks.lazygit()
+			end,
+			desc = "Lazygit",
+		},
+		{
+			"<leader>tn",
+			function()
+				Snacks.notifier.hide()
+			end,
+			desc = "Toggle notifier",
+		},
 	},
 	opts = {
 		-- Enable or disable specific features

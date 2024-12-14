@@ -26,6 +26,7 @@ local vimOpts = {
 	termguicolors = true,
 	-- background = "dark",
 	signcolumn = "yes", -- the column where git signs are displayed
+	colorcolumn = "81",
 
 	-- backspace
 	backspace = "indent,eol,start",
