@@ -120,6 +120,37 @@ vim.api.nvim_create_user_command("RestartServer", function()
 	vim.cmd("StartServer")
 end, {})
 
+-- Toggle auto completion
+local autoCompletionEnabled = true
+
+function EnableAutoCompletion()
+	vim.cmd("FormatEnable") -- conform
+	require("cmp").setup({ enabled = true })
+	-- vim.cmd("LspStart") -- nvim_lspconfig -- required for hover action
+	vim.cmd("SupermavenStart") -- supermaven
+	autoCompletionEnabled = true
+end
+
+function DisableAutoCompletion()
+	vim.cmd("FormatDisable") -- conform
+	require("cmp").setup({ enabled = false })
+	-- vim.cmd("LspStop") -- nvim_lspconfig -- required for hover action
+	vim.cmd("SupermavenStop") -- supermaven
+	autoCompletionEnabled = false
+end
+
+function ToggleAutoCompletion()
+	if autoCompletionEnabled then
+		DisableAutoCompletion()
+	else
+		EnableAutoCompletion()
+	end
+end
+
+vim.api.nvim_create_user_command("EnableAutoCompletion", EnableAutoCompletion, {})
+vim.api.nvim_create_user_command("DisableAutoCompletion", DisableAutoCompletion, {})
+vim.api.nvim_create_user_command("ToggleAutoCompletion", ToggleAutoCompletion, {})
+
 -- Detect file type for ansible files
 if vim.filetype then
 	vim.filetype.add({
