@@ -30,8 +30,6 @@ This repository contains my personal system configuration managed using [Ansible
    ```bash  
    sudo pacman -S ansible  
    ```  
-3. **Python Environment:** Ensure Python is installed on your system.  
-
 ---
 
 ## 🚀 Installation  
