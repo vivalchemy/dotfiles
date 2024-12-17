@@ -1,0 +1,1 @@
+alias pb='pocketbase'

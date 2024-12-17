@@ -1,0 +1,2 @@
+# vscodium
+alias code='codium'

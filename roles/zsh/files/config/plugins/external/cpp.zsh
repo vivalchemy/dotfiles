@@ -1,0 +1,2 @@
+# cpp
+alias gpp=g++

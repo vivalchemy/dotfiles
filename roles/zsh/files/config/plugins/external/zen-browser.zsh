@@ -1,0 +1,1 @@
+alias zen='zen-browser'

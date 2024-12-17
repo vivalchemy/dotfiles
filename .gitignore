@@ -1,11 +1,6 @@
-hypr/.config/hypr/hyprpaper.conf
 nvim/.config/nvim/spell/en.utf-8.add.spl
 wallpapers/Pictures/wallpapers/tmp.txt
-zsh/.config/zsh/tmp/
-zsh/.config/zsh/.zcompdump
-zsh/.config/zsh/.zsh_history
-zsh/.config/zsh/env.zsh
-system-configuration/grub.cfg
 roles/hyprland/files/config/hyprpaper.conf
 roles/neovim/files/config/spell
-roles/zsh/files/config/env.zsh
+roles/zsh/files/config/.zsh_history
+roles/zsh/files/config/core/env.zsh
