@@ -126,6 +126,13 @@ return {
 			end,
 			desc = "Toggle notifier",
 		},
+		{
+			"<leader>hn",
+			function()
+				Snacks.notifier.show_history()
+			end,
+			desc = "Toggle notifier",
+		},
 	},
 	opts = {
 		-- Enable or disable specific features
