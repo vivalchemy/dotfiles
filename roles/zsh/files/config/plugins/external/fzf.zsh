@@ -10,7 +10,7 @@ zstyle ':fzf-tab:*' use-fzf-default-opts yes
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-alias hg="sed 's/.*;//g' ${HISTFILE:-$HOME/.zsh_history} | fzf --tac --height 40% | wl-copy"
+alias hf="sed 's/.*;//g' ${HISTFILE:-$HOME/.zsh_history} | fzf --tac --height 40% | wl-copy"
 alias fzfview='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 alias fzfv='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 

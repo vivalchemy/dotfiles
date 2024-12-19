@@ -1,5 +1,6 @@
-alias nv='nvim $(fzfview)'
-alias n='nvim -c "lua require(\"telescope.builtin\").find_files()"'
+alias n='nvim'
+alias nf='nvim $(fzfview)'
+alias nv='nvim -c "lua require(\"telescope.builtin\").find_files()"'
 alias vim='nvim'
 alias vi='nvim'
 
