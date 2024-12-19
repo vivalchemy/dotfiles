@@ -2,7 +2,8 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		{ "folke/lazydev.nvim", ft = "lua", opts = {} },
-		{ "j-hui/fidget.nvim", opts = {} },
+		-- { "j-hui/fidget.nvim", opts = {} },
+		{ "Saghen/blink.cmp" },
 	},
 	config = function()
 		-- LSP Attach Autocommand
