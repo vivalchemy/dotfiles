@@ -121,7 +121,7 @@ return {
 			builtin.find_files({ cwd = vim.fn.stdpath("config") })
 		end, { desc = "[F]ind [N]eovim Config Files" })
 
-		keymap("n", "<leader>e", function()
+		keymap("n", "<leader>-", function()
 			builtin.find_files({
 				cwd = vim.fn.getcwd(),
 				find_command = { "fd", "--type", "directory", "--follow", "--hidden" },

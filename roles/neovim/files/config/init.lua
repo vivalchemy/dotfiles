@@ -25,8 +25,8 @@ Plug("plugins.which-key")
 Plug("plugins.yazi")
 
 -- Completion plugins
-Plug("plugins.conform") -- FormatDisable / FormatEnable
--- Plug("plugins.nvim_cmp") -- :lua require("cmp").setup { enabled = false/true }
+-- Plug("plugins.conform") -- FormatDisable / FormatEnable
+Plug("plugins.nvim_cmp") -- :lua require("cmp").setup { enabled = false/true }
 Plug("plugins.blink-cmp")
 Plug("plugins.nvim_lint")
 Plug("plugins.nvim_lspconfig") -- LspStart/ LspStop
