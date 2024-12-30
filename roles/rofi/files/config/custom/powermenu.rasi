@@ -14,21 +14,21 @@ configuration {
 
 /*****----- Global Properties -----*****/
 * {
-    /* Resolution : 1920x1080 */
-    mainbox-spacing:             50px;
-    mainbox-margin:              50px;
-    message-margin:              0px 300px;
-    message-padding:             12px;
-    message-border-radius:       12px;
-    listview-spacing:            25px;
-    element-padding:             35px 0px;
-    element-border-radius:       60px;
+    /* Resolution : 1366x768 */
+    mainbox-spacing:             30px;         /* Reduced for smaller resolution */
+    mainbox-margin:              30px;         /* Reduced margin */
+    message-margin:              0px 150px;    /* Adjusted for smaller screen */
+    message-padding:             10px;         /* Slightly reduced padding */
+    message-border-radius:       10px;
+    listview-spacing:            20px;         /* Reduced spacing between items */
+    element-padding:             20px 0px;     /* Reduced padding for elements */
+    element-border-radius:       50px;         /* Adjusted radius for smaller elements */
 
-    prompt-font:                 "Iosevka Nerd Font Bold 48";
-    textbox-font:                "Iosevka Nerd Font 12";
-    element-text-font:           "feather 48";
+    prompt-font:                 "Poppins Semibold 36";                    /* Adjusted font size */
+    textbox-font:                "Poppins 13";                    /* Adjusted font size */
+    element-text-font:           "Poppins 48";    /* Adjusted font size */
 
-    background-window:           black/20%;
+    background-window:           black/40%;
     background-normal:           white/5%;
     background-selected:         white/15%;
     foreground-normal:           white;
@@ -41,8 +41,8 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       1000px;
-    border-radius:               50px;
+    width:                       800px;         /* Reduced width for smaller screen */
+    border-radius:               40px;         /* Adjusted radius for better proportions */
     cursor:                      "default";
     background-color:            var(background-window);
 }
@@ -95,7 +95,7 @@ textbox {
 listview {
     enabled:                     true;
     expand:                      false;
-    columns:                     5;
+    columns:                     4;            /* Reduced columns for compact display */
     lines:                       1;
     cycle:                       true;
     dynamic:                     true;
@@ -131,3 +131,4 @@ element selected.normal {
     background-color:            var(background-selected);
     text-color:                  var(foreground-selected);
 }
+

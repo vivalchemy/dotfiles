@@ -30,7 +30,7 @@ rofi_cmd() {
 	rofi -dmenu \
 		-p "Goodbye ${USER}" \
 		-mesg "Uptime: $uptime" \
-		-theme ${dir}/${theme}.rasi
+		-theme custom/${theme}.rasi
 }
 
 # Confirmation CMD
@@ -38,7 +38,7 @@ confirm_cmd() {
 	rofi -dmenu \
 		-p 'Confirmation' \
 		-mesg 'Are you Sure?' \
-		-theme ${dir}/confirm.rasi
+		-theme general/confirm.rasi
 }
 
 # Ask for confirmation

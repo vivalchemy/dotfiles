@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Emoji
-Exec=rofi -show emoji -modi emoji | wl-copy
+Exec=rofi -show emoji -modi emoji -emoji-format '{emoji}' -theme general/grid.rasi -theme-str 'configuration { show-icons : false; }'
 Terminal=false
 Type=Application
 Keywords=Text;Unicode;Emoji;Rofi;

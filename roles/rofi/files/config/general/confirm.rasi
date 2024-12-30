@@ -13,15 +13,15 @@ configuration {
 }
 
 /*****----- Global Properties -----*****/
-@import                          "colors.rasi"
-@import                          "fonts.rasi"
+@import                          "shared/colors.rasi"
+@import                          "shared/fonts.rasi"
 
 /*****----- Main Window -----*****/
 window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       500px;
+    width:                       300px;
     border-radius:               20px;
     cursor:                      "default";
     background-color:            @background;
@@ -73,19 +73,19 @@ listview {
 
 /*****----- Elements -----*****/
 element {
-    padding:                     60px 10px;
+    padding:                     10px 10px;
     border-radius:               20px;
     background-color:            @background-alt;
     text-color:                  @foreground;
     cursor:                      pointer;
 }
 element-text {
-    font:                        "feather 48";
-    background-color:            transparent;
-    text-color:                  inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.5;
+  background-color:            transparent;
+  font:                        "Poppins SemiBold 24";
+  text-color:                  inherit;
+  cursor:                      inherit;
+  vertical-align:              0.5;
+  horizontal-align:            0.5;
 }
 element selected.normal {
     background-color:            var(selected);

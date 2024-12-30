@@ -3,7 +3,7 @@ return {
 	dependencies = {
 		{ "folke/lazydev.nvim", ft = "lua", opts = {} },
 		-- { "j-hui/fidget.nvim", opts = {} },
-		{ "Saghen/blink.cmp" },
+		-- { "Saghen/blink.cmp" },
 	},
 	config = function()
 		-- LSP Attach Autocommand
