@@ -37,10 +37,6 @@ prepend_previewers = [
   # Use glow to preview Markdown files
   { name = "*.md", run = "glow" },
   { mime = "audio/*",   run = "exifaudio"},
-  { mime = "video/*", run = "video-ffmpeg" }
-]
-prepend_preloaders = [
-  { mime = "video/*", run = "video-ffmpeg" },
 ]
 append_previewers = [
   { name = "*", run = "hexyl" },

@@ -1,9 +1,8 @@
 [plugin]
 deps = [
-  { use = "Reledia/glow", rev = "4e016fa" }, 
-  { use = "Sonico98/exifaudio", rev = "6205460" }, 
-  { use = "Tyarel8/video-ffmpeg", rev = "fe26a18" }, 
-  { use = "yazi-rs/plugins:max-preview", rev = "ec97f88" }
+  { use = "Reledia/glow", rev = "5ce76dc" }, 
+  { use = "Sonico98/exifaudio", rev = "d794614" }, 
+  { use = "yazi-rs/plugins:max-preview", rev = "71c4fc2" }
 ]
 
 [flavor]
