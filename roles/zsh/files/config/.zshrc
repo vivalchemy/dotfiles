@@ -1,3 +1,18 @@
+# +------------------------+
+# | Autostart TMUX session |
+# +------------------------+
+if command -v tmux >/dev/null 2>&1; then
+  if [ -z "$TMUX" ]; then
+    if ! tmux has-session -t default 2>/dev/null; then
+      tmux new-session -s default
+    else
+      tmux attach-session -t default
+    fi
+  fi
+fi
+
+# +-----------------------------------------------------+
+
 source "$ZDOTDIR/utils/include.zsh"
 
 # +-------------------------------+
