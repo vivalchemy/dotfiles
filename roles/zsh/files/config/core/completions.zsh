@@ -1,8 +1,12 @@
+source "$ZDOTDIR/utils/prepend_to_fpath.zsh"
+
+prependToFpath "$XDG_DATA_HOME/zsh/completions"
 # Set up a cache for completion files
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion::complete:*' use-cache on
 autoload -Uz compinit
-compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"  # Using XDG cache directory for completion dumps
+compinit # too much hassle to use -d
+# compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"  # Using XDG cache directory for completion dumps
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
