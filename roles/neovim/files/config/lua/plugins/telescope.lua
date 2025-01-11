@@ -64,8 +64,9 @@ return {
 						"file",
 						"--hidden",
 						"--follow",
+            "--no-ignore",
 						"--exclude",
-						".git",
+						"{.git,node_modules,__pycache__}",
 					},
 				},
 				live_grep = {

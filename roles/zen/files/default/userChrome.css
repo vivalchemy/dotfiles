@@ -1,0 +1,35 @@
+/* +--------------------+ */
+/* | Sidebar Sequencing | */
+/* +--------------------+ */
+#zen-current-workspace-indicator {
+  display: none !important;
+  /*order: 9;*/
+}
+
+#vertical-pinned-tabs-container-separator {
+  order: 3;
+}
+
+#zen-essentials-container {
+  order: 1;
+}
+
+#vertical-pinned-tabs-container {
+  order: 3;
+}
+
+#tabbrowser-arrowscrollbox {
+  order: 5;
+}
+
+/* +------------------+ */
+/* | Floating Sidebar | */
+/* +------------------+ */
+#titlebar {
+  height: 80vh !important ;
+}
+
+#navigator-toolbox {
+  display: flex !important;
+  justify-content: center !important;
+}
