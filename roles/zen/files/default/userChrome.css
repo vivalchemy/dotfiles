@@ -33,3 +33,7 @@
   display: flex !important;
   justify-content: center !important;
 }
+
+#zen-appcontent-navbar-container {
+  display: none !important;
+}
