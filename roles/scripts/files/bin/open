@@ -20,6 +20,27 @@ if [ $# -eq 0 ] || [ ! -f "$1" ]; then
     exit 1
 fi
 
+
+execute_based_on_extension() {
+  local file="$1"
+  local extension="${file##*.}"
+  
+  case "$extension" in
+    "desktop")
+      local exec_command=$(rg "^Exec=" "$file" | cut -d= -f2-)
+      # Check if the command was found and run it
+      if [ -n "$exec_command" ]; then
+        bash -c "$exec_command"
+      else
+        echo "Exec command not found in the .desktop file."
+      fi
+      ;;
+    *)
+      launch_term nvim "$file"
+      ;;
+  esac
+}
+
 # Helper function to launch GUI applications
 launch_gui() {
     if [ "$detach" -eq 0 ]; then
@@ -33,7 +54,7 @@ launch_gui() {
 launch_term() {
     if [ "$detach" -eq 1 ]; then
         # Safely construct command string
-        cmd_string=""
+        local cmd_string=""
         for arg in "$@"; do
             cmd_string="${cmd_string} $(printf '%q' "$arg")"
         done
@@ -54,7 +75,7 @@ case "$mime_type" in
     application/x-subrip|\
     inode/x-empty|\
     text/*)
-        launch_term nvim "$1"
+        execute_based_on_extension "$1"
         ;;
     image/*)
         launch_gui swayimg "$1"

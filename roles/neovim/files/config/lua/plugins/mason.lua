@@ -9,7 +9,7 @@ return {
 	config = function()
 		-- Define LSP servers to be installed
 		local servers = {
-			clangd = {},
+			-- clangd = {}, -- annoying for protobuf files
 			gopls = {},
 			htmx = {
 				filetypes = { "html", "templ", "svelte", "javascriptreact" },
