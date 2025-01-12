@@ -18,12 +18,12 @@ source "$ZDOTDIR/utils/include.zsh"
 # +-------------------------------+
 # | Files which modify zsh itself |
 # +-------------------------------+
+# the completion config is included at file end
 include "core/history"
 include "core/aliases"
 include "core/functions"
 include "core/keymaps"
 include "core/options"
-include "core/completions"
 # include "core/old_prompt"
 # include "core/env"
 
@@ -76,3 +76,8 @@ include "plugins/external/yazi"
 include "plugins/external/zed"
 include "plugins/external/zen-browser"
 include "plugins/external/zoxide"
+
+# +---------------------------------------------+
+# | Completion needs to be loaded after plugins |
+# +---------------------------------------------+
+include "core/completions"

@@ -1,7 +1,8 @@
 # prepends to completion directory
 prependToFpath() {
-    if [ -d "$1" ]; then
-        fpath=($1 $fpath)
+    local expanded_path=$(realpath "$1")
+    if [[ -d "$expanded_path" ]] && [[ " $fpath " != *" $expanded_path "* ]]; then
+        fpath=($expanded_path $fpath)
     fi
 }
 
