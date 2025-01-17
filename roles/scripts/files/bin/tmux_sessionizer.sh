@@ -16,7 +16,7 @@ fi
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-  selected=$($search_cmd ~/Projects ~/Public ~/dotfiles/roles/ | cat - <(echo -e "${include_dirs[@]} ${tmuxifier_sessions}" | tr " " "\n") | tac |  fzf --tmux  center,50%,40%)
+  selected=$($search_cmd ~/Projects ~/Public ~/dotfiles/roles/ ~/Public/testing | cat - <(echo -e "${include_dirs[@]} ${tmuxifier_sessions}" | tr " " "\n") | tac |  fzf --tmux  center,50%,40%)
 fi
 
 if [[ -z $selected ]]; then
