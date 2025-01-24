@@ -2,7 +2,7 @@
 deps = [
   { use = "Reledia/glow", rev = "5ce76dc" }, 
   { use = "Sonico98/exifaudio", rev = "d794614" }, 
-  { use = "yazi-rs/plugins:max-preview", rev = "71c4fc2" }
+  { use = "yazi-rs/plugins:max-preview", rev = "7707c09" }
 ]
 
 [flavor]

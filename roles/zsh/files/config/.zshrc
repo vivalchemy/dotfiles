@@ -39,6 +39,7 @@ include "plugins/native/starship"
 include "plugins/native/supercharge"
 include "plugins/native/zsh-autosuggestions"
 include "plugins/native/zsh-syntax-highlighting"
+include "plugins/native/zsh-vi-mode"
 include "plugins/native/zsh-completions"
 
 # +-----------------------------------------------------+
