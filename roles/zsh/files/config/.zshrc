@@ -36,7 +36,7 @@ include "plugins/native/zap"
 # | Plugins made specifically for zsh  |
 # +------------------------------------+
 include "plugins/native/starship"
-include "plugins/native/supercharge"
+# include "plugins/native/supercharge" # only the reload feature is worth it rest are mediocre
 include "plugins/native/zsh-autosuggestions"
 include "plugins/native/zsh-syntax-highlighting"
 include "plugins/native/zsh-vi-mode"

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=deepseek.com
+Exec=/home/shadow/.local/bin/launch_web_apps.sh https://chat.deepseek.com/
+Terminal=false
+Type=Application
+Keywords=Ai;Chat;Browser
+Comment=Deepseek V3 by Deepseek team
+Icon=internet-chat
+Categories=Ai;Chat;
+StartupNotify=false
+
