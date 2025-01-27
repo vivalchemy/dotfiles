@@ -12,3 +12,15 @@
     - common_tasks/setup_config_dir_linux.yaml
     - common_tasks/setup_data_dir_linux.yaml
   when: (configure | default(true)) | bool  # Default to true if not defined
+
+- name: "Source Config for {{ ansible_distribution }}"
+  ansible.builtin.shell:
+    cmd: "zsh -i -c 'source ${ZDOTDIR:-$HOME}/.zshrc'"
+  when: (configure | default(true)) | bool  # Default to true if not defined
+  changed_when: false
+
+- name: "Install the plugins"
+  ansible.builtin.shell:
+    cmd: "zsh -i -c 'zap update all'"
+  when: (configure | default(true)) | bool  # Default to true if not defined
+  changed_when: false
