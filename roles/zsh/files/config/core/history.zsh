@@ -13,6 +13,7 @@ setopt INC_APPEND_HISTORY        # Write commands to the history file as they ar
 setopt HIST_FIND_NO_DUPS         # Avoid duplicates while searching history
 setopt HIST_IGNORE_SPACE         # Ignore commands starting with space
 setopt SHAREHISTORY              # Share history between zsh instances
+setopt APPEND_HISTORY            # Don't clear the history file when shell exits
 
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.

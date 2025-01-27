@@ -16,11 +16,14 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zmodload zsh/complist
 _comp_options+=(globdots)		# Include hidden files.
 zle_highlight=('paste:none')
-for dump in "${ZDOTDIR:-$HOME}/.zcompdump"(N.mh+24); do
-  compinit # too much hassle to use -d
-# compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"  # Using XDG cache directory for completion dumps
-done
-compinit -C
+
+if [[ ! -e "${ZDOTDIR:-$HOME}/.zcompdump" || $(find "${ZDOTDIR:-$HOME}/.zcompdump" -mmin +1440 -print) ]]; then
+  # If the file doesn't exist or it's older than 24 hours, recompute completions
+  compinit
+else
+  # Otherwise, load the dump without integrity checks
+  compinit -C
+fi
 
 # Path completion
 zstyle ':completion:*' path-guard-characters '/'
