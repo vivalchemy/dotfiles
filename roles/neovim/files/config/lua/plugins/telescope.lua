@@ -66,7 +66,7 @@ return {
 						"--follow",
 						"--no-ignore",
 						"--exclude",
-						"{.git,node_modules,__pycache__,.next}",
+						"{.git,node_modules,__pycache__,.next,.venv}",
 					},
 				},
 				live_grep = {

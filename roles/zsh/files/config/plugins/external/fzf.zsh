@@ -17,3 +17,6 @@ alias fzfv='fzf --preview "bat --color=always --style=numbers --line-range=:500 
 #font info
 alias fc-info='fc-query $(fc-list | fzf | sed "s/:.*//") | rg "(family|style|fontformat|fullname|file):" | sort'
 alias fc-view='view $(fc-list | fzf | sed "s/:.*//")'
+
+# jump to child directory
+alias fcd='cd $(fd --type=d | fzf --tac --height=40% || echo ".")'
