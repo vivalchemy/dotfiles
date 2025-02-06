@@ -49,10 +49,10 @@ return {
 				layout_config = {
 					horizontal = {
 						prompt_position = "top",
-						preview_width = 0.55,
+						preview_width = 0, -- no preview
 						results_width = 0.8,
 					},
-					width = 0.7,
+					width = 0.6,
 					height = 0.7,
 				},
 			},
@@ -66,7 +66,7 @@ return {
 						"--follow",
 						"--no-ignore",
 						"--exclude",
-						"{.git,node_modules,__pycache__,.next,.venv}",
+						"{.git,node_modules,__pycache__,.next,.venv,target}",
 					},
 				},
 				live_grep = {

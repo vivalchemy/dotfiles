@@ -8,7 +8,8 @@ DIR=$(pwd)
 
 while [[ "$DIR" != "/" ]]; do
   if [[ -f "$DIR/Makefile" ]] || [[ -f "$DIR/makefile" ]]; then
-    make -C "$DIR" "$@"
+    echo -e "${CProcess}Running make in ${CWarning}$DIR${CProcess}"
+    make -C "$DIR" "$@" --no-print-directory
     exit $?
   fi
   DIR=$(dirname "$DIR")

@@ -25,7 +25,7 @@ include "core/functions"
 include "core/keymaps"
 include "core/options"
 # include "core/old_prompt"
-# include "core/env"
+include "core/env"
 
 # +------------------------+
 # | Plugin manager for zsh |
@@ -82,3 +82,6 @@ include "plugins/external/zoxide"
 # | Completion needs to be loaded after plugins |
 # +---------------------------------------------+
 include "core/completions"
+
+# bun completions
+[ -s "/home/shadow/.local/share/bun/_bun" ] && source "/home/shadow/.local/share/bun/_bun"
