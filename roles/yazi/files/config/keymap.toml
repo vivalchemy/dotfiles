@@ -16,5 +16,5 @@ run  = "plugin child-dir"
 
 [[manager.prepend_keymap]]
 on   = [ "e" ]
-run = "plugin searchjump --args='autocd'"
+run = "plugin searchjump autocd"
 desc = "searchjump mode auto jump"

@@ -14,6 +14,8 @@ Status:children_add(function()
 	})
 end, 500, Status.RIGHT)
 
+require("full-border"):setup()
+
 -- Import config
 require("git"):setup()
 require("full-border"):setup({

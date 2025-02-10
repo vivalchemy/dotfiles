@@ -1,9 +1,27 @@
-[plugin]
-deps = [
-  { use = "Reledia/glow", rev = "5ce76dc" }, 
-  { use = "Sonico98/exifaudio", rev = "d794614" }, 
-  { use = "yazi-rs/plugins:max-preview", rev = "7707c09" }
-]
+[[plugin.deps]]
+use = "DreamMaoMao/searchjump"
+rev = "df6ee75"
+hash = "b82022e48c23a2c8d0879b7bc46990a0"
+
+[[plugin.deps]]
+use = "Reledia/glow"
+rev = "5ce76dc"
+hash = "52e5f5c602962e7cbf874da28f52ba45"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:full-border"
+rev = "8945e54"
+hash = "ae9e1d0c6bfd68cdebc98cc684c22b45"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:max-preview"
+rev = "8945e54"
+hash = "15b2ff7f6563c14d5b2e93b3e9da35de"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:git"
+rev = "8945e54"
+hash = "771f18427fb75fb19990ce602bb322f4"
 
 [flavor]
 deps = []
