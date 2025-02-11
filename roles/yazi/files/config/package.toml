@@ -23,5 +23,10 @@ use = "yazi-rs/plugins:git"
 rev = "8945e54"
 hash = "771f18427fb75fb19990ce602bb322f4"
 
+[[plugin.deps]]
+use = "Reledia/hexyl"
+rev = "39d3d4e"
+hash = "dd624cbaff94af65f39fd86bc57b340"
+
 [flavor]
 deps = []
