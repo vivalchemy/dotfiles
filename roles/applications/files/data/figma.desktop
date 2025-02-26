@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Figma
+Exec=/home/shadow/.local/bin/launch_web_apps.sh www.figma.com
+Terminal=false
+Type=Application
+Keywords=Design;Prototyping;UI;UX;Frontend;Backend;Browser;
+Comment=Design, prototyping, and collaboration faster than ever before.
+Icon=figma
+Categories=Web;
+StartupNotify=false
