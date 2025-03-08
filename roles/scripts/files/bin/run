@@ -8,12 +8,12 @@ DIR=$(pwd)
 
 while [[ "$DIR" != "/" ]]; do
   if [[ -f "$DIR/Makefile" ]] || [[ -f "$DIR/makefile" ]]; then
-    echo -e "${CProcess}Running make in ${CWarning}$DIR${CProcess}"
+    echo -e "${CProcess}Running make in ${CWarning}$DIR${ColorOff}"
     make -C "$DIR" "$@" --no-print-directory
     exit $?
   fi
   DIR=$(dirname "$DIR")
 done
 
-echo -e "${CWarning}No Makefile found in any parent directories.\n${CProcess}Please make one using \`touch Makefile\`"
+echo -e "${CWarning}No Makefile found in any parent directories.\nPlease make one using ${CProcess}\`touch Makefile\`${ColorOff}"
 exit 1
