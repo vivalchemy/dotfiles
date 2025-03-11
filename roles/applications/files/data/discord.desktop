@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Discord
+Exec=/home/shadow/.local/bin/launch_web_apps.sh https://discord.com/app
+Terminal=false
+Type=Application
+Keywords=Chat;Browser;Social
+Comment=Discord.com Group chat that’s all fun & games
+Icon=discord
+Categories=Social;Chat;
+StartupNotify=false
+
+
