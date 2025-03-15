@@ -226,6 +226,19 @@ return {
 
 		-- Additional feature configurations
 		gitbrowse = { enabled = true },
+		image = {
+			enabled = true,
+			doc = {
+				float = true,
+				max_width = vim.g.neovim_mode == "skitty" and 20 or 60,
+				max_height = vim.g.neovim_mode == "skitty" and 10 or 30,
+				-- Where are the cached images stored?
+				-- This path is found in the docs
+				-- :lua print(vim.fn.stdpath("cache") .. "/snacks/image")
+				-- For me returns `~/.cache/neobean/snacks/image`
+				-- Go 1 dir above and check `sudo du -sh ./* | sort -hr | head -n 5`
+			},
+		},
 		input = { enabled = true },
 		lazygit = { configure = false },
 		notifier = { enabled = true },
@@ -236,5 +249,11 @@ return {
 		},
 		words = { enabled = true },
 		win = {},
+		styles = {
+			snacks_image = {
+				relative = "editor",
+				col = -1,
+			},
+		},
 	},
 }

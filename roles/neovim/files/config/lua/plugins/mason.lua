@@ -3,7 +3,12 @@ return {
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		"saghen/blink.cmp",
+		{
+			"saghen/blink.cmp",
+			cond = function()
+				return not pcall(require, "cmp_nvim_lsp")
+			end,
+		},
 		-- "hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
@@ -32,10 +37,13 @@ return {
 
 		-- Prepare capabilities for LSP servers
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-		capabilities =
-			vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
-
+		local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+		if ok then
+			capabilities = vim.tbl_deep_extend("force", capabilities, cmp_nvim_lsp.default_capabilities())
+		else
+			capabilities =
+				vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
+		end
 		require("mason").setup({
 			ui = {
 				border = "rounded",
