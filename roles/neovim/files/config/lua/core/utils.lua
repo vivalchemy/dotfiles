@@ -124,27 +124,55 @@ end, {})
 local autoCompletionEnabled = true
 
 function EnableAutoCompletion()
-	vim.cmd("FormatEnable") -- conform
-	require("cmp").setup({ enabled = true })
-	-- vim.cmd("LspStart") -- nvim_lspconfig -- required for hover action
-	vim.cmd("SupermavenStart") -- supermaven
-	autoCompletionEnabled = true
+    vim.cmd("FormatEnable") -- conform
+
+    -- Check if `cmp` is available and properly structured
+    local ok, cmp = pcall(require, "cmp")
+    if ok then
+        cmp.setup({ enabled = true })
+    end
+
+    -- Check if `blink.cmp` is available as a fallback
+    local ok_blink, blink_cmp = pcall(require, "blink.cmp")
+    if ok_blink then
+        blink_cmp.setup({ enabled = function () return true end })
+    end
+
+    vim.cmd("SupermavenStart") -- supermaven
+    autoCompletionEnabled = true
+    print("Auto-completion enabled")
 end
 
 function DisableAutoCompletion()
-	vim.cmd("FormatDisable") -- conform
-	require("cmp").setup({ enabled = false })
-	-- vim.cmd("LspStop") -- nvim_lspconfig -- required for hover action
-	vim.cmd("SupermavenStop") -- supermaven
-	autoCompletionEnabled = false
+    vim.cmd("FormatDisable") -- conform
+
+    -- Check if `cmp` is available and properly structured
+    local ok, cmp = pcall(require, "cmp")
+    if ok and cmp and type(cmp.setup) == "function" then
+        cmp.setup({
+            enabled = false,
+        })
+    end
+
+    -- Check if `blink.cmp` is available as a fallback
+    local ok_blink, blink_cmp = pcall(require, "blink.cmp")
+    if ok_blink and blink_cmp and type(blink_cmp.setup) == "function" then
+        blink_cmp.setup({
+            enabled = function() return false end,
+        })
+    end
+
+    vim.cmd("SupermavenStop") -- supermaven
+    autoCompletionEnabled = false
+    print("Auto-completion disabled")
 end
 
 function ToggleAutoCompletion()
-	if autoCompletionEnabled then
-		DisableAutoCompletion()
-	else
-		EnableAutoCompletion()
-	end
+    if autoCompletionEnabled then
+        DisableAutoCompletion()
+    else
+        EnableAutoCompletion()
+    end
 end
 
 vim.api.nvim_create_user_command("EnableAutoCompletion", EnableAutoCompletion, {})

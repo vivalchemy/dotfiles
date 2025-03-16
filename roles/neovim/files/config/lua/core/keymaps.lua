@@ -11,7 +11,6 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagonostic keymaps
 -- map("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
-map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 --------------
 -- Terminal --
@@ -89,6 +88,7 @@ map("n", "za", "zaj", opts)
 -------------------
 -- Quickfix list --
 -------------------
-map("n", "<leader>n", ":cnext<CR>", opts)
-map("n", "<leader>p", ":cprev<CR>", opts)
+map("n", "<leader>qn", ":cnext<CR>", opts)
+map("n", "<leader>qp", ":cprev<CR>", opts)
+map("n", "<leader>qs", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 -------------------

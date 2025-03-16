@@ -1,26 +1,11 @@
 -- @blink.opts
 local opts = {
-	cmdline = { enabled = true },
+	cmdline = { enabled = false },
 	snippets = {
 		preset = "luasnip",
 	},
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
-
-		-- works only for vscode snippets
-		-- providers = {
-		-- 	snippets = {
-		-- 		name = "Snippets",
-		-- 		module = "blink.cmp.sources.snippets",
-		-- 		opts = {
-		-- 			friendly_snippets = true,
-		-- 			search_paths = {
-		-- 				vim.fn.stdpath("data") .. "/vscode-snippets",
-		-- 			},
-		-- 			global_snippets = { "all" },
-		-- 		},
-		-- 	},
-		-- },
 	},
 	completion = {
 		menu = {
@@ -91,10 +76,13 @@ return {
 		{ "L3MON4D3/LuaSnip", version = "v2.*" },
 	},
 	config = function()
-		require("luasnip.loaders.from_vscode").load({
-			paths = { vim.fn.stdpath("data") .. "/vscode-snippets/" },
+		require("luasnip.loaders.from_vscode").lazy_load({
+			paths = {
+				vim.fn.stdpath("data") .. "/lazy/friendly-snippets",
+				vim.fn.stdpath("data") .. "/vscode-snippets",
+			},
 		})
-		require("luasnip.loaders.from_lua").load({
+		require("luasnip.loaders.from_lua").lazy_load({
 			paths = { vim.fn.stdpath("data") .. "/lua-snippets" },
 		})
 		require("blink.cmp").setup(opts)
