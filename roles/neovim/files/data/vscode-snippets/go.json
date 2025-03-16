@@ -1,0 +1,20 @@
+{
+  "Print the Error": {
+    "prefix": "errp",
+    "body": [
+      "if err != nil{",
+      "  ${0:fmt.Println(\"Error:\", err.Error())}",
+      "}"
+    ],
+    "description": "Print the Error"
+  },
+  "Return the Error": {
+    "prefix": "errr",
+    "body": [
+      "if err != nil{",
+      "  ${0:return err}",
+      "}"
+    ],
+    "description": "Return the Error"
+  }
+}
