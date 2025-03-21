@@ -1,0 +1,159 @@
+#!/usr/bin/env bash
+
+# Configuration - with proper protocol matching
+# Read credentials securely
+CREDS=$(cat ~/.proxy_credentials) # contains "user:pass@host:port" or "host:port"
+
+# Set up proxy variables
+HTTP_PROXY="http://${CREDS}"
+HTTPS_PROXY="https://${CREDS}"
+FTP_PROXY="ftp://${CREDS}"
+
+ENV_FILE="/etc/environment"
+
+# Define color codes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+BOLD='\033[1m'
+NC='\033[0m' # No Color
+
+# Print banner - this is the only function that should print multi-line output
+print_banner() {
+    echo -e "${BLUE}${BOLD}╔═══════════════════════════════════════╗"
+    echo -e "║       PROXY CONFIGURATION TOOL        ║"
+    echo -e "╚═══════════════════════════════════════╝${NC}"
+}
+
+# Enable proxy function with minimal output
+enable_proxy() {
+    echo -ne "${YELLOW}Setting up proxy configuration...${NC}\r"
+    
+    # Remove any existing proxy settings first
+    sudo sed -i '/^export http_proxy/d' "$ENV_FILE"
+    sudo sed -i '/^export https_proxy/d' "$ENV_FILE"
+    sudo sed -i '/^export ftp_proxy/d' "$ENV_FILE"
+    sudo sed -i '/^export no_proxy/d' "$ENV_FILE"
+    
+    # Add new proxy settings with protocol-specific URLs
+    echo "export http_proxy=\"$HTTP_PROXY\"" | sudo tee -a "$ENV_FILE" >/dev/null
+    echo "export https_proxy=\"$HTTPS_PROXY\"" | sudo tee -a "$ENV_FILE" >/dev/null
+    echo "export ftp_proxy=\"$FTP_PROXY\"" | sudo tee -a "$ENV_FILE" >/dev/null
+    echo "export no_proxy=\"localhost,127.0.0.1,::1\"" | sudo tee -a "$ENV_FILE" >/dev/null
+    
+    echo -ne "${GREEN}Proxy: ${BOLD}ON ${NC}                              \r"
+    echo
+    
+    # Apply changes to current session (overwrite previous line)
+    echo -ne "${YELLOW}Applying changes to current session...${NC}\r"
+    if [ -f "$ENV_FILE" ]; then
+        source "$ENV_FILE" 2>/dev/null || . "$ENV_FILE"
+        echo -ne "${GREEN}Changes applied successfully.${NC}                  \r"
+        echo
+    else
+        echo -ne "${RED}Failed to apply changes.${NC}                      \r"
+        echo
+    fi
+}
+
+# Disable proxy function with minimal output
+disable_proxy() {
+    echo -ne "${YELLOW}Removing proxy configuration...${NC}\r"
+    
+    sudo sed -i '/^export http_proxy/d' "$ENV_FILE"
+    sudo sed -i '/^export https_proxy/d' "$ENV_FILE"
+    sudo sed -i '/^export ftp_proxy/d' "$ENV_FILE"
+    sudo sed -i '/^export no_proxy/d' "$ENV_FILE"
+    
+    echo -ne "${RED}Proxy: ${BOLD}OFF${NC}                               \r"
+    echo
+    
+    # Apply changes to current session (overwrite previous line)
+    echo -ne "${YELLOW}Applying changes to current session...${NC}\r"
+    if [ -f "$ENV_FILE" ]; then
+        source "$ENV_FILE" 2>/dev/null || . "$ENV_FILE"
+        echo -ne "${GREEN}Changes applied successfully.${NC}                  \r"
+        echo
+    else
+        echo -ne "${RED}Failed to apply changes.${NC}                      \r"
+        echo
+    fi
+}
+
+# Toggle proxy function with minimal output
+toggle_proxy() {
+    if grep -q "^export http_proxy" "$ENV_FILE"; then
+        echo -ne "${YELLOW}Toggling proxy ${BOLD}OFF${NC}...                       \r"
+        disable_proxy
+    else
+        echo -ne "${YELLOW}Toggling proxy ${BOLD}ON${NC}...                        \r"
+        enable_proxy
+    fi
+}
+
+# Show current status - simplified for minimal output
+show_status() {
+    if grep -q "^export http_proxy" "$ENV_FILE"; then
+        echo -e "${GREEN}Proxy: ${BOLD}ON${NC}"
+    else
+        echo -e "${RED}Proxy: ${BOLD}OFF${NC}"
+    fi
+}
+
+# Ask for system reboot with minimal output
+ask_reboot() {
+    read -p "$(echo -e $YELLOW"Reboot now? [Y/n]: "$NC)" choice
+    
+    # Default to Y if no input provided
+    choice=${choice:-Y}
+    
+    case "$choice" in
+        [Yy]*)
+            echo -ne "${RED}${BOLD}Rebooting system...${NC}                      \r"
+            sleep 1
+            sudo reboot
+            ;;
+        *)
+            echo -ne "${BLUE}Reboot cancelled.${NC}                           \r"
+            echo
+            ;;
+    esac
+}
+
+# Check if environment file exists
+if [ ! -f "$ENV_FILE" ]; then
+    echo -e "${RED}Error: $ENV_FILE not found.${NC}"
+    exit 1
+fi
+
+# Main execution
+case "$1" in
+    on)
+        print_banner
+        enable_proxy
+        ask_reboot
+        ;;
+    off)
+        print_banner
+        disable_proxy
+        ask_reboot
+        ;;
+    toggle)
+        print_banner
+        toggle_proxy
+        ask_reboot
+        ;;
+    status)
+        print_banner
+        show_status
+        ;;
+    *)
+        print_banner
+        echo -e "${YELLOW}Usage: $0 {on|off|toggle|status}${NC}"
+        exit 1
+        ;;
+esac
+
+# After using the credentials
+CREDS=""  # Clear the variable from memory

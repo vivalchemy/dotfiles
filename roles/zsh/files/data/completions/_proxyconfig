@@ -1,0 +1,19 @@
+#compdef proxyconfig
+
+# ZSH completion script for proxy configuration tool
+# Save this file as _proxyconfig in one of your $fpath directories
+# Then run: autoload -U compinit && compinit
+
+_proxyconfig() {
+    local -a commands
+    commands=(
+        'on:Enable proxy configuration'
+        'off:Disable proxy configuration'
+        'toggle:Toggle proxy on/off'
+        'status:Show current proxy status'
+    )
+
+    _describe 'command' commands
+}
+
+_proxyconfig "$@"
