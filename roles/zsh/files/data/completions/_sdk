@@ -1,0 +1,91 @@
+#compdef sdk
+
+_sdk() {
+    local curcontext="$curcontext" state line
+    typeset -A opt_args
+    local -a candidates
+
+    _arguments \
+        '1: :->command' \
+        '2: :->candidate' \
+        '3: :->version'
+
+    case $state in
+        command)
+            _values 'sdk command' \
+                'install[Install new version]' \
+                'i[Install new version]' \
+                'uninstall[Uninstall version]' \
+                'rm[Uninstall version]' \
+                'list[List versions]' \
+                'ls[List versions]' \
+                'use[Use specific version]' \
+                'u[Use specific version]' \
+                'config[Configure sdkman]' \
+                'default[Set default version]' \
+                'd[Set default version]' \
+                'home[Print candidate home]' \
+                'h[Print candidate home]' \
+                'env[Environment commands]' \
+                'e[Environment commands]' \
+                'current[Display current version]' \
+                'c[Display current version]' \
+                'upgrade[Upgrade candidate]' \
+                'ug[Upgrade candidate]' \
+                'version[Display version]' \
+                'help[Show help]' \
+                'offline[Toggle offline mode]' \
+                'selfupdate[Update SDK]' \
+                'update[Update candidate list]' \
+                'flush[Flush archive or temp]'
+            ;;
+        candidate)
+            case ${words[2]} in
+                current|c|default|d|home|h|uninstall|rm|upgrade|ug|use|u)
+                    local -a candidate_paths=("${SDKMAN_CANDIDATES_DIR}"/*)
+                    for candidate_path in "${candidate_paths[@]}"; do
+                        candidates+=("${candidate_path:t}")
+                    done
+                    _values 'candidate' $candidates
+                    ;;
+                install|i|list|ls)
+                    candidates=(${(s: :)SDKMAN_CANDIDATES})
+                    _values 'candidate' $candidates
+                    ;;
+                env|e)
+                    _values 'env command' 'init' 'install' 'clear'
+                    ;;
+                offline)
+                    _values 'offline mode' 'enable' 'disable'
+                    ;;
+                selfupdate)
+                    _values 'selfupdate option' 'force'
+                    ;;
+                flush)
+                    _values 'flush target' 'temp' 'version'
+                    ;;
+            esac
+            ;;
+        version)
+            case ${words[2]} in
+                default|d|home|h|uninstall|rm|use|u)
+                    local -a version_paths=("${SDKMAN_CANDIDATES_DIR}/${words[3]}"/*)
+                    for version_path in "${version_paths[@]}"; do
+                        [[ $version_path == *current ]] && continue
+                        candidates+=("${version_path:t}")
+                    done
+                    _values 'version' $candidates
+                    ;;
+                install|i)
+                    if (( ${+commands[curl]} )); then
+                        local versions_string=$(curl --silent "${SDKMAN_CANDIDATES_API}/candidates/${words[3]}/${SDKMAN_PLATFORM}/versions/all")
+                        candidates=(${(s:,:)versions_string})
+                        _values 'version' $candidates
+                    fi
+                    ;;
+            esac
+            ;;
+    esac
+}
+
+_sdk "$@"

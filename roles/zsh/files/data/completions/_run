@@ -1,12 +1,10 @@
 #compdef run
-
 # Place this file in a directory in your fpath (e.g., ~/.zsh/completions/)
 # Then add: autoload -Uz compinit && compinit
-
 _run() {
   local curcontext="$curcontext" state line ret=1
-  local -a makefile_targets
-
+  local -a makefile_targets formatted_targets
+  
   # Find the nearest Makefile
   local dir="$PWD"
   local makefile=""
@@ -21,58 +19,40 @@ _run() {
     fi
     dir=$(dirname "$dir")
   done
-
-  # If a Makefile is found, extract targets and their descriptions
+  
+  # If a Makefile is found, extract targets
   if [[ -n "$makefile" ]]; then
-    # Read the Makefile line by line
-    local target=""
-    local description=""
+    # Get all targets from Makefile
+    local -a all_targets
+    all_targets=($(grep -E '^[a-zA-Z0-9_/-]+:' "$makefile" | sed 's/:.*//' | sort -u))
     
-    # Read Makefile into array using zsh syntax
-    local -a lines
-    lines=("${(@f)$(< "$makefile")}")
-    
-    for ((i=1; i<=${#lines}; i++)); do
-      local line="${lines[$i]}"
+    # For each target, look for a description
+    for target in "${all_targets[@]}"; do
+      # Look for echo lines immediately after the target in the Makefile
+      description=""
       
-      # Match target lines (pattern: "target:")
-      if [[ "$line" =~ ^([a-zA-Z0-9_/-]+): ]]; then
-        # Save previous target if there was one
-        if [[ -n "$target" && -n "$description" ]]; then
-          makefile_targets+=("$target:$description")
-        fi
-        
-        # Set new target
-        target="${match[1]}"
-        
-        # Check for inline echo command that might contain a description
-        if [[ "$line" =~ '@echo[[:space:]]+"([^"]*)"' ]]; then
-          description="${match[1]}"
-        else
-          # Look ahead to the next line for an echo description
-          if ((i < ${#lines})); then
-            local next_line="${lines[$i+1]}"
-            if [[ "$next_line" =~ '[[:space:]]*@echo[[:space:]]+"([^"]*)"' ]]; then
-              description="${match[1]}"
-            else
-              description=""
-            fi
+      # First check for inline echo in the target line
+      if grep -qE "^${target}:.*@echo[[:space:]]+\"[^\"]*\"" "$makefile"; then
+        description=$(grep -E "^${target}:.*@echo[[:space:]]+\"([^\"]*)\"" "$makefile" | sed -E 's/^.*@echo[[:space:]]+"([^"]*)".*$/\1/')
+      else
+        # Check for echo in the lines immediately following the target definition
+        local target_line=$(grep -n "^${target}:" "$makefile" | cut -d: -f1)
+        if [[ -n "$target_line" ]]; then
+          local next_line=$((target_line + 1))
+          local next_line_content=$(sed -n "${next_line}p" "$makefile")
+          
+          if [[ "$next_line_content" =~ '[[:space:]]*@echo[[:space:]]+"([^"]*)"' ]]; then
+            description=$(echo "$next_line_content" | sed -E 's/^[[:space:]]*@echo[[:space:]]+"([^"]*)".*$/\1/')
           fi
         fi
       fi
-    done
-    
-    # Add the last target
-    if [[ -n "$target" && -n "$description" ]]; then
-      makefile_targets+=("$target:$description")
-    fi
-    
-    # Format targets for display
-    local -a formatted_targets
-    for item in "${makefile_targets[@]}"; do
-      local tgt=${item%%:*}
-      local desc=${item#*:}
-      formatted_targets+=("$tgt:$desc")
+      
+      # Add the target to our list (with description if available)
+      if [[ -n "$description" ]]; then
+        formatted_targets+=("$target:$description")
+      else
+        formatted_targets+=("$target:")
+      fi
     done
     
     _describe -t targets 'make targets' formatted_targets && ret=0
@@ -80,8 +60,7 @@ _run() {
     # If no Makefile is found, return empty completions
     _message "No Makefile found in this directory or parent directories"
   fi
-
+  
   return ret
 }
-
 _run "$@"

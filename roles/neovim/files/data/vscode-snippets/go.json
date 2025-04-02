@@ -8,6 +8,15 @@
     ],
     "description": "Print the Error"
   },
+  "Log the Error": {
+    "prefix": "errl",
+    "body": [
+      "if err != nil{",
+      "  ${0:log.Println(\"Error:\", err.Error())}",
+      "}"
+    ],
+    "description": "Log the Error"
+  },
   "Return the Error": {
     "prefix": "errr",
     "body": [
