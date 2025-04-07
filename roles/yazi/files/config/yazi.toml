@@ -20,17 +20,17 @@ run = '''
 	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
 '''
 
-[open]
-rules = [
-	{ name = "*/", use = [ "edit", "open", "reveal" ] },
-
-	{ mime = "*", use = [ "open" ] },
-]
-
-[opener]
-open = [
-	{ run = 'open "$@"', block = true, desc = "Open" },
-]
+# [open]
+# rules = [
+# 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
+#
+# 	{ mime = "*", use = [ "open" ] },
+# ]
+#
+# [opener]
+# open = [
+# 	{ run = 'open "$@"', block = true, desc = "Open" },
+# ]
 
 [plugin]
 prepend_previewers = [

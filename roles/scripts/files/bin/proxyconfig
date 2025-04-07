@@ -6,10 +6,12 @@ CREDS=$(cat ~/.proxy_credentials) # contains "user:pass@host:port" or "host:port
 
 # Set up proxy variables
 HTTP_PROXY="http://${CREDS}"
-HTTPS_PROXY="https://${CREDS}"
+HTTPS_PROXY="http://${CREDS}"
 FTP_PROXY="ftp://${CREDS}"
 
 ENV_FILE="/etc/environment"
+DEFAULT_PROFILE_PREFS_FILE="$HOME/.zen/28cb4xaj.Default (alpha)/prefs.js"
+FTWA_PROFILE_PREFS_FILE="$HOME/.zen/n4b2n7lp.FTWA/prefs.js"
 
 # Define color codes
 RED='\033[0;31m'
@@ -26,21 +28,32 @@ print_banner() {
     echo -e "╚═══════════════════════════════════════╝${NC}"
 }
 
-# Enable proxy function with minimal output
-enable_proxy() {
-    echo -ne "${YELLOW}Setting up proxy configuration...${NC}\r"
-    
+remove_proxy_from_files(){
     # Remove any existing proxy settings first
     sudo sed -i '/^export http_proxy/d' "$ENV_FILE"
     sudo sed -i '/^export https_proxy/d' "$ENV_FILE"
     sudo sed -i '/^export ftp_proxy/d' "$ENV_FILE"
     sudo sed -i '/^export no_proxy/d' "$ENV_FILE"
+
+    sudo sed -i '/user_pref("network\.proxy\.type", 1);/d' "$DEFAULT_PROFILE_PREFS_FILE"
+    sudo sed -i '/user_pref("network\.proxy\.type", 1);/d' "$FTWA_PROFILE_PREFS_FILE"
+}
+
+# Enable proxy function with minimal output
+enable_proxy() {
+    echo -ne "${YELLOW}Setting up proxy configuration...${NC}\r"
     
+    remove_proxy_from_files
+ 
     # Add new proxy settings with protocol-specific URLs
     echo "export http_proxy=\"$HTTP_PROXY\"" | sudo tee -a "$ENV_FILE" >/dev/null
     echo "export https_proxy=\"$HTTPS_PROXY\"" | sudo tee -a "$ENV_FILE" >/dev/null
     echo "export ftp_proxy=\"$FTP_PROXY\"" | sudo tee -a "$ENV_FILE" >/dev/null
     echo "export no_proxy=\"localhost,127.0.0.1,::1\"" | sudo tee -a "$ENV_FILE" >/dev/null
+
+    echo 'user_pref("network.proxy.type", 1);' | sudo tee -a "$DEFAULT_PROFILE_PREFS_FILE" >/dev/null
+    echo 'user_pref("network.proxy.type", 1);' | sudo tee -a "$FTWA_PROFILE_PREFS_FILE" >/dev/null
+
     
     echo -ne "${GREEN}Proxy: ${BOLD}ON ${NC}                              \r"
     echo
@@ -61,10 +74,7 @@ enable_proxy() {
 disable_proxy() {
     echo -ne "${YELLOW}Removing proxy configuration...${NC}\r"
     
-    sudo sed -i '/^export http_proxy/d' "$ENV_FILE"
-    sudo sed -i '/^export https_proxy/d' "$ENV_FILE"
-    sudo sed -i '/^export ftp_proxy/d' "$ENV_FILE"
-    sudo sed -i '/^export no_proxy/d' "$ENV_FILE"
+    remove_proxy_from_files
     
     echo -ne "${RED}Proxy: ${BOLD}OFF${NC}                               \r"
     echo
