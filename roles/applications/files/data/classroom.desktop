@@ -6,5 +6,5 @@ Type=Application
 Keywords=Education;Browser
 Comment=Google Classroom
 Icon=google
-Categories=Music;
+Categories=Education;Network;
 StartupNotify=false
