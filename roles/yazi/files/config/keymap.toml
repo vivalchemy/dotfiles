@@ -1,15 +1,24 @@
 [[manager.prepend_keymap]]
+on  = "y"
+run = [ '''
+	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm
+''', "yank" ]
+
+[[manager.prepend_keymap]]
+on = [ "g", "r" ]
+run = '''
+	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
+'''
+
+[[manager.prepend_keymap]]
 on   = "!"
 run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 
 [[manager.prepend_keymap]]
 on   = "T"
-run  = "plugin --sync max-preview"
-# For upcoming Yazi 0.4 (nightly version):
-# run  = "plugin max-preview"
-desc = "Maximize or restore preview"
-
+run  = "plugin toggle-pane min-preview"
+desc = "Show or hide the preview pane"
 [[manager.prepend_keymap]]
 on   = [ "E" ]
 run  = "plugin child-dir"

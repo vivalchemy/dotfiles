@@ -6,7 +6,7 @@
 : "${SHELL:=/bin/bash}"
 
 # Default to detached mode
-detach=1
+detach=0
 
 # Check if first argument is "detach"
 if [ "$1" = "detach" ]; then
