@@ -1,12 +1,12 @@
 [[manager.prepend_keymap]]
 on  = "y"
 run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
+desc = "Copy paths to clipboard"
 
 [[manager.prepend_keymap]]
 on = [ "g", "r" ]
-run = '''
-	shell 'ya pub dds-cd --str "$(git rev-parse --show-toplevel)"' --confirm
-'''
+run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel 2>/dev/null || echo $HOME)"'
+desc = "Open git root directory"
 
 [[manager.prepend_keymap]]
 on   = "!"
@@ -18,11 +18,20 @@ on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Toggle Maximize preview pane"
 
+#################
+# Fuzzy finders #
+#################
 [[manager.prepend_keymap]]
-on   = [ "E" ]
-run  = "plugin fuzzychild"
+on   = [ "f", "f" ]
+run  = "search --via=fd --args='-H'"
+desc = "Fuzzy find files"
 
 [[manager.prepend_keymap]]
-on   = [ "e" ]
+on   = [ "f", "d" ]
+run  = "plugin fuzzychild"
+desc = "Fuzzy search child directories"
+
+[[manager.prepend_keymap]]
+on   = [ "g", "s" ]
 run = "plugin searchjump autocd"
 desc = "searchjump mode auto jump"

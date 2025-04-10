@@ -17,3 +17,9 @@
     cmd: "ya pack -i" # To install all the plugins with locked versions from package.toml on a new system
     creates: "{{ ansible_env.HOME }}/.config/yazi/plugins/"
   when: (configure | default(true)) | bool  # Default to true if not defined
+
+- name: "Update the plugins"
+  ansible.builtin.shell:
+    cmd: "ya pack -u"
+    creates: "{{ ansible_env.HOME }}/.config/yazi/plugins/"
+  when: (update | default(true)) | bool  # Default to true if not defined

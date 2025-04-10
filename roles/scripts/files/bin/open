@@ -43,11 +43,7 @@ execute_based_on_extension() {
 
 # Helper function to launch GUI applications
 launch_gui() {
-    if [ "$detach" -eq 0 ]; then
-        swallow "$@"
-    else
         setsid -f "$@" >/dev/null 2>&1
-    fi
 }
 
 # Helper function to launch terminal applications
