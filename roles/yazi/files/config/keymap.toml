@@ -1,8 +1,6 @@
 [[manager.prepend_keymap]]
 on  = "y"
-run = [ '''
-	shell 'for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list' --confirm
-''', "yank" ]
+run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
 
 [[manager.prepend_keymap]]
 on = [ "g", "r" ]
@@ -17,11 +15,12 @@ desc = "Open shell here"
 
 [[manager.prepend_keymap]]
 on   = "T"
-run  = "plugin toggle-pane min-preview"
-desc = "Show or hide the preview pane"
+run  = "plugin toggle-pane max-preview"
+desc = "Toggle Maximize preview pane"
+
 [[manager.prepend_keymap]]
 on   = [ "E" ]
-run  = "plugin child-dir"
+run  = "plugin fuzzychild"
 
 [[manager.prepend_keymap]]
 on   = [ "e" ]

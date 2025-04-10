@@ -28,5 +28,10 @@ use = "yazi-rs/plugins:toggle-pane"
 rev = "a1738e8"
 hash = "5c9dda1a587b8f5b6f63e3d5375bda88"
 
+[[plugin.deps]]
+use = "vivalchemy/yazi-plugins:fuzzychild"
+rev = "5636671"
+hash = "51470b537bfca1911e424f8fa92a9e3e"
+
 [flavor]
 deps = []
