@@ -3,7 +3,7 @@
 
 format = '''
  [╭──](green)$username$directory$git_branch  $bun$c$dart$golang$java$kotlin$lua$python$rust$zig
- $character
+ $character$python_virtualenv
 '''
 right_format = '''
 $cmd_duration
@@ -92,7 +92,7 @@ format = '[$symbol$version](bold blue)'
 format = '[$symbol$version](bold blue)'
 
 [python]
-format = '[$symbol$version](bold blue)'
+format = '[$virtualenv](bold cyan) --- [$symbol$version](bold blue)'
 
 [rust]
 format = "[$symbol$version](bold red)"
