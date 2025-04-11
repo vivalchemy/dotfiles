@@ -2,7 +2,7 @@
 # Script for opening files in various applications based on file type
 
 # Set default values with fallback
-: "${TERMINAL:=alacritty}"
+: "${TERMINAL:=ghostty}"
 : "${SHELL:=/bin/bash}"
 
 # Default to detached mode

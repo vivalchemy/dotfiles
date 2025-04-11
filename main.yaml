@@ -4,7 +4,7 @@
   hosts: this_pc
   connection: local
   roles:
-    - alacritty
+    # - alacritty
     - applications
     - bat
     - fastfetch
@@ -23,7 +23,7 @@
     - tmux
     # - vivaldi
     - wallpapers
-    # - xfce4 # no configured currently
+    - xfce4 # no configured currently
     - yazi
     - zathura
     # - zellij # using tmux so no need currently
