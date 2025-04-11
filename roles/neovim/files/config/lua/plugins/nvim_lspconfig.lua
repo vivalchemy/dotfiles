@@ -4,6 +4,12 @@ return {
 		{ "folke/lazydev.nvim", ft = "lua", opts = {} },
 	},
 	config = function()
+		-- Show inlay hints
+		vim.diagnostic.config({
+			virtual_text = true,
+			virtual_lines = { current_line = true },
+		})
+
 		-- LSP Attach Autocommand
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
@@ -19,13 +25,13 @@ return {
 				map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 				map("<leader>cs", require("telescope.builtin").lsp_document_symbols, "Document/[C]ode [S]ymbols")
 				map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+				-- map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame") -- done by 'grn'
+				-- map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction") 'gra'
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 				-- Reference Highlighting
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
-				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+				if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
 					local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
 
 					vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -42,7 +48,7 @@ return {
 				end
 
 				-- Inlay Hints Toggle
-				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+				if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 					map("<leader>th", function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ buffer = event.buf }))
 					end, "[T]oggle Inlay [H]ints")
