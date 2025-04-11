@@ -103,7 +103,7 @@ setModifiers() {
 setWallpaper() {
 	doesFileExist $1
 	killall hyprpaper
-	echo -e "preload = $1	\n wallpaper = $MONITOR_NAME, $1" >$HYPRPAPER_CONF_FILE
+	echo -e "preload = $1	\nwallpaper = $MONITOR_NAME, $1\nipc = off" >$HYPRPAPER_CONF_FILE
 	hyprpaper
 }
 
