@@ -229,13 +229,13 @@ return {
 		image = {
 			enabled = true,
 			doc = {
+				inline = vim.g.neovim_mode == "skitty" and true or false,
 				float = true,
 				max_width = vim.g.neovim_mode == "skitty" and 20 or 60,
 				max_height = vim.g.neovim_mode == "skitty" and 10 or 30,
 				-- Where are the cached images stored?
 				-- This path is found in the docs
 				-- :lua print(vim.fn.stdpath("cache") .. "/snacks/image")
-				-- For me returns `~/.cache/neobean/snacks/image`
 				-- Go 1 dir above and check `sudo du -sh ./* | sort -hr | head -n 5`
 			},
 		},

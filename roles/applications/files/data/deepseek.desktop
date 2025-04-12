@@ -5,7 +5,7 @@ Terminal=false
 Type=Application
 Keywords=Ai;Chat;Browser
 Comment=Deepseek V3 by Deepseek team
-Icon=internet-chat
+Icon=deepseek
 Categories=Ai;Chat;
 StartupNotify=false
 

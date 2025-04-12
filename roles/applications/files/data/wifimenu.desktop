@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=Wifi Menu
-Exec=/home/shadow/.local/bin/wifimenu_rofi.sh
+Exec=ghostty --theme=xcodelighthc --confirm-close-surface=false --class=com.ghostty.transparent -e 'nmtui'
 Terminal=false
 Type=Application
 Keywords=Rofi;Wifi;Applet;
-Icon=lock
+Icon=wifi-radar
 Categories=Utility;Network;
 StartupNotify=false

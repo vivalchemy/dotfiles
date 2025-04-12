@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Keywords=Ai;Chat;Browser
 Comment=Claude Ai from Anthropic
-Icon=internet-chat
+Icon=anthropic-claude
 Categories=Ai;Chat;
 StartupNotify=false

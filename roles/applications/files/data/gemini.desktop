@@ -5,7 +5,7 @@ Terminal=false
 Type=Application
 Keywords=Ai;Chat;Browser
 Comment=Gemini by Google
-Icon=internet-chat
+Icon=google-gemini
 Categories=Ai;Chat;
 StartupNotify=false
 

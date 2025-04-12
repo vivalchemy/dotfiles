@@ -5,7 +5,7 @@ Terminal=false
 Type=Application
 Keywords=Ai;Code;Chat;Browser
 Comment=v0.dev by Vercel
-Icon=internet-chat
+Icon=v0dev
 Categories=Ai;Code;Chat;
 StartupNotify=false
 
