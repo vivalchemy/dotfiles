@@ -5,6 +5,7 @@ require("core.keymaps")
 
 Plug("plugins.d2")
 Plug("plugins.database")
+Plug("plugins.diffview")
 Plug("plugins.executor")
 Plug("plugins.flash")
 Plug("plugins.git_signs")

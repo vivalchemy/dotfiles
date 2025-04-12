@@ -1,2 +1,2 @@
 eval "$(zoxide init zsh)"
-alias cd='__zoxide_z'
+alias cd='z'

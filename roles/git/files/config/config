@@ -1,36 +1,54 @@
+# vim: set ft=gitconfig:
 [user]
-	name = Vivian Ludrick
-	email = 116781909+vivalchemy@users.noreply.github.com
+  name = Vivian Ludrick
+  email = 116781909+vivalchemy@users.noreply.github.com
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
+# Git Aliases
 [alias]
   sync = "!git_sync.sh"
   lol = "log --oneline"
   setup = "!git_setup.sh"
   lg = "!lazygit"
   l = "-c core.pager='bat' log --no-color"
+  mt = "mergetool"
 
+# Pull settings (default behavior for pull)
 [pull]
-	rebase = true
+  rebase = true
 
-# Config for delta (https://github.com/dandavison/delta)
+# Core settings (pager for git commands)
 [core]
-    pager = delta
+  pager = delta
 
+# Diff settings for interactive git usage
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
+# Delta settings for pretty diffing
 [delta]
-    navigate = true    # use n and N to move between diff sections
-
+  navigate = true  # use n and N to move between diff sections
     # delta detects terminal colors automatically; set one of these to disable auto-detection
     # dark = true
     # light = true
 
+# Merge settings (tool for resolving conflicts)
 [merge]
-    conflictstyle = diff3
+	commit = false
+  conflictstyle = merge
+  # layout = "(LOCAL,BASE,REMOTE)/MERGED" # default layout
+  tool = nvimdiff # sexy tool
 
+[mergetool]
+  prompt = true
+  keepBackup = false
+  keepTemporaries = false
+
+[mergetool.nvimdiff]
+  trustExitCode = false
+
+# Diff settings for handling moved lines
 [diff]
-    colorMoved = default
+  colorMoved = default
