@@ -16,7 +16,7 @@ desc = "Toggle Maximize preview pane"
 ###################
 [[manager.prepend_keymap]]
 on  = "Y"
-run = 'shell -- dragon-drop -x -i -T "$1"'
+run = 'shell -- ripdrag -axn "$@"'
 
 [[manager.prepend_keymap]]
 on  = "y"

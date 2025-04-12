@@ -16,9 +16,9 @@ return {
 		local servers = {
 			-- clangd = {}, -- annoying for protobuf files
 			gopls = {},
-			htmx = {
-				filetypes = { "html", "templ", "svelte", "javascriptreact" },
-			},
+			-- htmx = {
+			-- 	filetypes = { "html", "templ", "svelte", "javascriptreact" },
+			-- },
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -28,10 +28,11 @@ return {
 					},
 				},
 			},
-			pyright = {},
+			-- pyright = {},
 			rust_analyzer = {},
-			svelte = {},
-			templ = {},
+			-- svelte = {},
+			-- templ = {},
+			tailwindcss = {},
 			ts_ls = {},
 		}
 
