@@ -16,24 +16,24 @@ help:
 
 install:
 	@echo "🔧 Installing Ansible roles from requirements.yaml"
-	ansible-galaxy install -r requirements.yaml
+	@ansible-galaxy install -r requirements.yaml
 
 run:
 	@echo "🚀 Running full playbook with default options"
-	ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass --extra-vars $(EXTRA_VARS)
+	@ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass --extra-vars $(EXTRA_VARS)
 
 tags:
 	@echo "🏷️  Running playbook with tags: $(TAGS)"
-	ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass --extra-vars $(EXTRA_VARS) --tags "$(TAGS)"
+	@ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass --extra-vars $(EXTRA_VARS) --tags "$(TAGS)"
 
 update:
 	@echo "🔄 Running playbook with update=true"
-	ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass --extra-vars update=true
+	@ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass --extra-vars update=true
 
 configure:
 	@echo "🔄 Running playbook with configure=true"
-	ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass --extra-vars configure=true
+	@ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass --extra-vars configure=true
 
 debug:
 	@echo "🐞 Running in debug mode with extra verbosity and debug=true"
-	ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass -vvvv --extra-vars '$(EXTRA_VARS) debug=true'
+	@ansible-playbook $(PLAYBOOK) --inventory $(INVENTORY) --ask-become-pass -vvvv --extra-vars '$(EXTRA_VARS) debug=true'
