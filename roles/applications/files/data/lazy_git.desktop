@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Lazy Git
+Exec=ghostty -e lazygit
+Terminal=false
+Type=Application
+Icon=git
+Categories=Utility;System;
+StartupNotify=false
+Keywords=git;cli;repository;version control;commit;branch;status;

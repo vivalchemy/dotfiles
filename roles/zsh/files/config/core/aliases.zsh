@@ -13,11 +13,10 @@ alias mv='mv -i'
 # alias rm='rm -i' # way to annoying
 
 # ls modification
-alias ls='ls --group-directories-first --human-readable --color'
+alias ls='eza -lh --group-directories-first --icons=auto'
 alias la='ls  -a' # the upper group dir and color will get forwarded to these commands too
-alias ll='ls  -l'
-alias lal='ls -al'
-alias lla='ls -al'
+alias lt='eza --tree --level=2 --long --icons=auto --git'
+alias lta='lt -a'
 
 #battery 
 alias battery='echo -e "Battery Percentage: $(cat /sys/class/power_supply/BAT*/capacity)\nBattery Status: $(cat /sys/class/power_supply/BAT*/status)"'

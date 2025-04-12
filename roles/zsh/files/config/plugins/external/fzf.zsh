@@ -1,4 +1,4 @@
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude={.git/,.cache/,.cargo/,.local/,.mozilla/,node_modules/,proc/,.venv/} --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude={.git/,.cache/,.cargo/,.local/,.mozilla/,node_modules/,target/,build/,dist/,proc/,.venv/} --strip-cwd-prefix'
 export FZF_DEFAULT_OPTS='--border=rounded --info=inline'
 
 plug "Aloxaf/fzf-tab" # improves tab completion
@@ -16,7 +16,7 @@ alias fzfv='fzf --preview "bat --color=always --style=numbers --line-range=:500 
 
 #font info
 alias fc-info='fc-query $(fc-list | fzf | sed "s/:.*//") | rg "(family|style|fontformat|fullname|file):" | sort'
-alias fc-view='view $(fc-list | fzf | sed "s/:.*//")'
+alias fc-view='display $(fc-list | fzf | sed "s/:.*//")' # requires imagemagick
 
 # jump to child directory
 alias fcd='cd $(fd --type=d | fzf --tac --height=40% || echo ".")'

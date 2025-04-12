@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Btop
+Exec=ghostty --confirm-close-surface=false -e btop
+Terminal=false
+Type=Application
+Icon=btop
+Categories=Utility;System;
+StartupNotify=false
+Keywords=monitor;system;cpu;memory;disk;network;performance;
