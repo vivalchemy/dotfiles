@@ -1,6 +1,6 @@
 return {
 	"google/executor.nvim",
-	event = "BufReadPost",
+	event = "VeryLazy",
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
