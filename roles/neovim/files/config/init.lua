@@ -4,9 +4,8 @@ require("core.options")
 require("core.keymaps")
 
 Plug("plugins.d2")
-Plug("plugins.database")
-Plug("plugins.diffview")
-Plug("plugins.executor")
+-- Plug("plugins.database") -- using cloudbeaver now
+-- Plug("plugins.executor") -- using custom watchexec now
 Plug("plugins.flash")
 Plug("plugins.git_signs")
 Plug("plugins.harpoon")
@@ -34,3 +33,5 @@ Plug("plugins.nvim_lspconfig") -- LspStart/ LspStop
 Plug("plugins.supermaven") -- SupermavenStart / SupermavenStop
 
 require("plugins.lazy")
+
+require("taskexec").setup({})
