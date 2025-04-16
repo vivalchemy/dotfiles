@@ -1,3 +1,9 @@
+function add(a, b, c)
+	return a + b + c
+end
+
+add(1, 2, 3)
+--
 -- @blink.opts
 local opts = {
 	cmdline = { enabled = false },
@@ -6,6 +12,9 @@ local opts = {
 	},
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
+	},
+	signature = {
+		enabled = true,
 	},
 	completion = {
 		menu = {
