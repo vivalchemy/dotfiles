@@ -2,6 +2,7 @@
 [user]
   name = Vivian Ludrick
   email = 116781909+vivalchemy@users.noreply.github.com
+  signingkey = 999380A6B92F7F45
 
 [init]
   defaultBranch = main
@@ -52,3 +53,5 @@
 # Diff settings for handling moved lines
 [diff]
   colorMoved = default
+[commit]
+  gpgSign = true

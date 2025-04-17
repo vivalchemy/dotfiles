@@ -10,6 +10,7 @@ if command -v tmux >/dev/null 2>&1; then
     fi
   fi
 fi
+# eval "$(zellij setup --generate-auto-start zsh)"
 
 # +-----------------------------------------------------+
 
@@ -75,6 +76,7 @@ include "plugins/external/tmux"
 include "plugins/external/vscode"
 include "plugins/external/yazi"
 include "plugins/external/zed"
+include "plugins/external/zellij"
 include "plugins/external/zen-browser"
 include "plugins/external/zoxide"
 
