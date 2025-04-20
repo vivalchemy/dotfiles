@@ -1,16 +1,22 @@
 # +------------------------+
 # | Autostart TMUX session |
 # +------------------------+
-if command -v tmux >/dev/null 2>&1; then
-  if [ -z "$TMUX" ]; then
-    if ! tmux has-session -t default 2>/dev/null; then
-      tmux new-session -s default
-    else
-      tmux attach-session -t default
+# if command -v tmux >/dev/null 2>&1; then
+#   if [ -z "$TMUX" ]; then
+#     if ! tmux has-session -t default 2>/dev/null; then
+#       tmux new-session -s default
+#     else
+#       tmux attach-session -t default
+#     fi
+#   fi
+# fi
+if [[ -z "$ZELLIJ" ]]; then
+    zellij attach -c default 
+
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
     fi
-  fi
 fi
-# eval "$(zellij setup --generate-auto-start zsh)"
 
 # +-----------------------------------------------------+
 

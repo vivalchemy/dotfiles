@@ -20,12 +20,12 @@
     - scripts
     - starship
     - swayimg
-    - tmux
+    # - tmux
     # - vivaldi
     - wallpapers
     - xfce4 # no configured currently
     - yazi
     - zathura
-    # - zellij # using tmux so no need currently
+    - zellij # using tmux so no need currently
     # - zen-browser # no configured at all
     - zsh

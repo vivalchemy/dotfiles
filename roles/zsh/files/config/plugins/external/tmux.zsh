@@ -26,4 +26,4 @@ alias tmxdw='rm $TMUXIFIER_LAYOUT_PATH/$(tmuxifier list-windows | fzf --preview 
 # +----------+
 # | KEY MAPS |
 # +----------+
-bindkey -s "^ " "tmux_sessionizer.sh\n"
+# bindkey -s "^ " "tmux_sessionizer.sh\n"
