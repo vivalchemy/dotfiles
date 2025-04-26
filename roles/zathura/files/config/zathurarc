@@ -27,16 +27,15 @@ include catppuccin-mocha  # Include the Catppuccin Mocha color scheme
 # Key Mappings
 # Unmapped Keys
 unmap f  # Unmap 'f' from its default 'go to link' function to avoid conflict with fullscreen toggle
-unmap o  # Unmap 'o' from its default 'open' function to avoid conflict with page mode toggle
 
 # Navigation
 map u scroll half-up  # Scroll up half a page
 map d scroll half-down  # Scroll down half a page
 map gg goto top  # Go to the top of the document
-map gf follow  # Follow links in the document
+map gx follow  # Follow links in the document
 
 # Misc
-map o toggle_page_mode  # Toggle between one and multiple pages
+map m toggle_page_mode  # Toggle between one and multiple pages
 map r rotate  # Rotate the document
 map f toggle_fullscreen  # Toggle fullscreen mode
 map [fullscreen] f toggle_fullscreen  # Toggle fullscreen mode when already in fullscreen

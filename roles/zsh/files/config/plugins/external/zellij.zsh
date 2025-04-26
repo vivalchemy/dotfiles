@@ -10,4 +10,4 @@ function zei () { zellij edit --in-place "$*";}
 # +----------+
 # | KEY MAPS |
 # +----------+
-bindkey -s "^ " "zellij_sessionizer.sh\n"
+# bindkey -s "^ " "zellij_sessionizer.sh\n"
