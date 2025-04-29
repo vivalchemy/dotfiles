@@ -34,8 +34,8 @@ map("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 ----------------
 
 -- Buffer navigation
-map("n", "<C-o>", ":bnext<CR>", opts)
-map("n", "<C-i>", ":bprevious<CR>", opts)
+-- map("n", "<C-o>", ":bnext<CR>", opts)
+-- map("n", "<C-i>", ":bprevious<CR>", opts)
 
 map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -79,11 +79,6 @@ map("v", "<S-j>", ":move -2<CR>gv")
 
 -- Execute the current file in the buffer
 -- map("n", "<leader>x", ExecuteCurrentFile, { desc = "Execute the file in current buffer" })
-
---------------------
--- Better folding --
---------------------
-map("n", "za", "zaj", opts)
 
 -------------------
 -- Quickfix list --

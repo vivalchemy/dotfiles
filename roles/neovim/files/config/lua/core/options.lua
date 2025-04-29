@@ -87,3 +87,10 @@ vim.filetype.add({ extension = { templ = "templ", rasi = "rasi" } })
 
 SetOptions(vimOpts, "opt")
 SetOptions(vimG, "g")
+
+-- Reset jumplist on launching neovim
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		vim.cmd("clearjumps")
+	end,
+})
