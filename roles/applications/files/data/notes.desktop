@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Notes
+Exec=ghostty --class=com.ghostty.fullscreen -e 'nvim "Scratch pad.md"'
+Terminal=false
+Type=Application
+Keywords=Text;editor;
+Icon=notes
+Categories=Utility;TextEditor;
+StartupNotify=false
+Path=Documents/brain_of_obsidian

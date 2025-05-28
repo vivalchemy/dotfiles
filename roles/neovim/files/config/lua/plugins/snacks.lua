@@ -127,6 +127,13 @@ return {
 			desc = "Toggle notifier",
 		},
 		{
+			"<leader>tsi",
+			function()
+				Snacks.image.hide()
+			end,
+			desc = "[T]oggle [S]nacks [I]mage viewer",
+		},
+		{
 			"<leader>hn",
 			function()
 				Snacks.notifier.show_history()

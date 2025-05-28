@@ -4,6 +4,7 @@ require("core.options")
 require("core.keymaps")
 
 Plug("plugins.d2")
+Plug("plugins.dap")
 -- Plug("plugins.database") -- using cloudbeaver now
 -- Plug("plugins.executor") -- using custom watchexec now
 Plug("plugins.flash")

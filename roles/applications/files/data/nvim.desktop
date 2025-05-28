@@ -1,10 +1,9 @@
 [Desktop Entry]
 Name=Neovim
-Exec=ghostty -e 'nvim "Scratch pad.md"'
+Exec=ghostty -e nvim
 Terminal=false
 Type=Application
 Keywords=Text;editor;
 Icon=nvim
 Categories=Utility;TextEditor;
 StartupNotify=false
-Path=Documents/brain_of_obsidian

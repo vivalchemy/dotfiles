@@ -66,6 +66,9 @@ local vimOpts = {
 
 	-- fold settings
 	foldlevelstart = 99, -- open fold on startup
+
+	-- disable the swapfiles
+	swapfile = false,
 }
 
 -- vim.g = vimG
