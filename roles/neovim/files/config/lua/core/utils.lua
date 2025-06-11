@@ -128,6 +128,7 @@ function EnableAutoCompletion()
 
 	-- Check if `cmp` is available and properly structured
 	vim.b.completion = true
+	require("blink.cmp").show()
 
 	vim.cmd("SupermavenStart") -- supermaven
 	autoCompletionEnabled = true
@@ -139,6 +140,7 @@ function DisableAutoCompletion()
 
 	-- Check if `cmp` is available and properly structured
 	vim.b.completion = false
+	require("blink.cmp").hide()
 
 	vim.cmd("SupermavenStop") -- supermaven
 	autoCompletionEnabled = false
