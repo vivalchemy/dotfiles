@@ -1,12 +1,12 @@
 ###################
 # Plugin Specific #
 ###################
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "!"
 run  = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Toggle Maximize preview pane"
@@ -14,16 +14,16 @@ desc = "Toggle Maximize preview pane"
 ###################
 # Shell Utilities #
 ###################
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "Y"
 run = 'shell -- ripdrag -axn "$@"'
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on  = "y"
 run = [ 'shell -- for path in "$@"; do echo "file://$path"; done | wl-copy -t text/uri-list', "yank" ]
 desc = "Copy paths to clipboard"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on = [ "g", "r" ]
 run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel 2>/dev/null || echo $HOME)"'
 desc = "Open git root directory"
@@ -31,17 +31,17 @@ desc = "Open git root directory"
 #################
 # Fuzzy finders #
 #################
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "f", "f" ]
 run  = "search --via=fd --args='-H'"
 desc = "Fuzzy find files"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "f", "d" ]
 run  = "plugin fuzzychild"
 desc = "Fuzzy search child directories"
 
-[[manager.prepend_keymap]]
+[[mgr.prepend_keymap]]
 on   = [ "g", "s" ]
 run = "plugin searchjump autocd"
 desc = "searchjump mode auto jump"
