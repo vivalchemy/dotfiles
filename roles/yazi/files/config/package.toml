@@ -4,19 +4,14 @@ rev = "fe884f4"
 hash = "b4c00ef6899a9563af8d577d0bb46998"
 
 [[plugin.deps]]
-use = "Reledia/glow"
-rev = "bd3eaa5"
-hash = "92b5c58159a51c567f82b618cee2b78"
-
-[[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "aeca767"
+rev = "42f64c0"
 hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:git"
-rev = "aeca767"
-hash = "bf6f074cd41ee33c3360341d168f9733"
+rev = "42f64c0"
+hash = "e01006bfb38951ea89031bd918b20dbb"
 
 [[plugin.deps]]
 use = "Reledia/hexyl"
@@ -25,13 +20,23 @@ hash = "50da29476e744dba37d77fb209328fd1"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:toggle-pane"
-rev = "aeca767"
-hash = "d5d4f3527592da5fbe77fd6f51815f80"
+rev = "42f64c0"
+hash = "d6f60c24d8c0cf57a855bf46115b2502"
 
 [[plugin.deps]]
 use = "vivalchemy/yazi-plugins:fuzzychild"
-rev = "5636671"
-hash = "51470b537bfca1911e424f8fa92a9e3e"
+rev = "c862b94"
+hash = "aa60dc46d986af0b1acb948637696ac0"
+
+[[plugin.deps]]
+use = "Rolv-Apneseth/bypass"
+rev = "c1e5fcf"
+hash = "208e77480824f62558a5b037c8569d61"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:piper"
+rev = "42f64c0"
+hash = "2143a53182dbbe935a1abd1623424aa5"
 
 [flavor]
 deps = []

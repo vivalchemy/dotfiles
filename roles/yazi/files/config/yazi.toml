@@ -21,14 +21,17 @@ open = [
 ]
 
 [plugin]
-prepend_previewers = [
-  # Use glow to preview Markdown files
-  { name = "*.md", run = "glow" },
-  { mime = "audio/*",   run = "exifaudio"},
-]
-append_previewers = [
-  { name = "*", run = "hexyl" },
-]
+[[plugin.prepend_previewers]]
+name = "*.md"
+run  = 'piper -- CLICOLOR_FORCE=1 glow -w=$w -s=dark "$1"'
+
+[[plugin.prepend_previewers]]
+name = "*.csv"
+run  = 'piper -- bat -p --color=always "$1"'
+
+[[plugin.append_previewers]]
+name = "*"
+run  = 'piper -- hexyl --border=none --terminal-width=$w "$1"'
 
 [[plugin.prepend_fetchers]]
 id   = "git"

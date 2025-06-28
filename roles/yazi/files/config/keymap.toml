@@ -11,6 +11,11 @@ on   = "T"
 run  = "plugin toggle-pane max-preview"
 desc = "Toggle Maximize preview pane"
 
+[[mgr.prepend_keymap]]
+on = [ "l" ]
+run = "plugin bypass smart-enter"
+desc = "Open a file, or recursively enter child directory, skipping children with only a single subdirectory"
+
 ###################
 # Shell Utilities #
 ###################
