@@ -1,0 +1,15 @@
+- name: "Install on {{ ansible_distribution }}"
+  become: true
+  ansible.builtin.pacman:
+    name:
+      - "{{ role_name }}"
+    state: latest
+  when: (update | default(true)) | bool # Default to true if not defined
+
+- name: "Setup Config for {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ item }}"
+  loop:
+    - common_tasks/setup_config_dir_linux.yaml
+  vars:
+    role_config_directory_suffix: "zed/"
+  when: (configure | default(true)) | bool # Default to true if not defined

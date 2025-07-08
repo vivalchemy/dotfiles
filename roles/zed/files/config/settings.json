@@ -1,0 +1,79 @@
+{
+  // Appearance
+  "theme": "Catppuccin Mocha (Blur)",
+  "ui_font_family": "Poppins",
+  "ui_font_size": 15,
+  "ui_font_weight": 500,
+  "buffer_font_family": "JetBrainsMono Nerd Font Mono",
+  "buffer_font_size": 15,
+  "scrollbar": {
+    "show": "never"
+  },
+  "tab_bar": {
+    "show": false
+  },
+
+  // Editor Features
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "cursor_blink": false,
+  "relative_line_numbers": true,
+  "linked_edits": false,
+  "wrap_guides": [81],
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "hide_mouse": "on_typing_and_movement",
+  "inlay_hints": {
+    "enabled": true,
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    "show_other_hints": true,
+    "show_background": false,
+    "edit_debounce_ms": 700,
+    "scroll_debounce_ms": 50,
+    "toggle_on_modifiers_press": null
+  },
+
+  // Features & Plugins
+  "features": {
+    "edit_prediction_provider": "supermaven"
+  },
+
+  // AI Agent Configuration
+  "agent": {
+    "model_parameters": [],
+    "default_model": {
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    },
+    "version": "2"
+  },
+  "context_servers": {
+    "mcp-server-context7": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
+  },
+
+  // UI Panels & Layout
+  "bottom_dock_layout": "left_aligned",
+  "project_panel": {
+    "dock": "right"
+  },
+  "toolbar": {
+    "breadcrumbs": true,
+    "quick_actions": false,
+    "selections_menu": false
+  },
+
+  // Telemetry
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
+}

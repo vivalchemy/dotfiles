@@ -1,0 +1,58 @@
+[
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-s h": "pane::SplitDown",
+      "ctrl-s v": "pane::SplitRight",
+      "g D": "editor::GoToDefinition",
+      "g I": "editor::GoToImplementation",
+      "g d": "editor::GoToDefinition",
+      "g h": "editor::MoveToBeginningOfLine",
+      "g l": "editor::MoveToEndOfLine",
+      "g r": "editor::FindAllReferences",
+      "space /": "buffer_search::Deploy",
+      "space D": "editor::GoToTypeDefinition",
+      "space Z": "workspace::ToggleZoom",
+      "space c s": "outline::Toggle",
+      "space d B": "editor::EditLogBreakpoint",
+      "space d O": "debugger::StepOut",
+      "space d b": "editor::ToggleBreakpoint",
+      "space d i": "debugger::StepInto",
+      "space d o": "debugger::StepOver",
+      "space d s": "debugger::Continue",
+      "space d t": "debug_panel::ToggleFocus",
+      "space f .": "projects::OpenRecent",
+      "space f b": "tab_switcher::Toggle",
+      "space f d": "diagnostics::Deploy",
+      "space f f": "file_finder::Toggle",
+      "space f g": "project_search::ToggleFocus",
+      "space f k": "zed::OpenKeymap",
+      "space f n": "zed::OpenSettings",
+      "space f w": "buffer_search::Deploy",
+      "space q n": "editor::GoToDiagnostic",
+      "space q p": "editor::GoToPreviousDiagnostic",
+      "space q s": "diagnostics::Deploy",
+      "space space": "file_finder::Toggle",
+      "space t h": "editor::ToggleInlayHints",
+      "space w s": "project_symbols::Toggle",
+      "space z": "vim::MaximizePane"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !menu",
+    "bindings": {
+      "<": "editor::Outdent",
+      ">": "editor::Indent",
+      "shift-j": "editor::MoveLineDown",
+      "shift-k": "editor::MoveLineUp"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {}
+  }
+]

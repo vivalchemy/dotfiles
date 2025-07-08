@@ -26,6 +26,7 @@
     - xfce4 # no configured currently
     - yazi
     - zathura
+    - zed
     # - zellij # using tmux so no need currently
     # - zen-browser # no configured at all
     - zsh

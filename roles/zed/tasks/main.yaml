@@ -1,0 +1,17 @@
+- name: "Checking Ansible config for {{ ansible_distribution }}"
+  ansible.builtin.import_tasks: common_tasks/ansible_distribution_check.yaml
+  tags:
+    - zed
+    - cli
+
+- name: "Run Tasks for {{ ansible_distribution }}"
+  ansible.builtin.include_tasks:
+    file: "{{ ansible_distribution | lower }}.yaml"
+    apply:
+      tags:
+        - zed
+        - cli
+  when: distribution_config.stat.exists
+  tags:
+    - zed
+    - cli
