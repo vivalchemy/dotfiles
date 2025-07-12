@@ -26,6 +26,7 @@
       "space d s": "debugger::Continue",
       "space d t": "debug_panel::ToggleFocus",
       "space f .": "projects::OpenRecent",
+      "space e": "project_panel::ToggleFocus",
       "space f b": "tab_switcher::Toggle",
       "space f d": "diagnostics::Deploy",
       "space f f": "file_finder::Toggle",
@@ -40,6 +41,19 @@
       "space t h": "editor::ToggleInlayHints",
       "space w s": "project_symbols::Toggle",
       "space z": "vim::MaximizePane"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual) && !menu",
+    "bindings": {
+      "ctrl-i": "assistant::InlineAssist"
+    }
+  },
+  {
+    // "context": "Editor && (vim_mode == normal || vim_mode == terminal) && !menu",
+    "bindings": {
+      "ctrl-t": "workspace::ToggleBottomDock",
+      "ctrl-e": "workspace::ToggleRightDock"
     }
   },
   {

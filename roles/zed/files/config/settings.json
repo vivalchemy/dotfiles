@@ -1,6 +1,6 @@
 {
   // Appearance
-  "theme": "Catppuccin Mocha (Blur)",
+  "theme": "Catppuccin Macchiato (Blur)",
   "ui_font_family": "Poppins",
   "ui_font_size": 15,
   "ui_font_weight": 500,
@@ -25,16 +25,6 @@
     "coloring": "indent_aware"
   },
   "hide_mouse": "on_typing_and_movement",
-  "inlay_hints": {
-    "enabled": true,
-    "show_type_hints": true,
-    "show_parameter_hints": true,
-    "show_other_hints": true,
-    "show_background": false,
-    "edit_debounce_ms": 700,
-    "scroll_debounce_ms": 50,
-    "toggle_on_modifiers_press": null
-  },
 
   // Features & Plugins
   "features": {
@@ -43,6 +33,11 @@
 
   // AI Agent Configuration
   "agent": {
+    "inline_assistant_model": {
+      "provider": "google",
+      "model": "gemini-2.5-flash"
+    },
+    "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
       "provider": "google",
