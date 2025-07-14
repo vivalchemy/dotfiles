@@ -30,7 +30,7 @@
       "space f b": "tab_switcher::Toggle",
       "space f d": "diagnostics::Deploy",
       "space f f": "file_finder::Toggle",
-      "space f g": "project_search::ToggleFocus",
+      "space f g": "pane::DeploySearch",
       "space f k": "zed::OpenKeymap",
       "space f n": "zed::OpenSettings",
       "space f w": "buffer_search::Deploy",
