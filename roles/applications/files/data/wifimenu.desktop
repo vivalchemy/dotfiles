@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Wifi Menu
-Exec=ghostty --theme=xcodelighthc --confirm-close-surface=false --class=com.ghostty.transparent -e 'nmtui'
+Exec=ghostty --confirm-close-surface=false -e 'impala'
 Terminal=false
 Type=Application
 Keywords=Rofi;Wifi;Applet;

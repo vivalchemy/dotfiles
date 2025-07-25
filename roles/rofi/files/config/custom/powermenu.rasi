@@ -28,7 +28,7 @@ configuration {
     textbox-font:                "Poppins 13";                    /* Adjusted font size */
     element-text-font:           "Poppins 48";    /* Adjusted font size */
 
-    background-window:           black/40%;
+    background-window:           black/50%;
     background-normal:           white/5%;
     background-selected:         white/15%;
     foreground-normal:           white;

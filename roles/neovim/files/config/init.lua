@@ -15,6 +15,7 @@ Plug("plugins.mini")
 Plug("plugins.noice")
 Plug("plugins.onedarkpro")
 Plug("plugins.render_markdown")
+-- Plug("plugins.rosepine")
 Plug("plugins.snacks")
 Plug("plugins.telescope")
 Plug("plugins.tmp")
@@ -35,4 +36,4 @@ Plug("plugins.supermaven") -- SupermavenStart / SupermavenStop
 
 require("plugins.lazy")
 
-require("taskexec").setup({})
+-- require("taskexec").setup({})

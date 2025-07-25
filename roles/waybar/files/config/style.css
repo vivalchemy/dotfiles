@@ -1,0 +1,46 @@
+@define-color foreground #cdd6f4;
+@define-color background #1a1b26;
+
+* {
+  background-color: @background;
+  color: @foreground;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: 16px;
+}
+
+.modules-left {
+  margin-left: 16px;
+}
+
+.modules-right {
+  margin-right: 12px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+}
+
+#tray,
+#cpu,
+#battery,
+#network,
+#bluetooth,
+#pulseaudio,
+#clock,
+#custom-power-menu {
+  min-width: 14px;
+  margin: 0 7.5px;
+}
+
+#custom-expand-icon {
+  margin-right: 16px;
+}
+
+tooltip {
+  padding: 2px;
+}

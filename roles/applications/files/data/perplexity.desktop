@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Perplexity.ai
+Exec=/home/shadow/.local/bin/launch_web_apps.sh https://perplexity.ai
+Terminal=false
+Type=Application
+Keywords=Ai;Chat;Browser
+Comment=Perplexity Ai
+Icon=artificial-intelligence
+Categories=Ai;Chat;
+StartupNotify=false

@@ -23,6 +23,7 @@
     - tmux
     # - vivaldi
     - wallpapers
+    - waybar
     - xfce4 # no configured currently
     - yazi
     - zathura
