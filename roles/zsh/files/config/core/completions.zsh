@@ -17,14 +17,6 @@ zmodload zsh/complist
 _comp_options+=(globdots)		# Include hidden files.
 zle_highlight=('paste:none')
 
-if [[ ! -e "${ZDOTDIR:-$HOME}/.zcompdump" || $(find "${ZDOTDIR:-$HOME}/.zcompdump" -mmin +1440 -print) ]]; then
-  # If the file doesn't exist or it's older than 24 hours, recompute completions
-  compinit
-else
-  # Otherwise, load the dump without integrity checks
-  compinit -C
-fi
-
 # Path completion
 zstyle ':completion:*' path-guard-characters '/'
 
@@ -33,3 +25,9 @@ zstyle ':completion:*' file-list-dirs first
 
 # Define the history file path
 zstyle ':completion:*' history-path "$HISTFILE"
+
+if [[ -f "$ZDOTDIR/.zcompdump" ]] && [[ "$(find "$ZDOTDIR/.zcompdump" -mtime +2 -print -quit)" ]]; then
+  compinit
+else
+  compinit -u -C
+fi
