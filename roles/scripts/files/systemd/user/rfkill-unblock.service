@@ -1,0 +1,12 @@
+[Unit]
+Description=Unblock Wi-Fi and Bluetooth at startup
+After=network-pre.target
+Before=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/rfkill unblock all
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
