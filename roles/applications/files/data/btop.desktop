@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Btop
-Exec=ghostty --confirm-close-surface=false -e btop
+Exec=foot --window-size-chars=120x36 -o main.font='JetBrainsMono Nerd Font:size=9.5'  -o main.pad=8x8 btop
 Terminal=false
 Type=Application
 Icon=btop

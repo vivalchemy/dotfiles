@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Wifi Menu
-Exec=ghostty --confirm-close-surface=false -e 'impala'
+Exec=foot -o main.pad=8x8 impala
 Terminal=false
 Type=Application
 Keywords=Rofi;Wifi;Applet;

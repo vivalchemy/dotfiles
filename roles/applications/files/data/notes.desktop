@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Notes
-Exec=ghostty --class=com.ghostty.fullscreen -e 'nvim "Scratch pad.md"'
+Exec=foot 'nvim "Scratch pad.md"'
 Terminal=false
 Type=Application
 Keywords=Text;editor;

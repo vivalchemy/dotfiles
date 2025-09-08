@@ -10,7 +10,7 @@
     - fastfetch
     - foot
     - git
-    - ghostty
+    # - ghostty
     - hyprland
     - keyd
     - lazygit

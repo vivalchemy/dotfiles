@@ -42,17 +42,9 @@
     "default_model": {
       "provider": "google",
       "model": "gemini-2.5-flash"
-    },
-  },
-  "context_servers": {
-    "mcp-server-context7": {
-      "source": "extension",
-      "enabled": true,
-      "settings": {
-        "default_minimum_tokens": "10000"
-      }
     }
   },
+  "context_servers": {},
 
   // UI Panels & Layout
   "bottom_dock_layout": "left_aligned",

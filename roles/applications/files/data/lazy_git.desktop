@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Lazy Git
-Exec=ghostty -e lazygit
+Exec=foot lazygit
 Terminal=false
 Type=Application
 Icon=git

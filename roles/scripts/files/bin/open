@@ -2,7 +2,7 @@
 # Script for opening files in various applications based on file type
 
 # Set default values with fallback
-: "${TERMINAL:=ghostty}"
+: "${TERMINAL:=foot}"
 : "${SHELL:=/bin/bash}"
 
 # Default to detached mode
@@ -24,7 +24,7 @@ fi
 execute_based_on_extension() {
   local file="$1"
   local extension="${file##*.}"
-  
+
   case "$extension" in
     "desktop")
       local exec_command=$(rg "^Exec=" "$file" | cut -d= -f2-)

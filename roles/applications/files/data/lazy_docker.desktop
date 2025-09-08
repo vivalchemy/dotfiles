@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Lazy Docker
-Exec=ghostty -e lazydocker
+Exec=foot lazydocker
 Terminal=false
 Type=Application
 Icon=docker-desktop

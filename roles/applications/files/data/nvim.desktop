@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Neovim
-Exec=ghostty -e nvim
+Exec=foot nvim
 Terminal=false
 Type=Application
 Keywords=Text;editor;
