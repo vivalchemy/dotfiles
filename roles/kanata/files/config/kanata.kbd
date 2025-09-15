@@ -1,0 +1,73 @@
+;; Kanata configuration converted from keyd
+;; This configuration implements homerow mods and layer toggling
+
+(defcfg
+  ;; Enable processing of unmapped keys for better compatibility
+  process-unmapped-keys yes
+  
+  ;; Improve tap-hold behavior
+  concurrent-tap-hold yes
+)
+
+;; Define the keys that will be intercepted by kanata
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+;; Define aliases for tap-hold actions
+(defalias
+  ;; Home row mods - left hand
+  ;; lettermod(alt, a, 100, 200) -> tap-hold-release with 200ms hold, 100ms idle timeout
+  a_alt (tap-hold-release 200 200 a lalt)
+  s_met (tap-hold-release 200 200 s lmet)
+  d_sft (tap-hold-release 200 200 d lsft)
+  f_ctl (tap-hold-release 200 200 f lctl)
+  
+  ;; Home row mods - right hand
+  j_ctl (tap-hold-release 200 200 j lctl)
+  k_sft (tap-hold-release 200 200 k lsft)
+  l_met (tap-hold-release 200 200 l lmet)
+  ;_alt (tap-hold-release 200 200 ; lalt)
+  
+  ;; Capslock as escape on tap, nav_layer on hold
+  ;; overloadt2(nav_layer, escape, 1000) -> tap-hold with 1000ms timeout
+  cap_nav (tap-hold 200 1000 esc (layer-toggle nav_layer))
+  
+  ;; Escape becomes capslock
+  esc_caps caps
+  
+  ;; Left shift becomes capslock
+  lsft_caps caps
+)
+
+;; Main layer - QWERTY with home row mods
+(deflayer qwerty
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  @cap_nav @a_alt @s_met @d_sft @f_ctl g h @j_ctl @k_sft @l_met @;_alt ' ret
+  @lsft_caps z x c v b n m , . / rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+;; Navigation layer
+(deflayer nav_layer
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    left down up   rght _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
+
+;; Alternative navigation layer with enter as backspace
+;; You can switch between the two by changing the layer name in @cap_nav
+(deflayer nav_layer_alt
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    left down up   rght _    _    bspc
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _
+)
