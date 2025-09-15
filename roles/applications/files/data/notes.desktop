@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Notes
-Exec=foot 'nvim "Scratch pad.md"'
+Exec=foot --title="foot.fullscreen" nvim "Scratch pad.md"
 Terminal=false
 Type=Application
 Keywords=Text;editor;
