@@ -7,6 +7,12 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
 
+cx(){
+    mkdir -p $1
+    echo "Created: $PWD/$1"
+    cd $1
+}
+
 # confirm before overwriting something
 alias cp="cp -i"
 alias mv='mv -i'
