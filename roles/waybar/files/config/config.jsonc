@@ -69,7 +69,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "nospacing": 1,
-    "on-click": "foot  -o main.pad=8x8 impala",
+    "on-click": "foot  -o main.pad=8x8 nmtui",
   },
   "battery": {
     "format": "{capacity}% {icon}",
