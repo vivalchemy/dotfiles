@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Grok.com
+Exec=/home/shadow/.local/bin/launch_web_apps.sh https://grok.com/
+Terminal=false
+Type=Application
+Keywords=Ai;Chat;Browser
+Comment=GrokAi from X(formerly Twitter)
+Icon=grok
+Categories=Ai;Chat;
+StartupNotify=false

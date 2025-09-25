@@ -5,6 +5,6 @@ Terminal=false
 Type=Application
 Keywords=Ai;Chat;Browser
 Comment=Perplexity Ai
-Icon=artificial-intelligence
+Icon=perplexity
 Categories=Ai;Chat;
 StartupNotify=false

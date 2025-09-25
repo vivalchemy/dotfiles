@@ -7,7 +7,6 @@ Plug("plugins.d2")
 Plug("plugins.dap")
 -- Plug("plugins.database") -- using cloudbeaver now
 -- Plug("plugins.executor") -- using custom watchexec now
-Plug("plugins.flash")
 Plug("plugins.git_signs")
 Plug("plugins.harpoon")
 Plug("plugins.mason")
