@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Todo
+Exec=foot -o main.font='JetBrainsMono Nerd Font:size=20' nvim "TODO.md"
+Terminal=false
+Type=Application
+Keywords=Text;editor;
+Icon=todoist
+Categories=Utility;TextEditor;
+StartupNotify=false
+Path=Documents/brain_of_obsidian
