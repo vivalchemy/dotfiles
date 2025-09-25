@@ -17,6 +17,7 @@
     - lazygit
     - mako
     - neovim
+    - niri
     - nodejs
     - rofi
     - scripts
