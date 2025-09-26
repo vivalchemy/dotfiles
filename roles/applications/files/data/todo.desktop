@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Todo
-Exec=foot -o main.font='JetBrainsMono Nerd Font:size=20' nvim "TODO.md"
+Exec=foot --title="todo" --window-size-chars=30x15 -o main.font='JetBrainsMono Nerd Font:size=16' -- nvim -u NONE -c "set laststatus=0 noruler" "TODO.md"
 Terminal=false
 Type=Application
 Keywords=Text;editor;
