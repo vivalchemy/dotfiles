@@ -1,9 +1,24 @@
-fuzzy-pac(){
-  pacman -Ssq | fzf -m --preview "pacman -Si {} | rg -v \"^(Groups|Architecture|Licenses|Conflicts With|Replaces)\" | bat --color=always --style=numbers --line-range=:500"
+paci() {
+	pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S
 }
 
-alias pacf='pacman -Si $(fuzzy-pac)'
+pacf() {
+	pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro pacman -Si
+}
+
+# Function to search and remove packages using pacman
+pacd() {
+	pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns
+}
+
+# Function to search and install packages using paru
+pari() {
+	paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+}
+
+parf() {
+	paru -Slq | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -Si
+}
+
 # Unfortunately you need sudo for pacman ;-;
-alias paci='sudo pacman -S $(fuzzy-pac)'
-alias pacd='sudo pacman -Rns $(pacman -Qeq | fzf -m --preview "pacman -Qi {} | bat --color=always --style=numbers --line-range=:500")'
 alias yay='paru'

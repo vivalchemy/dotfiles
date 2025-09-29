@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Sejda
+Exec=/home/shadow/.local/bin/launch_web_apps.sh www.sejda.com
+Terminal=false
+Type=Application
+Keywords=pdf;editor;document;viewer;
+Comment=Easy, pleasant and productive PDF editor 
+Icon=sejda
+Categories=Web;Document;
+StartupNotify=false

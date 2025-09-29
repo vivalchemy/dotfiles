@@ -33,7 +33,7 @@
       "space f g": "pane::DeploySearch",
       "space f k": "zed::OpenKeymap",
       "space f n": "zed::OpenSettings",
-      "space f w": "buffer_search::Deploy",
+      // "space f w": "buffer_search::Deploy",
       "space q n": "editor::GoToDiagnostic",
       "space q p": "editor::GoToPreviousDiagnostic",
       "space q s": "diagnostics::Deploy",
@@ -46,7 +46,7 @@
   {
     "context": "Editor && (vim_mode == normal || vim_mode == visual) && !menu",
     "bindings": {
-      "ctrl-i": "assistant::InlineAssist"
+      "ctrl-/": "assistant::InlineAssist"
     }
   },
   {
@@ -68,5 +68,23 @@
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {}
+  },
+  {
+    "context": "BufferSearchBar",
+    "bindings": {
+      "alt-enter": null
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-enter": null
+    }
+  },
+  {
+    "context": "(Editor && mode == full)",
+    "bindings": {
+      "alt-enter": null
+    }
   }
 ]
