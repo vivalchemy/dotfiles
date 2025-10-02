@@ -234,7 +234,7 @@ return {
 		-- Additional feature configurations
 		gitbrowse = { enabled = true },
 		image = {
-			enabled = true,
+			enabled = false,
 			doc = {
 				inline = vim.g.neovim_mode == "skitty" and true or false,
 				float = true,
