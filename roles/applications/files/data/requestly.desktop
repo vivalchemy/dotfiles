@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Requestly
+Exec=/home/shadow/.local/bin/launch_web_apps.sh https://app.requestly.io/
+Terminal=false
+Type=Application
+Keywords=API Client;HTTP Interceptor;Browser
+Comment=All-in-one platform to Test, Mock and Intercept APIs. Built for speed, privacy and offline support.
+Icon=requestly
+Categories=Network;Chat;
+StartupNotify=false

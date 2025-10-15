@@ -43,7 +43,7 @@ input {
 
   // Focus windows and outputs automatically when moving the mouse into them.
   // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-  focus-follows-mouse max-scroll-amount="10%"
+  focus-follows-mouse max-scroll-amount="0%"
 }
 
 cursor {
@@ -88,6 +88,12 @@ output "eDP-1" {
   // position x=1280 y=0
 }
 
+overview{
+  workspace-shadow{
+    off
+  }
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Layout
@@ -95,6 +101,7 @@ layout {
   // Set gaps around windows in logical pixels.
   gaps 0
 
+  background-color "transparent"
   // When to center a column when changing focus, options are:
   // - "never", default behavior, focusing an off-screen column will keep at the left
   //   or right edge of the screen.
@@ -237,10 +244,10 @@ layout {
   // Top and bottom struts will simply add outer gaps in addition to the area occupied by
   // layer-shell panels and regular gaps.
   struts {
-    // left 64
-    // right 64
-    // top 64
-    // bottom 64
+    // left 0
+    // right 0
+    // top 0
+    // bottom 0
   }
 }
 
@@ -338,9 +345,9 @@ environment {
 spawn-sh-at-startup "niri msg action focus-workspace 3"
 spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "swww-daemon > /dev/null 2>&1"
-spawn-sh-at-startup "uwsm app -- mako"
-spawn-sh-at-startup "uwsm app -- $BROWSER"
-spawn-sh-at-startup "uwsm app -- $TERMINAL --title='foot.fullscreen'"
+spawn-sh-at-startup "mako"
+spawn-sh-at-startup "$BROWSER"
+spawn-sh-at-startup "$TERMINAL --title='foot.fullscreen'"
 spawn-sh-at-startup "cliphist wipe"
 spawn-sh-at-startup "wl-paste --watch cliphist store"
 
@@ -391,7 +398,10 @@ animations {
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
-
+layer-rule{
+  match namespace="^swww-daemon$"
+  place-within-backdrop true
+}
 
 window-rule {
     match app-id="^AlacrittyFullScreen$" title="^Alacritty$"
@@ -485,7 +495,10 @@ binds {
   Mod+B { spawn-sh "$BROWSER"; }
   Mod+E { spawn-sh "$FILE_MANAGER"; }
   Mod+N { spawn-sh "$NOTES_MANAGER"; }
-  Mod+T { spawn-sh "$TERMINAL --title=foot.fullscreen"; }
+  Mod+Return { spawn-sh "$TERMINAL --title=foot.fullscreen"; }
+  Mod+T { 
+        spawn-sh "$TERMINAL --title='todo' --window-size-chars=30x15 -o main.font='JetBrainsMono Nerd Font:size=16' -- $EDITOR -u NONE -c 'set laststatus=0 noruler' $HOME/Documents/brain_of_obsidian/TODO.md"; 
+  }
 
   // ================================
   // WINDOW MANAGEMENT
