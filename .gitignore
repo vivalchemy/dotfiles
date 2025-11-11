@@ -4,3 +4,4 @@ roles/hyprland/files/config/hyprpaper.conf
 roles/neovim/files/config/spell
 roles/zsh/files/config/.zsh_history
 roles/zsh/files/config/core/env.zsh
+roles/zed/files/config/settings.json
